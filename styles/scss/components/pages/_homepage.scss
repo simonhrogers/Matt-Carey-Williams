@@ -1,0 +1,53 @@
+@import '../../boilerplate/_breakpoints';
+
+.homepage {
+  flex: 1;
+  margin: 1em var(--lh);
+  transform: translateZ(0);
+  @include maxWidth(largeMobile) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+.title, .subtitle, .lol {
+  text-transform: uppercase;
+  color: #1C7464;
+  letter-spacing: 0.06em;
+  font-kerning: normal;
+  @include maxWidth(largeMobile) {
+    text-align: center;
+    // flex: 1;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+  }
+}
+
+.title {
+  @include minWidth(largeMobile) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.subtitle {
+  @include minWidth(largeMobile) {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.lol {
+  @include minWidth(largeMobile) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

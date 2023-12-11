@@ -16,11 +16,17 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
   const { overview = [], showcaseProjects = [], title = '' } = data ?? {}
 
   return (
-    <div className="space-y-20">
+    <div className="homepage">
+      <div className="title">Matt Carey-Williams</div>
+      <div className="subtitle">Coming Soon</div>
+      <div className="lol">Patience is a virtue</div>
+      {/* <div className="title-unkerned">Matt Carey-Williams</div>
+      <div className="subtitle-unkerned">Coming Soon</div>
+      <div className="lol-unkerned">Patience is a virtue</div> */}
       {/* Header */}
-      {title && <Header centered title={title} description={overview} />}
+      {/* {title && <Header centered title={title} description={overview} />} */}
       {/* Showcase projects */}
-      {showcaseProjects && showcaseProjects.length > 0 && (
+      {/* {showcaseProjects && showcaseProjects.length > 0 && (
         <div className="mx-auto max-w-[100rem] rounded-md border">
           {showcaseProjects.map((project, key) => {
             const href = resolveHref(project._type, project.slug)
@@ -42,7 +48,7 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
             )
           })}
         </div>
-      )}
+      )} */}
     </div>
   )
 }

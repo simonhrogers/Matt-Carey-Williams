@@ -11,6 +11,8 @@ import { Navbar } from '@/components/global/Navbar'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
 
+import "styles/scss/main.scss"
+
 const VisualEditing = dynamic(() => import('@/sanity/loader/VisualEditing'))
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -47,16 +49,14 @@ export default async function IndexRoute({
 }) {
   return (
     <>
-      <div className="flex min-h-screen flex-col bg-white text-black">
-        <Suspense>
+      <div className="layout">
+        {/* <Suspense>
           <Navbar />
-        </Suspense>
-        <div className="mt-20 flex-grow px-4 md:px-16 lg:px-32">
-          <Suspense>{children}</Suspense>
-        </div>
-        <Suspense>
+        </Suspense> */}
+        <Suspense>{children}</Suspense>
+        {/* <Suspense>
           <Footer />
-        </Suspense>
+        </Suspense> */}
         {/* <IntroTemplate /> */}
       </div>
       {draftMode().isEnabled && <VisualEditing />}
