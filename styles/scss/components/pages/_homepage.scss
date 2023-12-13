@@ -2,7 +2,7 @@
 
 .homepage {
   flex: 1;
-  margin: 1em var(--lh);
+  margin: var(--lh);
   transform: translateZ(0);
   @include maxWidth(largeMobile) {
     display: flex;
@@ -17,6 +17,7 @@
   color: #1C7464;
   letter-spacing: 0.06em;
   font-kerning: normal;
+  display: none;
   @include maxWidth(largeMobile) {
     text-align: center;
     // flex: 1;
@@ -27,7 +28,7 @@
   }
 }
 
-.title {
+.title, .title-svg {
   @include minWidth(largeMobile) {
     position: absolute;
     top: 0;
@@ -35,7 +36,7 @@
   }
 }
 
-.subtitle {
+.subtitle, .subtitle-svg {
   @include minWidth(largeMobile) {
     position: absolute;
     top: 0;
@@ -43,11 +44,17 @@
   }
 }
 
-.lol {
+.lol, .lol-svg {
   @include minWidth(largeMobile) {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+
+.title-svg, .subtitle-svg, .lol-svg {
+  fill: #1C7464;
+  height: 1em;
 }

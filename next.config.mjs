@@ -22,6 +22,13 @@ const config = {
   experimental: {
     taint: true,
   },
+  webpack: (webpackConfig) => {
+    webpackConfig.module.rules.push({
+      test: /\.svg$/i,
+      use: ['@svgr/webpack'],
+    })
+    return webpackConfig
+  },
 }
 
 export default config

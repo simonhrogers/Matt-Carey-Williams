@@ -6,6 +6,10 @@ import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
 
+import Logo from 'assets/svg/Logo.svg'
+import Soon from 'assets/svg/Soon.svg'
+import Patience from 'assets/svg/Patience.svg'
+
 export interface HomePageProps {
   data: HomePagePayload | null
   encodeDataAttribute?: EncodeDataAttributeCallback
@@ -20,6 +24,9 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
       <div className="title">Matt Carey-Williams</div>
       <div className="subtitle">Coming Soon</div>
       <div className="lol">Patience is a virtue</div>
+      <Logo class="title-svg"/>
+      <Soon class="subtitle-svg"/>
+      <Patience class="lol-svg"/>
       {/* <div className="title-unkerned">Matt Carey-Williams</div>
       <div className="subtitle-unkerned">Coming Soon</div>
       <div className="lol-unkerned">Patience is a virtue</div> */}
