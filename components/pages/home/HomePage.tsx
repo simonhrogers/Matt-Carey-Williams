@@ -24,9 +24,18 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
       <div className="title">Matt Carey-Williams</div>
       <div className="subtitle">Coming Soon</div>
       <div className="lol">Patience is a virtue</div>
-      <Logo class="title-svg"/>
-      <Soon class="subtitle-svg"/>
-      <Patience class="lol-svg"/>
+      <Logo 
+        class="title-svg"
+        aria-label="Matt Carey-Williams"
+      />
+      <Soon 
+        class="subtitle-svg"
+        aria-label="Coming Soon"
+      />
+      <Patience 
+        class="lol-svg"
+        aria-label="Patience is a virtue"
+      />
       {/* <div className="title-unkerned">Matt Carey-Williams</div>
       <div className="subtitle-unkerned">Coming Soon</div>
       <div className="lol-unkerned">Patience is a virtue</div> */}
