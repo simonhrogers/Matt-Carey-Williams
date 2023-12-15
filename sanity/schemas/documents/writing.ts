@@ -11,7 +11,6 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your writing.',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
@@ -28,129 +27,41 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'overview',
-      description:
-        'Used both for the <meta> description tag for SEO, and writing subheader.',
-      title: 'Overview',
-      type: 'array',
-      of: [
-        // Paragraphs
-        defineArrayMember({
-          lists: [],
-          marks: {
-            annotations: [],
-            decorators: [
-              {
-                title: 'Italic',
-                value: 'em',
-              },
-              {
-                title: 'Strong',
-                value: 'strong',
-              },
-            ],
-          },
-          styles: [],
-          type: 'block',
-        }),
-      ],
-      validation: (rule) => rule.max(155).required(),
-    }),
-    defineField({
-      name: 'coverImage',
-      title: 'Cover Image',
-      description:
-        'This image will be used as the cover image for the writing. If you choose to add it to the show case writings, this is the image displayed in the list within the homepage.',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'author',
+      title: 'Author',
+      type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'duration',
-      title: 'Duration',
-      type: 'duration',
-    }),
-    defineField({
-      name: 'client',
-      title: 'Client',
+      name: 'location',
+      title: 'Location',
       type: 'string',
+      validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'site',
-      title: 'Site',
-      type: 'url',
+      name: 'date',
+      title: 'Date',
+      type: 'date',
     }),
+
     defineField({
-      name: 'tags',
-      title: 'Tags',
-      type: 'array',
-      of: [{ type: 'string' }],
-      options: {
-        layout: 'tags',
-      },
-    }),
-    defineField({
-      name: 'description',
-      title: 'Writing Description',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
-          styles: [],
-        }),
-        // Custom blocks
-        defineArrayMember({
-          name: 'timeline',
-          type: 'timeline',
-        }),
-        defineField({
-          type: 'image',
-          icon: ImageIcon,
-          name: 'image',
-          title: 'Image',
-          options: {
-            hotspot: true,
-          },
-          preview: {
-            select: {
-              imageUrl: 'asset.url',
-              title: 'caption',
-            },
-          },
-          fields: [
-            defineField({
-              title: 'Caption',
-              name: 'caption',
-              type: 'string',
-            }),
-            defineField({
-              name: 'alt',
-              type: 'string',
-              title: 'Alt text',
-              description:
-                'Alternative text for screenreaders. Falls back on caption if not set',
-            }),
-          ],
-        }),
-      ],
+      name: 'body',
+      title: 'Body',
+      type: 'blockContentWriting',
+      validation: (rule) => rule.max(155).required(),
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'author',
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title,
+        subtitle,
+        media: BillIcon,
+      }
+    }
+  },
 })

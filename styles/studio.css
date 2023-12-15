@@ -1,0 +1,6 @@
+[data-testid="text-style--pullquote"] {
+  font-size: 1.5em;
+  margin: 2em 0;
+  font-weight: 600;
+  line-height: 1.25;
+}

@@ -16,6 +16,9 @@ import page from '@/sanity/schemas/documents/page'
 // import project from '@/sanity/schemas/documents/project'
 import scene from './sanity/schemas/documents/scene'
 import writing from './sanity/schemas/documents/writing'
+import blockContent from './sanity/schemas/objects/blockContent'
+import blockContentSimple from './sanity/schemas/objects/blockContentSimple'
+import blockContentWriting from './sanity/schemas/objects/blockContentWriting'
 import duration from '@/sanity/schemas/objects/duration'
 import milestone from '@/sanity/schemas/objects/milestone'
 import timeline from '@/sanity/schemas/objects/timeline'
@@ -38,6 +41,9 @@ export default defineConfig({
       home,
       settings,
       // Documents
+      blockContent,
+      blockContentSimple,
+      blockContentWriting,
       duration,
       episode,
       page,
@@ -51,7 +57,7 @@ export default defineConfig({
   },
   plugins: [
     deskTool({
-      structure: pageStructure([home, settings],[page, episode, scene, writing]),
+      structure: pageStructure([home, settings]),
     }),
     presentationTool({
       locate,

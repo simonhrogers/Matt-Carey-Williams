@@ -11,7 +11,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your scene.',
+      description: 'This field is the title of your episode.',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
@@ -28,43 +28,11 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'overview',
-      description:
-        'Used both for the <meta> description tag for SEO, and scene subheader.',
-      title: 'Overview',
-      type: 'array',
-      of: [
-        // Paragraphs
-        defineArrayMember({
-          lists: [],
-          marks: {
-            annotations: [],
-            decorators: [
-              {
-                title: 'Italic',
-                value: 'em',
-              },
-              {
-                title: 'Strong',
-                value: 'strong',
-              },
-            ],
-          },
-          styles: [],
-          type: 'block',
-        }),
-      ],
-      validation: (rule) => rule.max(155).required(),
-    }),
-    defineField({
       name: 'coverImage',
       title: 'Cover Image',
       description:
-        'This image will be used as the cover image for the scene. If you choose to add it to the show case scenes, this is the image displayed in the list within the homepage.',
+        'This image will be used as the cover image for the episode. If you choose to add it to the show case episodes, this is the image displayed in the list within the homepage.',
       type: 'image',
-      options: {
-        hotspot: true,
-      },
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -72,55 +40,19 @@ export default defineType({
       title: 'Duration',
       type: 'duration',
     }),
+    // Names (array) of people involved (string)
     defineField({
-      name: 'client',
-      title: 'Client',
-      type: 'string',
-    }),
-    defineField({
-      name: 'site',
-      title: 'Site',
-      type: 'url',
-    }),
-    defineField({
-      name: 'tags',
-      title: 'Tags',
+      name: 'names',
+      title: 'Names',
       type: 'array',
       of: [{ type: 'string' }],
-      options: {
-        layout: 'tags',
-      },
     }),
+    // Images (array) of artwork images (image) with caption (block content), credit (block content) and alt text (string)
     defineField({
-      name: 'description',
-      title: 'Scene Description',
+      name: 'images',
+      title: 'Images',
       type: 'array',
       of: [
-        defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
-          styles: [],
-        }),
-        // Custom blocks
-        defineArrayMember({
-          name: 'timeline',
-          type: 'timeline',
-        }),
         defineField({
           type: 'image',
           icon: ImageIcon,
@@ -129,17 +61,38 @@ export default defineType({
           options: {
             hotspot: true,
           },
+          initialValue: {
+            layout: 'default',
+          },
           preview: {
             select: {
-              imageUrl: 'asset.url',
+              media: 'asset',
               title: 'caption',
+              subtitle: 'layout',
             },
           },
           fields: [
+            // layout option
             defineField({
-              title: 'Caption',
-              name: 'caption',
+              name: 'layout',
+              title: 'Layout',
               type: 'string',
+              options: {
+                list: [
+                  { title: 'Default', value: 'default' },
+                  { title: 'Full Bleed', value: 'fullBleed' },
+                ],
+              },
+            }),
+            defineField({
+              name: 'caption',
+              title: 'Caption',
+              type: 'blockContentSimple',
+            }),
+            defineField({
+              name: 'credit',
+              title: 'Credit',
+              type: 'blockContentSimple',
             }),
             defineField({
               name: 'alt',
@@ -151,6 +104,13 @@ export default defineType({
           ],
         }),
       ],
+    }),
+
+    defineField({
+      name: 'body',
+      title: 'Exhibition Text',
+      type: 'blockContent',
+      validation: (rule) => rule.max(155).required(),
     }),
   ],
 })
