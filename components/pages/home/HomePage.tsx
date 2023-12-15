@@ -21,9 +21,9 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
 
   return (
     <div className="homepage">
-      <div className="title">Matt Carey-Williams</div>
-      <div className="subtitle">Coming Soon</div>
-      <div className="lol">Patience is a virtue</div>
+      <div className="title"><br />at Cork Street</div>
+      {/* <div className="subtitle">Coming Soon</div> */}
+      {/* <div className="lol">Patience is a virtue</div> */}
       <Logo 
         class="title-svg"
         aria-label="Matt Carey-Williams"

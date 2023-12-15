@@ -15,9 +15,9 @@
 .title, .subtitle, .lol {
   text-transform: uppercase;
   color: #1C7464;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   font-kerning: normal;
-  display: none;
+  // display: none;
   @include maxWidth(largeMobile) {
     text-align: center;
     // flex: 1;
@@ -53,8 +53,13 @@
   }
 }
 
-
 .title-svg, .subtitle-svg, .lol-svg {
   fill: #1C7464;
-  height: 1em;
+  // height: 1em;
+  // fill: red;
+  height: 0.92em;
+}
+
+.title-svg, .subtitle-svg {
+  transform: translateY(0.14em);
 }

@@ -12,8 +12,7 @@ body {
   background-color: var(--primary_background_color);
   color: var(--primary-text-color);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: auto;
-  line-height: 1.5;
+  line-height: var(--line-height);
   height: 100%;
   display: flex;
   // min-height: 100vh;
