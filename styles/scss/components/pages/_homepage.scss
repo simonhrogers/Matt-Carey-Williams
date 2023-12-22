@@ -17,7 +17,7 @@
   color: #1C7464;
   letter-spacing: 0.04em;
   font-kerning: normal;
-  // display: none;
+  display: none;
   @include maxWidth(largeMobile) {
     text-align: center;
     // flex: 1;
