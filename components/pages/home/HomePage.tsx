@@ -2,7 +2,7 @@
 
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader/rsc'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import { Header } from '@/components/shared/Header'
@@ -29,7 +29,9 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
 
 
   const logoRef = useRef()
+  const [logoDirection, setLogoDirection] = useState(1)
   const patienceRef = useRef()
+  const [patienceDirection, setPatienceDirection] = useState(1)
 
 
   return (
@@ -47,7 +49,17 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
         loop={false}
         autoplay={true}
         // onDataReady={() => (logoRef.current.play())}
-        onComplete={() => (patienceRef.current.play())}
+        onComplete={() => {
+          if (logoDirection === -1) {
+            setLogoDirection(1)
+            logoRef.current.setDirection(1)
+            logoRef.current.play()
+          } else {
+            setPatienceDirection(1)
+            patienceRef.current.setDirection(1)
+            patienceRef.current.play()
+          }
+        }}
         className="title-lottie"
         aria-label="Matt Carey-Williams"
       />
@@ -57,7 +69,19 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
         loop={false}
         autoplay={false}
         // onDataReady={() => (logoRef.current.play())}
-        // onComplete={() => !inView && setShowMenuLogo(true)}
+        onComplete={() => {
+          if (patienceDirection === 1) {
+            setTimeout(() => {
+              setPatienceDirection(-1)
+              patienceRef.current.setDirection(-1)
+              patienceRef.current.play()
+            }, 2500)
+          } else {
+            setLogoDirection(-1)
+            logoRef.current.setDirection(-1)
+            logoRef.current.play()
+          }
+        }}
         className="subtitle-lottie"
         aria-label="Coming Soon"
       />
