@@ -4,7 +4,7 @@
   flex: 1;
   margin: var(--lh);
   transform: translateZ(0);
-  @include maxWidth(largeMobile) {
+  @include maxWidth(tablet) {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -18,7 +18,7 @@
   letter-spacing: 0.04em;
   font-kerning: normal;
   display: none;
-  @include maxWidth(largeMobile) {
+  @include maxWidth(tablet) {
     text-align: center;
     // flex: 1;
     // display: flex;
@@ -30,7 +30,7 @@
 
 .title, .title-svg,
 .title-lottie svg {
-  @include minWidth(largeMobile) {
+  @include minWidth(tablet) {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,7 +39,7 @@
 
 .subtitle, .subtitle-svg,
 .subtitle-lottie svg {
-  @include minWidth(largeMobile) {
+  @include minWidth(tablet) {
     position: absolute;
     top: 0;
     right: 0;
@@ -47,7 +47,7 @@
 }
 
 .lol, .lol-svg {
-  @include minWidth(largeMobile) {
+  @include minWidth(tablet) {
     position: absolute;
     top: 50%;
     left: 50%;
