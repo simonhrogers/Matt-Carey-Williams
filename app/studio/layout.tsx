@@ -1,4 +1,5 @@
 import 'styles/scss/boilerplate/_reset.scss'
+import 'styles/studio.css'
 
 export default function RootLayout({
   children,

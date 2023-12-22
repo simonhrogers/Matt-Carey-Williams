@@ -5,12 +5,12 @@ html {
 }
 
 p:not(:last-child) {
-  margin-bottom: 0.875rem;
+  margin-bottom: var(--lh);
 }
 
 ol,
 ul {
-  margin-left: 1rem;
+  margin-left: var(--lh);
 }
 
 ol {

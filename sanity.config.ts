@@ -11,8 +11,14 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
+import episode from './sanity/schemas/documents/episode'
 import page from '@/sanity/schemas/documents/page'
-import project from '@/sanity/schemas/documents/project'
+// import project from '@/sanity/schemas/documents/project'
+import scene from './sanity/schemas/documents/scene'
+import writing from './sanity/schemas/documents/writing'
+import blockContent from './sanity/schemas/objects/blockContent'
+import blockContentSimple from './sanity/schemas/objects/blockContentSimple'
+import blockContentWriting from './sanity/schemas/objects/blockContentWriting'
 import duration from '@/sanity/schemas/objects/duration'
 import milestone from '@/sanity/schemas/objects/milestone'
 import timeline from '@/sanity/schemas/objects/timeline'
@@ -35,9 +41,15 @@ export default defineConfig({
       home,
       settings,
       // Documents
+      blockContent,
+      blockContentSimple,
+      blockContentWriting,
       duration,
+      episode,
       page,
-      project,
+      // project,
+      scene,
+      writing,
       // Objects
       milestone,
       timeline,
