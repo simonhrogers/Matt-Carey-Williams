@@ -1,14 +1,22 @@
+'use client'
+
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader/rsc'
 import Link from 'next/link'
+import { useRef } from 'react'
 
 import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
 
+import Lottie from "lottie-react"
 import Logo from 'assets/svg/Logo.svg'
+import LogoAnimation from "assets/svg/Logo.json"
 import Soon from 'assets/svg/Soon.svg'
 import Patience from 'assets/svg/Patience.svg'
+import PatienceAnimation from "assets/svg/Patience.json"
+
+
 
 export interface HomePageProps {
   data: HomePagePayload | null
@@ -19,23 +27,48 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { overview = [], showcaseProjects = [], title = '' } = data ?? {}
 
+
+  const logoRef = useRef()
+  const patienceRef = useRef()
+
+
   return (
     <div className="homepage">
-      <div className="title"><br />at Cork Street</div>
-      {/* <div className="subtitle">Coming Soon</div> */}
-      {/* <div className="lol">Patience is a virtue</div> */}
-      <Logo 
+      <div className="title">Matt Carey-Williams</div>
+      <div className="subtitle">Coming Soon</div>
+      <div className="lol">Patience is a virtue</div>
+      {/* <Logo 
         class="title-svg"
         aria-label="Matt Carey-Williams"
+      /> */}
+      <Lottie 
+        lottieRef={logoRef}
+        animationData={LogoAnimation}
+        loop={false}
+        autoplay={true}
+        // onDataReady={() => (logoRef.current.play())}
+        onComplete={() => (patienceRef.current.play())}
+        className="title-lottie"
+        aria-label="Matt Carey-Williams"
       />
-      <Soon 
+      <Lottie 
+        lottieRef={patienceRef}
+        animationData={PatienceAnimation}
+        loop={false}
+        autoplay={false}
+        // onDataReady={() => (logoRef.current.play())}
+        // onComplete={() => !inView && setShowMenuLogo(true)}
+        className="subtitle-lottie"
+        aria-label="Coming Soon"
+      />
+      {/* <Soon 
         class="subtitle-svg"
         aria-label="Coming Soon"
       />
       <Patience 
         class="lol-svg"
         aria-label="Patience is a virtue"
-      />
+      /> */}
       {/* <div className="title-unkerned">Matt Carey-Williams</div>
       <div className="subtitle-unkerned">Coming Soon</div>
       <div className="lol-unkerned">Patience is a virtue</div> */}

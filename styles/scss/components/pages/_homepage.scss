@@ -28,7 +28,8 @@
   }
 }
 
-.title, .title-svg {
+.title, .title-svg,
+.title-lottie svg {
   @include minWidth(largeMobile) {
     position: absolute;
     top: 0;
@@ -36,7 +37,8 @@
   }
 }
 
-.subtitle, .subtitle-svg {
+.subtitle, .subtitle-svg,
+.subtitle-lottie svg {
   @include minWidth(largeMobile) {
     position: absolute;
     top: 0;
@@ -63,3 +65,12 @@
 .title-svg, .subtitle-svg {
   transform: translateY(0.14em);
 }
+
+.title-lottie, .subtitle-lottie, .lol-lottie {
+  svg {
+    height: 1em !important;
+    width: fit-content !important;
+    fill: #1C7464;
+  }
+}
+
