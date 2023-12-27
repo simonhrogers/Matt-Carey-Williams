@@ -2,11 +2,13 @@
 @import "boilerplate/fonts";
 
 @import "boilerplate/variables";
+@import "boilerplate/typography";
 @import "boilerplate/reset";
 @import "boilerplate/document";
 
 // @import "components/global/";
 @import "components/global/layout";
+@import "components/global/navbar";
 // @import "components/pages/";
 @import "components/pages/homepage";
 

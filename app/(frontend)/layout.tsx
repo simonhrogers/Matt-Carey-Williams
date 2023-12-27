@@ -50,9 +50,9 @@ export default async function IndexRoute({
   return (
     <>
       <div className="layout">
-        {/* <Suspense>
+        <Suspense>
           <Navbar />
-        </Suspense> */}
+        </Suspense>
         <Suspense>{children}</Suspense>
         {/* <Suspense>
           <Footer />

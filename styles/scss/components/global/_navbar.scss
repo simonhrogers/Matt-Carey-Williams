@@ -1,0 +1,32 @@
+.navbar {
+  display: flex;
+  padding: 1em var(--lh);
+  .title-wrapper {
+    flex: 1;
+    .title {
+      display: none;
+    }
+    .title-lottie {
+      height: var(--lh);
+      transform: translateY(0.14em);
+      svg {
+        font-size: 0.94em;
+        height: 1em !important;
+        width: fit-content !important;
+        fill: #1C7464;
+      }
+    }
+    .location {
+      @include uppercase;
+    }
+  }
+
+  .menu-items {
+    .menu-item {
+      // & + .menu-item {
+        margin-left: var(--lh);
+      // }
+    }
+  }
+  
+}
