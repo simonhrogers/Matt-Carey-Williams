@@ -28,8 +28,8 @@
     --outer-gutter: var(--lh);
   }
 
-  @include minWidth(desktop) {
-    font-size: 24px;
+  @include minWidth(laptop) {
+    font-size: 23px;
     --columns: 4;
     --gutter: #{(math.div(20px, 960px) * 100)}vw;
     --outer-gutter: #{(math.div(20px, 960px) * 100)}vw;
@@ -38,7 +38,7 @@
     );
   }
 
-  @include minWidth(hires) {
+  @include minWidth(desktop) {
     font-size: 25px;
     --columns: 5;
     --gutter: 40px;

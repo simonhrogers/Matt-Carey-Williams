@@ -3,8 +3,8 @@ $breakpoints: (
   mediumMobile: 360px,
   largeMobile: 560px,
   tablet: 760px,
-  desktop: 960px,
-  hires: 1280px
+  laptop: 960px,
+  desktop: 1280px
 );
 
 @function breakpoint($name) {

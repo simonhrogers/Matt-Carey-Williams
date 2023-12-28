@@ -2,3 +2,21 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+
+@mixin typography-large {
+  font-size: 1em;
+}
+
+@mixin typography-medium {
+  @include maxWidth(laptop) {
+    font-size: 0.75em;
+  }
+  @include minWidth(laptop) {
+    font-size: 0.8em;
+  }
+}
+
+@mixin typography-small {
+  font-size: 0.65em;
+}
+

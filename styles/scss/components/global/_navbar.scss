@@ -1,6 +1,12 @@
 .navbar {
   display: flex;
+  flex-wrap: wrap;
   padding: 1em var(--lh);
+  &.active {
+    @include maxWidth(laptop) {
+      border-bottom: 1px solid var(--color);
+    }
+  }
   .title-wrapper {
     flex: 1;
     .title {
@@ -21,12 +27,54 @@
     }
   }
 
-  .menu-items {
-    .menu-item {
-      // & + .menu-item {
-        margin-left: var(--lh);
-      // }
+  .phone-menu-button {
+    @include minWidth(laptop) {
+      display: none;
+    }
+    width: 1em;
+    padding-top: 0.25em;
+    align-self: flex-start;
+    .svg {
+      stroke: var(--color);
+      transition: transform 0.25s ease-in-out;
+      &.active {
+        transform: rotate(45deg);
+      }
     }
   }
+
+  .menu-items {
+    @include maxWidth(laptop) {
+      margin-top: var(--lh);
+      flex-basis: 100%;
+    }
+    @include maxWidth(tablet) {
+      display: flex;
+      justify-content: space-between;
+    }
+    &:not(.active) {
+      @include maxWidth(laptop) {
+        opacity: 0;
+      }
+    }
+    .menu-item {
+      @include typography-medium;
+      @include minWidth(laptop) {
+        margin-left: var(--lh);
+      }
+      & + .menu-item {
+        @include maxWidth(laptop) {
+          margin-left: var(--lh);
+        }
+      }
+    }
+  }
+
+  // .menu-items-small {
+  //   color: red;
+  //   @include minWidth(laptop) {
+  //     display: none;
+  //   }
+  // }
   
 }
