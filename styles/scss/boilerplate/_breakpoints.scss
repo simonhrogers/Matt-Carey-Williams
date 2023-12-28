@@ -8,17 +8,17 @@ $breakpoints: (
 );
 
 @function breakpoint($name) {
-    @return map-get($breakpoints, $name);
+  @return map-get($breakpoints, $name);
 }
 
 @mixin minWidth($breakpoint) {
-    @media (min-width: breakpoint($breakpoint)) {
-        @content;
-    }
+  @media (min-width: breakpoint($breakpoint)) {
+    @content;
+  }
 }
 
 @mixin maxWidth($breakpoint) {
-    @media (max-width: (breakpoint($breakpoint) - 1)) {
-        @content;
-    }
+  @media (max-width: (breakpoint($breakpoint) - 1)) {
+    @content;
+  }
 }
