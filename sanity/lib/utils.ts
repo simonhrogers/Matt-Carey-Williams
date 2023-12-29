@@ -32,6 +32,12 @@ export function resolveHref(
       return slug ? `/${slug}` : undefined
     case 'project':
       return slug ? `/projects/${slug}` : undefined
+    case 'episode':
+      return slug ? `/episodes/${slug}` : undefined
+    case 'scene':
+      return slug ? `/scenes/${slug}` : undefined
+    case 'writing':
+      return slug ? `/writing/${slug}` : undefined
     default:
       console.warn('Invalid document type:', documentType)
       return undefined

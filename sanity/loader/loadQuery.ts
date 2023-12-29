@@ -7,6 +7,12 @@ import {
   homePageQuery,
   pagesBySlugQuery,
   projectBySlugQuery,
+  episodesPageQuery,
+  episodeBySlugQuery,
+  scenesPageQuery,
+  sceneBySlugQuery,
+  writingsPageQuery,
+  writingBySlugQuery,
   settingsQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
@@ -14,6 +20,9 @@ import {
   HomePagePayload,
   PagePayload,
   ProjectPayload,
+  EpisodePayload,
+  ScenePayload,
+  WritingPayload,
   SettingsPayload,
 } from '@/types'
 
@@ -86,6 +95,54 @@ export function loadProject(slug: string) {
     projectBySlugQuery,
     { slug },
     { next: { tags: [`project:${slug}`] } },
+  )
+}
+
+export function loadEpisodesPage() {
+  return loadQuery<EpisodePayload[]>(
+    episodesPageQuery,
+    {},
+    { next: { tags: ['episode'] } },
+  )
+}
+
+export function loadEpisode(slug: string) {
+  return loadQuery<EpisodePayload | null>(
+    episodeBySlugQuery,
+    { slug },
+    { next: { tags: [`episode:${slug}`] } },
+  )
+}
+
+export function loadScenesPage() {
+  return loadQuery<ScenePayload[]>(
+    scenesPageQuery,
+    {},
+    { next: { tags: ['scene'] } },
+  )
+}
+
+export function loadScene(slug: string) {
+  return loadQuery<ScenePayload | null>(
+    sceneBySlugQuery,
+    { slug },
+    { next: { tags: [`scene:${slug}`] } },
+  )
+}
+
+export function loadWritingsPage() {
+  return loadQuery<WritingPayload[]>(
+    writingsPageQuery,
+    {},
+    { next: { tags: ['writing'] } },
+  )
+}
+
+export function loadWriting(slug: string) {
+  return loadQuery<WritingPayload | null>(
+    writingBySlugQuery,
+    { slug },
+    { next: { tags: [`writing:${slug}`] } },
   )
 }
 

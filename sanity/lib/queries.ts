@@ -41,6 +41,73 @@ export const projectBySlugQuery = groq`
   }
 `
 
+export const projectsQuery = groq`
+  *[_type == "project"]{
+    _id,
+    coverImage,
+    description,
+    duration,
+    overview,
+    "slug": slug.current,
+    tags,
+    title,
+  }
+`
+
+export const episodesPageQuery = groq`
+  *[_type == "episode"]{
+    _id,
+    "slug": slug.current,
+    title,
+  }
+`
+
+export const episodeBySlugQuery = groq`
+  *[_type == "episode" && slug.current == $slug][0] {
+    _id,
+    "slug": slug.current,
+    title,
+  }
+`
+
+export const scenesPageQuery = groq`
+  *[_type == "page" && slug.current == "scenes"][0]{
+    _id,
+    "slug": slug.current,
+    title,
+    "scenes": *[_type == "scene"] {
+      _id,
+      _type,
+      "slug": slug.current,
+      title,
+    }
+  }
+`
+
+export const sceneBySlugQuery = groq`
+  *[_type == "scene" && slug.current == $slug][0] {
+    _id,
+    "slug": slug.current,
+    title,
+  }
+`
+
+export const writingsPageQuery = groq`
+  *[_type == "writing"]{
+    _id,
+    "slug": slug.current,
+    title,
+  }
+`
+
+export const writingBySlugQuery = groq`
+  *[_type == "writing" && slug.current == $slug][0] {
+    _id,
+    "slug": slug.current,
+    title,
+  }
+`
+
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
