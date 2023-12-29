@@ -4,7 +4,7 @@ import type { EncodeDataAttributeCallback } from '@sanity/react-loader/rsc'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 
-import { ProjectListItem } from '@/components/pages/about/ProjectListItem'
+// import { ProjectListItem } from '@/components/pages/about/ProjectListItem'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { AboutPagePayload } from '@/types'

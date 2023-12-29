@@ -2,25 +2,25 @@ import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import Link from 'next/link'
 
-import { ScenesPage } from '@/components/pages/scenes/ScenesPage'
+import { WritingsPage } from '@/components/pages/writing/WritingsPage'
 import { studioUrl } from '@/sanity/lib/api'
-import { loadScenesPage } from '@/sanity/loader/loadQuery'
-const ScenesPagePreview = dynamic(
-  () => import('@/components/pages/scenes/ScenesPagePreview'),
+import { loadWritingsPage } from '@/sanity/loader/loadQuery'
+const WritingsPagePreview = dynamic(
+  () => import('@/components/pages/writing/WritingsPagePreview'),
 )
 
 export default async function IndexRoute() {
-  const initial = await loadScenesPage()
+  const initial = await loadWritingsPage()
 
   if (draftMode().isEnabled) {
-    return <ScenesPagePreview initial={initial} />
+    return <WritingsPagePreview initial={initial} />
   }
 
   if (!initial.data) {
     return (
       <div className="text-center">
-        You don&rsquo;t have a scenespage yet,{' '}
-        <Link href={`${studioUrl}/desk/scenes`} className="underline">
+        You don&rsquo;t have a writingspage yet,{' '}
+        <Link href={`${studioUrl}/desk/writing`} className="underline">
           create one now
         </Link>
         !
@@ -28,5 +28,5 @@ export default async function IndexRoute() {
     )
   }
 
-  return <ScenesPage data={initial.data} />
+  return <WritingsPage data={initial.data} />
 }

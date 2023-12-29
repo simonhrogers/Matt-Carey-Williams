@@ -16,6 +16,15 @@ export const homePageQuery = groq`
   }
 `
 
+export const aboutPageQuery = groq`
+  *[_type == "page" && slug.current == "about"][0]{
+    _id,
+    body,
+    overview,
+    title,
+  }
+`
+
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     _id,
