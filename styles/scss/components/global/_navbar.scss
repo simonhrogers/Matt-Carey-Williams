@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 1em var(--lh);
+  line-height: 1.25;
   &.active {
     @include maxWidth(laptop) {
       border-bottom: 1px solid var(--color);
@@ -13,7 +14,7 @@
       display: none;
     }
     .title-lottie {
-      height: var(--lh);
+      height: calc(1.25 * 1em);
       transform: translateY(0.14em);
       svg {
         font-size: 0.94em;
@@ -64,7 +65,7 @@
         display: inline-block;
         transition: transform 0.25s ease-in-out;
         &.active {
-          transform: translateY(var(--lh-rem));
+          transform: translateY(1.25 * 1rem);
         }
       }
       & + .menu-item {

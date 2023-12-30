@@ -19,16 +19,46 @@ export function EpisodesPage({ data, encodeDataAttribute }: EpisodesPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { episodes = [], title = '' } = data ?? {}
 
+  const [filters, setFilters] = useState([
+    {
+      name: 'Current Episode',
+      value: 'current',
+    },
+    {
+      name: 'Upcoming Episodes',
+      value: 'upcoming',
+    },
+    {
+      name: 'Past Episodes',
+      value: 'past',
+    },
+  ])
+
   return (
-    <div className="homepage">
-      {episodes.map((episode, key) => (
-        <IndexExhibition
-          key={key}
-          exhibition={episode}
-          label='Episode'
-          encodeDataAttribute={encodeDataAttribute}
-        />
-      ))}
+    <div className="episodes-page">
+      <div className="filters">
+        {filters.map((filter, key) => (
+          <div key={key} className="filter">
+            <button
+              onClick={() => {
+                console.log('clicked')
+              }}
+            >
+              {filter.name}
+            </button>
+          </div>
+        ))}
+      </div>
+      <div className="episodes">
+        {episodes.map((episode, key) => (
+          <IndexExhibition
+            key={key}
+            exhibition={episode}
+            label='Episode'
+            encodeDataAttribute={encodeDataAttribute}
+          />
+        ))}
+      </div>
     </div>
   )
 }

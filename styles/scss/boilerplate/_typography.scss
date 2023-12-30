@@ -10,13 +10,16 @@
 @mixin typography-medium {
   @include maxWidth(laptop) {
     font-size: 0.75em;
+    line-height: 1.4;
   }
   @include minWidth(laptop) {
     font-size: 0.8em;
+    line-height: 1.4;
   }
 }
 
 @mixin typography-small {
   font-size: 0.65em;
+  line-height: 1.4;
 }
 

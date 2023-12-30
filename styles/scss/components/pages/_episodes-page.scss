@@ -1,0 +1,11 @@
+.episodes-page {
+  display: flex;
+  .filters {
+    flex: 1;
+    @include typography-small;
+    margin-left: var(--lh-rem);
+  }
+  .episodes {
+    width: 66.666%;
+  }
+}
