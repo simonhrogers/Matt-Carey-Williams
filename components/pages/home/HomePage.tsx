@@ -16,10 +16,51 @@ export interface HomePageProps {
 
 export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { overview = [], showcaseProjects = [], title = '' } = data ?? {}
+  const { title = '', episode = {}, scene = {}, writing = {} } = data ?? {}
 
   return (
     <div className="homepage">
+      {/* episode */}
+      {episode ? (
+        <Link
+          key={episode._id}
+          href={resolveHref(episode._type, episode.slug) ?? '/'}
+          data-sanity={encodeDataAttribute?.([
+            'episode',
+            episode._id,
+            'slug',
+          ])}
+        >
+          {episode.title}
+        </Link>
+      ) : null}
+      {/* scene */}
+      {scene ? (
+        <Link
+          key={scene._id}
+          href={resolveHref(scene._type, scene.slug) ?? '/'}
+          data-sanity={encodeDataAttribute?.([
+            'episode',
+            scene._id,
+            'slug',
+          ])}
+        >
+          {scene.title}
+        </Link>
+      ) : null}
+      {writing ? (
+        <Link
+          key={writing._id}
+          href={resolveHref(writing._type, writing.slug) ?? '/'}
+          data-sanity={encodeDataAttribute?.([
+            'episode',
+            writing._id,
+            'slug',
+          ])}
+        >
+          {writing.title}
+        </Link>
+      ) : null}
       {/* Header */}
       {/* {title && <Header centered title={title} description={overview} />} */}
       {/* Showcase projects */}

@@ -16,10 +16,29 @@ export interface EpisodesPageProps {
 
 export function EpisodesPage({ data, encodeDataAttribute }: EpisodesPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { overview = [], showcaseProjects = [], title = '' } = data ?? {}
+  const { episodes = [], title = '' } = data ?? {}
 
   return (
     <div className="homepage">
+      {episodes.map((episode, key) => {
+        const href = resolveHref(episode._type, episode.slug)
+        if (!href) {
+          return null
+        }
+        return (
+          <Link
+            key={key}
+            href={href}
+            data-sanity={encodeDataAttribute?.([
+              'episodes',
+              key,
+              'slug',
+            ])}
+          >
+            {episode.title}
+          </Link>
+        )
+      })}
       {/* Header */}
       {/* {title && <Header centered title={title} description={overview} />} */}
       {/* Showcase projects */}

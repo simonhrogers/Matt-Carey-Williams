@@ -86,7 +86,10 @@ export default function Navbar(props: NavbarProps) {
 
   return (
     <div className={`navbar ${(visible || isPhoneMenuActive) ? 'visible' : 'hidden'} ${isPhoneMenuActive ? 'active' : ''}`}>
-      <div className='title-wrapper'>
+      <Link 
+        className='title-wrapper'
+        href='/'
+      >
         <div className="title">Matt Carey-Williams</div>
         <Lottie 
           lottieRef={logoRef}
@@ -101,7 +104,7 @@ export default function Navbar(props: NavbarProps) {
         <div className="location">
           At Cork Street
         </div>
-      </div>
+      </Link>
       <button
         className={`phone-menu-button ${isPhoneMenuActive ? 'active' : ''}`}
         onClick={isPhoneMenuActive ? closePhoneMenu : openPhoneMenu}

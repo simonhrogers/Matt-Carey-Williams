@@ -16,10 +16,29 @@ export interface WritingsPageProps {
 
 export function WritingsPage({ data, encodeDataAttribute }: WritingsPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { overview = [], showcaseProjects = [], title = '' } = data ?? {}
+  const { writings = [], title = '' } = data ?? {}
 
   return (
     <div className="homepage">
+      {writings.map((writing, key) => {
+        const href = resolveHref(writing._type, writing.slug)
+        if (!href) {
+          return null
+        }
+        return (
+          <Link
+            key={key}
+            href={href}
+            data-sanity={encodeDataAttribute?.([
+              'writings',
+              key,
+              'slug',
+            ])}
+          >
+            {writing.title}
+          </Link>
+        )
+      })}
       {/* Header */}
       {/* {title && <Header centered title={title} description={overview} />} */}
       {/* Showcase projects */}

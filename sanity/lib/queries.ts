@@ -4,15 +4,25 @@ export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
     overview,
-    showcaseProjects[]->{
+    title,
+    "episode": *[_type == "episode"][0] {
+      _id,
       _type,
-      coverImage,
-      overview,
       "slug": slug.current,
-      tags,
       title,
     },
-    title,
+    "scene": *[_type == "scene"][0] {
+      _id,
+      _type,
+      "slug": slug.current,
+      title,
+    },
+    "writing": *[_type == "writing"][0] {
+      _id,
+      _type,
+      "slug": slug.current,
+      title,
+    },
   }
 `
 
@@ -64,10 +74,16 @@ export const projectsQuery = groq`
 `
 
 export const episodesPageQuery = groq`
-  *[_type == "episode"]{
+  *[_type == "page" && slug.current == "episodes"][0]{
     _id,
     "slug": slug.current,
     title,
+    "episodes": *[_type == "episode"] {
+      _id,
+      _type,
+      "slug": slug.current,
+      title,
+    }
   }
 `
 
@@ -102,10 +118,16 @@ export const sceneBySlugQuery = groq`
 `
 
 export const writingsPageQuery = groq`
-  *[_type == "writing"]{
+  *[_type == "page" && slug.current == "writing"][0]{
     _id,
     "slug": slug.current,
     title,
+    "writings": *[_type == "writing"] {
+      _id,
+      _type,
+      "slug": slug.current,
+      title,
+    }
   }
 `
 
