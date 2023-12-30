@@ -40,6 +40,12 @@ export default defineType({
       title: 'Duration',
       type: 'duration',
     }),
+    defineField({
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
     // Names (array) of people involved (string)
     defineField({
       name: 'names',
