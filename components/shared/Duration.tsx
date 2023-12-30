@@ -1,4 +1,5 @@
 import { format, parseISO } from 'date-fns'
+import { form } from 'sanity/desk'
 
 export default function Duration({ startDate, endDate }) {
   // return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>
@@ -9,28 +10,44 @@ export default function Duration({ startDate, endDate }) {
   if (format(start, 'LLLL d, yyyy') === format(end, 'LLLL d, yyyy')) {
     if (format(start, 'h:mm aaa') === format(end, 'h:mm aaa')) {
       return (
-        <p>
+        <span>
           <time dateTime={startDate}>{format(start, 'EEEE d LLLL yyyy')}</time>
-        </p>
+        </span>
       )
     } else {
       return (
-        <p>
+        <span>
           <time dateTime={startDate}>{format(start, 'EEEE d LLLL yyyy')}</time>
           <br />
           <span>
             {format(start, 'h:mm aaa')} – {format(end, 'h:mm aaa')}
           </span>
-        </p>
+        </span>
       )
     }
+  } else if (format(start, 'LLLL yyyy') === format(end, 'LLLL yyyy')) {
+    return (
+      <span>
+        <time dateTime={startDate}>{format(start, 'd')}</time>
+        {'–'}
+        <time dateTime={endDate}>{format(end, 'd LLLL yyyy')}</time>
+      </span>
+    )
+  } else if (format(start, 'yyyy') === format(end, 'yyyy')) {
+    return (
+      <span>
+        <time dateTime={startDate}>{format(start, 'd LLLL')}</time>
+        {' – '}
+        <time dateTime={endDate}>{format(end, 'd LLLL yyyy')}</time>
+      </span>
+    )
   } else {
     return (
-      <p>
-        <time dateTime={startDate}>{format(start, 'EEEE d LLLL yyyy')}</time>
+      <span>
+        <time dateTime={startDate}>{format(start, 'd LLLL yyyy')}</time>
         {' – '}
-        <time dateTime={endDate}>{format(end, 'EEEE d LLLL yyyy')}</time>
-      </p>
+        <time dateTime={endDate}>{format(end, 'd LLLL yyyy')}</time>
+      </span>
     )
   }
 

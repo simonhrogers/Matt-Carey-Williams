@@ -1,0 +1,24 @@
+.index-exhibition {
+  .text {
+    @include typography-small;
+    margin-bottom: var(--lh);
+    .title {
+      font-style: italic;
+    }
+  }
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
+    overflow: hidden;
+    .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

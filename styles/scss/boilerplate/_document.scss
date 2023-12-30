@@ -62,3 +62,12 @@ img {
     fill: currentColor;
   }
 }
+
+.lazyfade {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.lazyloaded {
+  opacity: 1;
+}

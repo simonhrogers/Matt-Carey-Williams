@@ -23,18 +23,24 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
         exhibition._id,
         'slug',
       ])}
+      className="index-exhibition"
     >
-      {label} <RomanNumeral number={exhibition.number} />, {exhibition.title}<br />
-      at {exhibition.location}, {(
-        <Duration
-          startDate={exhibition.duration.start} 
-          endDate={exhibition.duration.end} 
+      <div className="text">
+        {label} <RomanNumeral number={exhibition.number} />, <span className="title">{exhibition.title}</span><br />
+        at {exhibition.location}, {(
+          <Duration
+            startDate={exhibition.duration.start} 
+            endDate={exhibition.duration.end} 
+          />
+        )}
+      </div>
+      <div className="image-wrapper">
+        <SanityImage
+          image={exhibition.coverImage}
+          alt={exhibition.title}
+          aspectRatio="0.75"
         />
-      )}
-      <SanityImage
-        image={exhibition.coverImage}
-        alt={exhibition.title}
-      />
+      </div>
     </Link>
   )
 }

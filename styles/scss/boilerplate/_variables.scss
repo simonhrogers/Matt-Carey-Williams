@@ -4,8 +4,9 @@
   --window-height: 100vh;
   --line-height: 1.25;
   --paragraph-space: calc(1em * var(--line-height));
-  --lh: calc(1rem * var(--line-height));
-  --lh-x2: calc(2rem * var(--line-height));
+  --lh: calc(1em * var(--line-height));
+  --lh-rem: calc(1rem * var(--line-height));
+  --lh-x2: calc(2em * var(--line-height));
   --border-width: 6px;
   --color: #1C7464;
 
