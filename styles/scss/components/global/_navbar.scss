@@ -61,6 +61,11 @@
       @include typography-medium;
       @include minWidth(laptop) {
         margin-left: var(--lh);
+        display: inline-block;
+        transition: transform 0.25s ease-in-out;
+        &.active {
+          transform: translateY(var(--lh));
+        }
       }
       & + .menu-item {
         @include maxWidth(laptop) {

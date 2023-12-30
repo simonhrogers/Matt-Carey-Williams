@@ -8,6 +8,7 @@ import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { WritingsPagePayload } from '@/types'
+import IndexWriting from '@/components/shared/IndexWriting'
 
 export interface WritingsPageProps {
   data: WritingsPagePayload | null
@@ -18,53 +19,17 @@ export function WritingsPage({ data, encodeDataAttribute }: WritingsPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { writings = [], title = '' } = data ?? {}
 
+  console.log(writings)
+  
   return (
     <div className="homepage">
-      {writings.map((writing, key) => {
-        const href = resolveHref(writing._type, writing.slug)
-        if (!href) {
-          return null
-        }
-        return (
-          <Link
-            key={key}
-            href={href}
-            data-sanity={encodeDataAttribute?.([
-              'writings',
-              key,
-              'slug',
-            ])}
-          >
-            {writing.title}
-          </Link>
-        )
-      })}
-      {/* Header */}
-      {/* {title && <Header centered title={title} description={overview} />} */}
-      {/* Showcase projects */}
-      {/* {showcaseProjects && showcaseProjects.length > 0 && (
-        <div className="mx-auto max-w-[100rem] rounded-md border">
-          {showcaseProjects.map((project, key) => {
-            const href = resolveHref(project._type, project.slug)
-            if (!href) {
-              return null
-            }
-            return (
-              <Link
-                key={key}
-                href={href}
-                data-sanity={encodeDataAttribute?.([
-                  'showcaseProjects',
-                  key,
-                  'slug',
-                ])}
-              >
-                <ProjectListItem project={project} odd={key % 2} />
-              </Link>
-            )
-          })}
-        </div>
-      )} */}
+      {writings.map((writing, key) => (
+        <IndexWriting
+          key={key}
+          writing={writing}
+          encodeDataAttribute={encodeDataAttribute}
+        />
+      ))}
     </div>
   )
 }

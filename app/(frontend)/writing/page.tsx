@@ -19,7 +19,7 @@ export default async function IndexRoute() {
   if (!initial.data) {
     return (
       <div className="text-center">
-        You don&rsquo;t have a writingspage yet,{' '}
+        You don&rsquo;t have a writings page yet,{' '}
         <Link href={`${studioUrl}/desk/writing`} className="underline">
           create one now
         </Link>

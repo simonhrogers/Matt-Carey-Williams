@@ -111,6 +111,10 @@ export const episodesPageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      "number": count(*[_type == "episode"]),
+      location,
+      duration,
+      "coverImage": coverImage {${imageFields}},
     }
   }
 `
@@ -133,6 +137,10 @@ export const scenesPageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      "number": count(*[_type == "scene"]),
+      location,
+      duration,
+      "coverImage": coverImage {${imageFields}},
     }
   }
 `
@@ -155,6 +163,7 @@ export const writingsPageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      excerpt,
     }
   }
 `

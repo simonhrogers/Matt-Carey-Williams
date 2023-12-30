@@ -14,6 +14,8 @@ import BlockContent from '@/sanity/schemas/objects/blockContent'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import SanityImage from '@/components/shared/SanityImage'
 import LongArrow from '@/components/shared/LongArrow'
+import { IndexExhibition } from '@/components/shared/IndexExhibition'
+import IndexWriting from '@/components/shared/IndexWriting'
 
 export interface HomePageProps {
   data: HomePagePayload | null
@@ -28,66 +30,25 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
     <div className="homepage">
       {/* episode */}
       {episode ? (
-        <Link
-          key={episode._id}
-          href={resolveHref(episode._type, episode.slug) ?? '/'}
-          data-sanity={encodeDataAttribute?.([
-            'episode',
-            episode._id,
-            'slug',
-          ])}
-        >
-          <SanityImage
-            image={episode.coverImage}
-            alt={episode.title}
-          />
-          Episode <RomanNumeral number={episode.number} />, {episode.title}<br />
-          at {episode.location}, {(
-            <Duration 
-              startDate={episode.duration.start} 
-              endDate={episode.duration.end} 
-            />
-          )}
-        </Link>
+        <IndexExhibition 
+          exhibition={episode}
+          label="Episode"
+          encodeDataAttribute={encodeDataAttribute}
+        />
       ) : null}
       {/* scene */}
       {scene ? (
-        <Link
-          key={scene._id}
-          href={resolveHref(scene._type, scene.slug) ?? '/'}
-          data-sanity={encodeDataAttribute?.([
-            'episode',
-            scene._id,
-            'slug',
-          ])}
-        >
-          <SanityImage
-            image={scene.coverImage}
-            alt={scene.title}
-          />
-          Scene <RomanNumeral number={scene.number} />, {scene.title}<br />
-          at {scene.location}, {(
-            <Duration 
-              startDate={scene.duration.start} 
-              endDate={scene.duration.end}
-            />
-          )}
-        </Link>
+        <IndexExhibition 
+          exhibition={scene}
+          label="Scene"
+          encodeDataAttribute={encodeDataAttribute}
+        />
       ) : null}
       {writing ? (
-        <Link
-          key={writing._id}
-          href={resolveHref(writing._type, writing.slug) ?? '/'}
-          data-sanity={encodeDataAttribute?.([
-            'episode',
-            writing._id,
-            'slug',
-          ])}
-        >
-          {writing.title}
-          <CustomPortableText value={writing.excerpt} />
-          <LongArrow /> Continue reading
-        </Link>
+        <IndexWriting
+          writing={writing}
+          encodeDataAttribute={encodeDataAttribute}
+        />
       ) : null}
       {/* Header */}
       {/* {title && <Header centered title={title} description={overview} />} */}

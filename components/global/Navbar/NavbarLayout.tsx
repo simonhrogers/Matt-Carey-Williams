@@ -10,7 +10,7 @@ import Logo from 'assets/svg/Logo.svg'
 import LogoAnimation from "assets/svg/Logo.json"
 import Menu from "assets/svg/Menu.svg"
 import { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 interface NavbarProps {
   data: SettingsPayload
@@ -44,8 +44,8 @@ export default function Navbar(props: NavbarProps) {
 
   const logoRef = useRef()
 
-  const router = useRouter()
-  const asPath = router.asPath
+  const pathname = usePathname()
+  console.log(pathname)
 
   const [isPhoneMenuActive, setIsPhoneMenuActive] = useState(false)
   
@@ -58,14 +58,14 @@ export default function Navbar(props: NavbarProps) {
   }
 
   const handleClick = (page) => {
-    if (page.slug === router.asPath) {
+    if (page.slug === pathname) {
       setIsPhoneMenuActive(false)
     }
   }
 
   useEffect(() => {
     closePhoneMenu()
-  }, [asPath])
+  }, [pathname])
 
   // make header disappear on scroll down
 
@@ -112,7 +112,6 @@ export default function Navbar(props: NavbarProps) {
       >
         <Menu className={`svg ${isPhoneMenuActive ? 'active' : ''}`} />
       </button>
-      {/* Laptop and up */}
       <div className={`menu-items ${isPhoneMenuActive ? 'active' : ''}`}>
         {menuItems && menuItems.map((menuItem, key) => {
           const href = resolveHref(menuItem?._type, menuItem?.slug)
@@ -122,7 +121,9 @@ export default function Navbar(props: NavbarProps) {
           return (
             <Link
               key={key}
-              className={'menu-item'}
+              className={`
+                menu-item ${`/${menuItem.slug}` === pathname ? 'active' : ''}
+              `}
               href={href}
             >
               {menuItem.title}
@@ -130,24 +131,6 @@ export default function Navbar(props: NavbarProps) {
           )
         })}
       </div>
-      {/* Tablet and down */}
-      {/* <div className="menu-items-small">
-        {menuItems && menuItems.map((menuItem, key) => {
-          const href = resolveHref(menuItem?._type, menuItem?.slug)
-          if (!href) {
-            return null
-          }
-          return (
-            <Link
-              key={key}
-              className={'menu-item'}
-              href={href}
-            >
-              {menuItem.title}
-            </Link>
-          )
-        })}
-      </div> */}
     </div>
   )
 }
