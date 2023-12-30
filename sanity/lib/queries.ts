@@ -1,5 +1,24 @@
 import { groq } from 'next-sanity'
 
+const imageFields = groq`
+  _type,
+  alt,
+  body,
+  asset,
+  "id": asset._ref,
+  "preview": asset->metadata.lqip,
+  "aspectRatio": asset->metadata.dimensions.aspectRatio,
+  hotspot { x, y },
+  crop {
+    bottom,
+    left,
+    right,
+    top,
+  },
+`
+
+const image = groq`image {${imageFields}}`
+
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
@@ -10,18 +29,27 @@ export const homePageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      "number": count(*[_type == "episode"]),
+      location,
+      duration,
+      "coverImage": coverImage {${imageFields}},
     },
     "scene": *[_type == "scene"][0] {
       _id,
       _type,
       "slug": slug.current,
       title,
+      "number": count(*[_type == "scene"]),
+      location,
+      duration,
+      "coverImage": coverImage {${imageFields}},
     },
     "writing": *[_type == "writing"][0] {
       _id,
       _type,
       "slug": slug.current,
       title,
+      excerpt,
     },
   }
 `

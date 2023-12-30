@@ -43,7 +43,12 @@ export default defineType({
       title: 'Date',
       type: 'date',
     }),
-
+    defineField({
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'blockContentSimple',
+      validation: (rule) => rule.max(155).required(),
+    }),
     defineField({
       name: 'body',
       title: 'Body',

@@ -8,6 +8,12 @@ import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
+import Duration from '@/components/shared/Duration'
+import RomanNumeral from '@/components/shared/RomanNumeral'
+import BlockContent from '@/sanity/schemas/objects/blockContent'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import SanityImage from '@/components/shared/SanityImage'
+import LongArrow from '@/components/shared/LongArrow'
 
 export interface HomePageProps {
   data: HomePagePayload | null
@@ -31,7 +37,17 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
             'slug',
           ])}
         >
-          {episode.title}
+          <SanityImage
+            image={episode.coverImage}
+            alt={episode.title}
+          />
+          Episode <RomanNumeral number={episode.number} />, {episode.title}<br />
+          at {episode.location}, {(
+            <Duration 
+              startDate={episode.duration.start} 
+              endDate={episode.duration.end} 
+            />
+          )}
         </Link>
       ) : null}
       {/* scene */}
@@ -45,7 +61,17 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
             'slug',
           ])}
         >
-          {scene.title}
+          <SanityImage
+            image={scene.coverImage}
+            alt={scene.title}
+          />
+          Scene <RomanNumeral number={scene.number} />, {scene.title}<br />
+          at {scene.location}, {(
+            <Duration 
+              startDate={scene.duration.start} 
+              endDate={scene.duration.end}
+            />
+          )}
         </Link>
       ) : null}
       {writing ? (
@@ -59,6 +85,8 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
           ])}
         >
           {writing.title}
+          <CustomPortableText value={writing.excerpt} />
+          <LongArrow /> Continue reading
         </Link>
       ) : null}
       {/* Header */}
