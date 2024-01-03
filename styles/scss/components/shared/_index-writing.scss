@@ -1,0 +1,17 @@
+.index-writing {
+  display: block;
+  max-width: 30em;
+  margin: calc(5 * var(--lh)) auto;
+  &:first-child {
+    margin-top: 0;
+  }
+  .title, .continue-reading {
+    @include typography-small;
+  }
+  .continue-reading {
+    line-height: var(--lh-rem);
+  }
+  .excerpt {
+    margin-bottom: 0;
+  }
+}

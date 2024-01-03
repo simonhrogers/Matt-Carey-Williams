@@ -21,7 +21,7 @@ export function ScenesPage({ data, encodeDataAttribute }: ScenesPageProps) {
   const { scenes = [], title = '' } = data ?? {}
   
   return (
-    <div className="homepage">
+    <div className="scenes-page">
       {scenes.map((scene, key) => (
         <IndexExhibition
           key={key}

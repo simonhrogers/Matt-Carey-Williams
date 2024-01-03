@@ -1,0 +1,11 @@
+.footer {
+  padding: var(--lh);
+  .footer-items {
+    @include typography-small;
+    .footer-item {
+      & + .footer-item {
+        margin-left: var(--lh);
+      }
+    }
+  }
+}

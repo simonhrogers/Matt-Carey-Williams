@@ -54,9 +54,9 @@ export default async function IndexRoute({
           <Navbar />
         </Suspense>
         <Suspense>{children}</Suspense>
-        {/* <Suspense>
+        <Suspense>
           <Footer />
-        </Suspense> */}
+        </Suspense>
         {/* <IntroTemplate /> */}
       </div>
       {draftMode().isEnabled && <VisualEditing />}

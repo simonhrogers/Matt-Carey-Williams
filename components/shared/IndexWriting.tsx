@@ -24,10 +24,16 @@ export function IndexWriting({ writing, encodeDataAttribute }: IndexWritingProps
         writing._id,
         'slug',
       ])}
+      className="index-writing"
     >
-      {writing.title}
-      <CustomPortableText value={writing.excerpt} />
-      <LongArrow /> Continue reading
+      <div className="title">{writing.title}</div>
+      <CustomPortableText 
+        value={writing.excerpt} 
+        paragraphClasses="excerpt"
+      />
+      <div className="continue-reading">
+        <LongArrow /> Continue reading
+      </div>
     </Link>
   )
 }

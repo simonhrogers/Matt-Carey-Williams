@@ -9,14 +9,48 @@ interface FooterProps {
 export default function Footer(props: FooterProps) {
   const { data } = props
   const footer = data?.footer || ([] as PortableTextBlock[])
+
+  const items = [
+    {
+      title: 'Newsletter',
+      href: '/newsletter'
+    },
+    {
+      title: 'Contact',
+      href: '/contact'
+    },
+    {
+      title: 'Instagram',
+      href: 'https://www.instagram.com/thisisnotagallery/'
+    },
+    {
+      title: 'Privacy Policy',
+      href: '/privacy-policy'
+    }
+  ]
+
   return (
-    <footer className="bottom-0 w-full bg-white py-12 text-center md:py-20">
-      {footer && (
+    <footer className="footer">
+      <div className="footer-items">
+        {items.map((item, key) => (
+          <a
+            key={key}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-item"
+          >
+            {item.title}
+          </a>
+        )
+        )}
+      </div>
+      {/* {footer && (
         <CustomPortableText
           paragraphClasses="text-md md:text-xl"
           value={footer}
         />
-      )}
+      )} */}
     </footer>
   )
 }
