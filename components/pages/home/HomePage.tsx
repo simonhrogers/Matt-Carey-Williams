@@ -27,7 +27,7 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
   const { title = '', episode = {}, scene = {}, writing = {} } = data ?? {}
 
   return (
-    <div className="homepage">
+    <div className="home-page">
       {/* episode */}
       {episode ? (
         <IndexExhibition 

@@ -1,0 +1,8 @@
+.shared-menu {
+  position: absolute;
+  top: 0;
+  .item {
+    @include typography-small;
+    display: block;
+  }
+}

@@ -1,15 +1,5 @@
 .index-exhibition {
   display: block;
-  width: 58.333%;
-  &:nth-child(odd) {
-    margin-left: auto;
-  }
-  &:nth-child(even) {
-    width: 29.1666%;
-    margin-top: calc(-5 * var(--lh));
-    margin-left: var(--lh);
-    // order: 1;
-  }
   .text {
     @include typography-small;
     margin-bottom: var(--lh);
@@ -34,9 +24,24 @@
   }
 }
 
+.home-page {
+  .index-exhibition {
+    width: 55vw;
+    &:nth-child(odd) {
+      margin-left: auto;
+    }
+    &:nth-child(even) {
+      width: 33.333vw;
+      margin-top: calc(-5 * var(--lh));
+      margin-left: calc(1 * var(--lh));
+    }
+  }
+}
+
 .episodes-page,
 .scenes-page {
   .index-exhibition {
-    width: 66.666%;
+    width: 66.666vw;
+    margin-left: auto;
   }
 }

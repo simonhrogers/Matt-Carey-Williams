@@ -11,11 +11,15 @@
 @import "components/global/layout";
 @import "components/global/navbar";
 // @import "components/pages/";
+@import "components/pages/about-page";
+@import "components/pages/contact-page";
 @import "components/pages/episodes-page";
-@import "components/pages/homepage";
+@import "components/pages/home-page";
 @import "components/pages/scenes-page";
 
 // @import "components/shared/";
+@import "components/shared/custom-portable-text";
 @import "components/shared/index-exhibition";
 @import "components/shared/index-writing";
 @import "components/shared/long-arrow-right";
+@import "components/shared/shared-menu";

@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers'
 import { client } from '@/sanity/lib/client'
 import {
   aboutPageQuery,
+  contactPageQuery,
   homePageQuery,
   pagesBySlugQuery,
   projectBySlugQuery,
@@ -19,6 +20,7 @@ import {
 import { token } from '@/sanity/lib/token'
 import {
   AboutPagePayload,
+  ContactPagePayload,
   HomePagePayload,
   PagePayload,
   ProjectPayload,
@@ -97,6 +99,14 @@ export function loadAboutPage() {
     aboutPageQuery,
     {},
     { next: { tags: ['about'] } },
+  )
+}
+
+export function loadContactPage() {
+  return loadQuery<ContactPagePayload | null>(
+    contactPageQuery,
+    {},
+    { next: { tags: ['contact'] } },
   )
 }
 

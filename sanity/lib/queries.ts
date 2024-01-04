@@ -63,6 +63,22 @@ export const aboutPageQuery = groq`
   }
 `
 
+export const contactPageQuery = groq`
+  *[_type == "page" && slug.current == "contact"][0]{
+    _id,
+    location,
+    staffMembers[] {
+      _key,
+      name,
+      title,
+      ${image},
+      body
+    },
+    overview,
+    title,
+  }
+`
+
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     _id,

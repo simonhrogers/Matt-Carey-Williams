@@ -1,0 +1,29 @@
+.about-page {
+  flex: 1;
+  margin: var(--lh);
+  margin-top: calc(3 * var(--lh));
+  transform: translateZ(0);
+  .portable-text {
+    margin-left: auto;
+    max-width: unset;
+    width: calc(66.666vw - var(--lh-rem));
+    @include typography-medium;
+    .about {
+      @include text-width;
+      & + .about {
+        margin-top: calc(2 * var(--lh));
+      }
+      &:nth-child(3n + 1) {
+        margin-left: 0;
+      }
+      &:nth-child(3n + 2) {
+        margin-left: calc(4 * var(--lh));
+        // margin-right: calc(-3 * var(--lh));
+      }
+      &:nth-child(3n + 3) {
+        margin-left: calc(8 * var(--lh));
+        // margin-right: calc(-6 * var(--lh));
+      }
+    }
+  }
+}

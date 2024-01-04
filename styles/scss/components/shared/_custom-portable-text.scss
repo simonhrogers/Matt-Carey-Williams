@@ -1,0 +1,32 @@
+.portable-text {
+  @include text-width;
+  p, ul {
+    &:not(:last-child) {
+      margin-bottom: var(--lh);
+    }
+  }
+  a {
+    color: var(--color);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+  ul {
+    margin-left: calc(1.5 * var(--lh));
+    li {
+      text-indent: calc(-1.5 * var(--lh));
+      padding-left: calc(1.000 *  var(--lh));
+      &::before { 
+        display: inline-block;
+        content: '';
+        height: 1px;
+        width: calc(1.5 * var(--lh));
+        padding-right: calc(1.000 *  var(--lh));
+        margin-left: calc(-1.000 *  var(--lh));
+        margin-right: calc(1.000 *  var(--lh));
+        background-color: var(--color);
+        transform: translateY(calc(-0.2 * var(--lh)));
+      }
+    }
+  }
+}

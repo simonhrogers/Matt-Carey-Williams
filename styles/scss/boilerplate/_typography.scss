@@ -1,8 +1,3 @@
-@mixin uppercase {
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
 @mixin typography-large {
   font-size: 1em;
 }
@@ -23,3 +18,11 @@
   line-height: 1.4;
 }
 
+@mixin uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@mixin text-width {
+  max-width: 30em;
+}
