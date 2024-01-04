@@ -1,15 +1,18 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export function SharedMenu() {
 
   const menuItems = [
     {
       title: 'About',
-      slug: 'about'
+      slug: '/about'
     },
     {
       title: 'Contact',
-      slug: 'contact'
+      slug: '/contact'
     },
   ]
 
@@ -19,7 +22,7 @@ export function SharedMenu() {
         <Link
           key={key}
           href={item.slug}
-          className='item'
+          className={`item ${usePathname() === item.slug ? 'active' : ''}`}
         >
           {item.title}
         </Link>

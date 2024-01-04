@@ -1,7 +1,9 @@
 .index-writing {
   display: block;
-  max-width: 30em;
-  margin: calc(5 * var(--lh)) auto;
+  width: calc(66.666vw - var(--lh-rem));
+  // max-width: 30em;
+  margin: calc(5 * var(--lh)) 0;
+  margin-left: auto;
   &:first-child {
     margin-top: 0;
   }

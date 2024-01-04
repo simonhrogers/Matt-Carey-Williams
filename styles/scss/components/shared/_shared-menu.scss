@@ -1,8 +1,22 @@
+.shared-menu-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: var(--lh);
+  margin-top: calc(3 * var(--lh));
+  transform: translateZ(0);
+}
 .shared-menu {
   position: absolute;
   top: 0;
+  z-index: 2;
   .item {
     @include typography-small;
     display: block;
+    opacity: 0.5;
+    transition: opacity 0.25s ease-in-out;
+    &.active, &:hover {
+      opacity: 1;
+    }
   }
 }

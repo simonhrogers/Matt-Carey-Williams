@@ -66,7 +66,7 @@ export const aboutPageQuery = groq`
 export const contactPageQuery = groq`
   *[_type == "page" && slug.current == "contact"][0]{
     _id,
-    location,
+    address,
     staffMembers[] {
       _key,
       name,

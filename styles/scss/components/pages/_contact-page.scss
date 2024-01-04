@@ -1,6 +1,45 @@
 .contact-page {
   flex: 1;
-  margin: var(--lh);
-  margin-top: calc(3 * var(--lh));
-  transform: translateZ(0);
+  .content {
+    width: calc(66.666vw - var(--lh-rem));
+    margin-left: auto;
+    .address {
+      margin-bottom: calc(2 * var(--lh));
+      h2 {
+        @include typography-small;
+      }
+      .portable-text {
+        @include typography-medium;
+      }
+    }
+    .staff-members {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: var(--lh);
+      .staff-member {
+        @include typography-small;
+        .image-wrapper {
+          margin-bottom: var(--lh);
+          height: 0;
+          padding-bottom: 100%;
+          transform: translateZ(0);
+          overflow: hidden;
+          .image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .text {
+          .title {
+            margin-bottom: var(--lh);
+          }
+        }
+      }
+    }
+  }
+
 }

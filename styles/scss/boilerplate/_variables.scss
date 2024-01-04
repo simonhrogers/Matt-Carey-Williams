@@ -30,7 +30,7 @@
   }
 
   @include minWidth(laptop) {
-    font-size: 23px;
+    font-size: 25px;
     --columns: 4;
     --gutter: #{(math.div(20px, 960px) * 100)}vw;
     --outer-gutter: #{(math.div(20px, 960px) * 100)}vw;
@@ -40,7 +40,7 @@
   }
 
   @include minWidth(desktop) {
-    font-size: 25px;
+    font-size: 28px;
     --columns: 5;
     --gutter: 40px;
     --outer-gutter: 140px;

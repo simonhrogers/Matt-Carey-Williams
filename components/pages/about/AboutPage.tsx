@@ -24,7 +24,7 @@ export function AboutPage({ data, encodeDataAttribute }: AboutPageProps) {
 
   return (
     <div className="about-page">
-      <SharedMenu />
+      {/* <SharedMenu /> */}
       {body && (
         <CustomPortableText 
           value={body} 

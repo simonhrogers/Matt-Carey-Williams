@@ -22,7 +22,7 @@ export function WritingsPage({ data, encodeDataAttribute }: WritingsPageProps) {
   console.log(writings)
   
   return (
-    <div className="homepage">
+    <div className="writings-page">
       {writings.map((writing, key) => (
         <IndexWriting
           key={key}
