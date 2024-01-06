@@ -13,19 +13,23 @@ export default function Footer(props: FooterProps) {
   const items = [
     {
       title: 'Newsletter',
-      href: '/newsletter'
+      href: '/newsletter',
+      type: 'newsletter'
     },
     {
       title: 'Contact',
-      href: '/contact'
+      href: '/contact',
+      type: 'internal'
     },
     {
       title: 'Instagram',
-      href: 'https://www.instagram.com/thisisnotagallery/'
+      href: 'https://www.instagram.com/thisisnotagallery/',
+      type: 'external'
     },
     {
       title: 'Privacy Policy',
-      href: '/privacy-policy'
+      href: '/privacy-policy',
+      type: 'internal'
     }
   ]
 
