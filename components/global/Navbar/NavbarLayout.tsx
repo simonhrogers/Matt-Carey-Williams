@@ -11,6 +11,7 @@ import LogoAnimation from "assets/svg/Logo.json"
 import Menu from "assets/svg/Menu.svg"
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import NavbarLocation from './NavbarLocation'
 
 interface NavbarProps {
   data: SettingsPayload
@@ -20,24 +21,29 @@ export default function Navbar(props: NavbarProps) {
   // const menuItems = data?.menuItems || ([] as MenuItem[])
 
   const menuItems = [
-    {
-      title: 'Episodes',
-      slug: 'episodes',
-      _type: 'page',
-    },
-    {
-      title: 'Scenes',
-      slug: 'scenes',
-      _type: 'page',
-    },
-    {
-      title: 'Writing',
-      slug: 'writing',
-      _type: 'page',
-    },
+    // {
+    //   title: 'Episodes',
+    //   slug: 'episodes',
+    //   _type: 'page',
+    // },
+    // {
+    //   title: 'Scenes',
+    //   slug: 'scenes',
+    //   _type: 'page',
+    // },
+    // {
+    //   title: 'Writing',
+    //   slug: 'writing',
+    //   _type: 'page',
+    // },
     {
       title: 'About',
       slug: 'about',
+      _type: 'page',
+    },
+    {
+      title: 'Contact',
+      slug: 'contact',
       _type: 'page',
     },
   ] as MenuItem[]
@@ -101,9 +107,7 @@ export default function Navbar(props: NavbarProps) {
           className="title-lottie"
           aria-label="Matt Carey-Williams"
         />
-        <div className="location">
-          At Cork Street
-        </div>
+        <NavbarLocation /> 
       </Link>
       <button
         className={`phone-menu-button ${isPhoneMenuActive ? 'active' : ''}`}

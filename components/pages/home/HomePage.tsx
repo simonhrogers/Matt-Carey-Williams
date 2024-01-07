@@ -44,12 +44,12 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
           encodeDataAttribute={encodeDataAttribute}
         />
       ) : null}
-      {writing ? (
+      {/* {writing ? (
         <IndexWriting
           writing={writing}
           encodeDataAttribute={encodeDataAttribute}
         />
-      ) : null}
+      ) : null} */}
       {/* Header */}
       {/* {title && <Header centered title={title} description={overview} />} */}
       {/* Showcase projects */}

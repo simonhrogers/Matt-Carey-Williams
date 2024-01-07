@@ -15,9 +15,9 @@ export interface IndexExhibitionProps {
 export function IndexExhibition({ exhibition, label, encodeDataAttribute }: IndexExhibitionProps) {
   
   return (
-    <Link
+    <div
       key={exhibition._id}
-      href={resolveHref(exhibition._type, exhibition.slug) ?? '/'}
+      // href={resolveHref(exhibition._type, exhibition.slug) ?? '/'}
       data-sanity={encodeDataAttribute?.([
         exhibition._type,
         exhibition._id,
@@ -41,7 +41,7 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
           aspectRatio="0.75"
         />
       </div>
-    </Link>
+    </div>
   )
 }
 
