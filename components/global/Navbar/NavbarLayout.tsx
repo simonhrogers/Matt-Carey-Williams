@@ -41,11 +41,11 @@ export default function Navbar(props: NavbarProps) {
       slug: 'about',
       _type: 'page',
     },
-    {
-      title: 'Contact',
-      slug: 'contact',
-      _type: 'page',
-    },
+    // {
+    //   title: 'Contact',
+    //   slug: 'contact',
+    //   _type: 'page',
+    // },
   ] as MenuItem[]
 
   const logoRef = useRef()

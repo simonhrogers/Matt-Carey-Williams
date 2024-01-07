@@ -5,6 +5,7 @@ import { Metadata, Viewport } from 'next'
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import { Suspense } from 'react'
+import { getCookie } from 'cookies-next'
 
 import { Footer } from '@/components/global/Footer'
 import { Navbar } from '@/components/global/Navbar'
@@ -12,6 +13,9 @@ import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
 
 import "styles/scss/main.scss"
+import Script from 'next/script'
+import Consent from '@/components/global/Consent'
+import ModalHandler from '@/components/global/ModalHandler'
 
 const VisualEditing = dynamic(() => import('@/sanity/loader/VisualEditing'))
 
@@ -47,9 +51,49 @@ export default async function IndexRoute({
 }: {
   children: React.ReactNode
 }) {
+
+  const consent = getCookie('localConsent')
+
   return (
     <>
+      {/* init gtag analytics */}
+      <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-RTD9NJDZE1"/>
+      <Script
+        id="gtag"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied'
+            });
+
+            gtag('js', new Date());
+            gtag('config', 'G-RTD9NJDZE1');
+          `,
+        }}
+      />
+      {/* if consent is provided, confirm on each route change */}
+      {consent === true && (
+        <Script
+          id="consent"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+            gtag('consent', 'update', {
+              'ad_storage': 'granted',
+              'analytics_storage': 'granted'
+            });
+          `,
+          }}
+        />
+      )}
       <div className="layout">
+        <Consent />
+        <ModalHandler />
         <Suspense>
           <Navbar />
         </Suspense>
