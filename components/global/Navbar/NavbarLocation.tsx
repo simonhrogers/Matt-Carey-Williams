@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from "react"
+import { use, useEffect, useRef, useState } from "react"
 
-export function NavbarLocation() {
+export function NavbarLocation({canAnimate}: {canAnimate: boolean}) {
 
   const [items] = useState([
     'at Cork Street',
@@ -12,15 +12,28 @@ export function NavbarLocation() {
   const [index, setIndex] = useState(0)
   const nodeRef = useRef(null)
 
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     if (!canAnimate) return
+  //     setIndex((currentIndex) => (currentIndex + 1) % items.length)
+  //   }, 5000)
+
+  //   return () => {
+  //     clearInterval(timer)
+  //   }
+  // }, [])
+
   useEffect(() => {
     const timer = setInterval(() => {
+      if (!canAnimate) return
       setIndex((currentIndex) => (currentIndex + 1) % items.length)
     }, 5000)
 
     return () => {
       clearInterval(timer)
     }
-  }, [])
+  }, [canAnimate])
+
 
   return (
     <div className="navbar-location">

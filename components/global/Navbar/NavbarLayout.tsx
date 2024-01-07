@@ -37,6 +37,11 @@ export default function Navbar(props: NavbarProps) {
     //   _type: 'page',
     // },
     {
+      title: 'Coming Soon',
+      slug: '/',
+      _type: 'page',
+    },
+    {
       title: 'About',
       slug: 'about',
       _type: 'page',
@@ -54,6 +59,7 @@ export default function Navbar(props: NavbarProps) {
   console.log(pathname)
 
   const [isPhoneMenuActive, setIsPhoneMenuActive] = useState(false)
+  const [locationCanAnimate, setLocationCanAnimate] = useState(false)
   
   const openPhoneMenu = () => {
     setIsPhoneMenuActive(true)
@@ -103,11 +109,13 @@ export default function Navbar(props: NavbarProps) {
           loop={false}
           autoplay={true}
           // onDataReady={() => (logoRef.current.play())}
-          onComplete={() => {}}
+          onComplete={() => (setLocationCanAnimate(true))}
           className="title-lottie"
           aria-label="Matt Carey-Williams"
         />
-        <NavbarLocation /> 
+        <NavbarLocation
+          canAnimate={locationCanAnimate}
+        /> 
       </Link>
       <button
         className={`phone-menu-button ${isPhoneMenuActive ? 'active' : ''}`}
@@ -126,7 +134,7 @@ export default function Navbar(props: NavbarProps) {
             <Link
               key={key}
               className={`
-                menu-item ${`/${menuItem.slug}` === pathname ? 'active' : ''}
+                menu-item ${(`/${menuItem.slug}` === pathname || menuItem.slug === pathname) ? 'active' : ''}
               `}
               href={href}
             >
