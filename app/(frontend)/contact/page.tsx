@@ -9,7 +9,7 @@ const ContactPagePreview = dynamic(
   () => import('@/components/pages/contact/ContactPagePreview'),
 )
 
-export default async function IndexRoute() {
+export default async function ContactRoute() {
   const initial = await loadContactPage()
 
   if (draftMode().isEnabled) {

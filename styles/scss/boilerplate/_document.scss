@@ -20,6 +20,8 @@ body {
   font-family: 'Lardent', serif;
   color: var(--color);
   letter-spacing: 0.015em;
+  overflow: unset !important;
+  width: 100vw;
 }
 
 .main {

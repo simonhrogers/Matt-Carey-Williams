@@ -16,6 +16,8 @@ import "styles/scss/main.scss"
 import Script from 'next/script'
 import Consent from '@/components/global/Consent'
 import ModalHandler from '@/components/global/ModalHandler'
+import NewsletterBanner from '@/components/global/NewsletterBanner'
+import SharedMenu from '@/components/shared/SharedMenu'
 
 const VisualEditing = dynamic(() => import('@/sanity/loader/VisualEditing'))
 
@@ -92,12 +94,20 @@ export default async function IndexRoute({
         />
       )}
       <div className="layout">
-        <Consent />
         <ModalHandler />
+        <div className="banners">
+          <NewsletterBanner />
+          <Consent />
+        </div>
         <Suspense>
           <Navbar />
         </Suspense>
-        <Suspense>{children}</Suspense>
+        <Suspense>
+          <>
+            <SharedMenu />
+            {children}
+          </>
+        </Suspense>
         <Suspense>
           <Footer />
         </Suspense>

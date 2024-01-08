@@ -9,7 +9,7 @@ const AboutPagePreview = dynamic(
   () => import('@/components/pages/about/AboutPagePreview'),
 )
 
-export default async function IndexRoute() {
+export default async function AboutRoute() {
   const initial = await loadAboutPage()
 
   if (draftMode().isEnabled) {

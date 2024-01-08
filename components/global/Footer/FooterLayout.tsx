@@ -1,10 +1,8 @@
 'use client'
 
 import type { PortableTextBlock } from '@portabletext/types'
-
 import { CustomPortableText } from '@/components//shared/CustomPortableText'
 import type { SettingsPayload } from '@/types'
-
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
@@ -19,7 +17,7 @@ export default function Footer(props: FooterProps) {
     {
       title: 'Newsletter',
       href: `${usePathname()}?modal=newsletter`,
-      type: 'internal'
+      type: 'newsletter'
     },
     {
       title: 'Contact',
@@ -38,6 +36,12 @@ export default function Footer(props: FooterProps) {
     }
   ]
 
+  const pathname = usePathname()
+
+  const openModal = () => {
+    window.history.pushState({}, '', new URL(window.location.origin + `${pathname}?modal=newsletter`))
+  }
+
   return (
     <footer className="footer">
       <div className="footer-items">
@@ -51,6 +55,18 @@ export default function Footer(props: FooterProps) {
               >
                 {item.title}
               </Link>
+            )
+          } else if (item.type === 'newsletter') {
+            return (
+              <button
+                key={key}
+                className="footer-item"
+                onClick={(e) => {
+                  openModal()
+                }}
+              >
+                Newsletter
+              </button>
             )
           } else {
             return (

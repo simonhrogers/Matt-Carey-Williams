@@ -1,3 +1,5 @@
+'use client'
+
 import SharedMenu from '@/components/shared/SharedMenu'
 
 export default async function AboutContactLayout({

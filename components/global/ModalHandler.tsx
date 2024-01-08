@@ -11,16 +11,17 @@ import ModalHandlerNewsletter from './ModalHandlerNewsletter'
 export default function ModalHandler() {
 
   // const router = useRouter()
-  // const { query, asPath } = router
+  // const { query, pathname } = router
   const router = useRouter()
-  const asPath = usePathname()
+  const pathname = usePathname()
   const query = useSearchParams()
-  const asPathWithoutQuery = delQuery(asPath)
+  const pathnameWithoutQuery = delQuery(pathname)
 
-  console.log(query)
+  // console.log(query)
   
   const handleClose = () => {
-    router.push(asPathWithoutQuery, undefined, { shallow: true })
+    // router.push(pathnameWithoutQuery, undefined, { shallow: true })
+    window.history.pushState({}, '', new URL(window.location.origin + `${pathname}`))
   }
 
   const modal = query.has('modal')

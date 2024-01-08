@@ -68,7 +68,7 @@ export default function NewsletterModal() {
         Newsletter
       </p>
       <p className={"formIntro"}>
-        Please fill out the form below to sign up to our newsletter and stay up to date with our latest events and updates.
+        Please fill out the form below to subscribe to our newsletter to get our latest updates on upcoming exhibitions, events and more.
       </p>
       <form 
         onSubmit={handleSubmit(onSubmit)}

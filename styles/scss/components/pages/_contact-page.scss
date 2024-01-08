@@ -1,5 +1,9 @@
 .contact-page {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: calc(3 * var(--lh)) var(--lh);
+  margin-top: calc(4.5rem + 3 * var(--lh));
   .content {
     width: calc(66.666vw - var(--lh-rem));
     margin-left: auto;

@@ -20,7 +20,7 @@ export function AboutPage({ data, encodeDataAttribute }: AboutPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { overview = [], showcaseProjects = [], title = '', body = [] } = data ?? {}
 
-  console.log('data', data);
+  // console.log('data', data);
 
   return (
     <div className="about-page">

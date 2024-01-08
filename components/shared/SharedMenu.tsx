@@ -16,19 +16,22 @@ export function SharedMenu() {
     },
   ]
 
-  return (
+  const pathname = usePathname()
+  const show = pathname === '/about' || pathname === '/contact'
+
+  return show ? (
     <div className="shared-menu">
       {menuItems.map((item, key) => (
         <Link
           key={key}
           href={item.slug}
-          className={`item ${usePathname() === item.slug ? 'active' : ''}`}
+          className={`item ${pathname === item.slug ? 'active' : ''}`}
         >
           {item.title}
         </Link>
       ))}
     </div>
-  )
+  ) : null
 }
 
 export default SharedMenu

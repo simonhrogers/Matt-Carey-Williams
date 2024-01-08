@@ -44,20 +44,20 @@ export default function Consent() {
   }
   
   return (
-    <div className="consent-wrapper">
-      <div className="consent-text">
+    <div className="banner">
+      <div className="banner-text">
         This website uses cookies to ensure you have the best experience. Read our <Link href="privacy-policy">privacy policy</Link>.
       </div>
-      <div className="consent-options">
+      <div className="banner-options">
         <button
-          className="consent-option"
+          className="banner-option"
           onClick={() => {
             acceptCookie()
           }}
         >
           Accept
         </button>
-        <button className="consent-option" onClick={(e) => denyCookie()}>
+        <button className="banner-option" onClick={(e) => denyCookie()}>
           Reject
         </button>
         {/* <button

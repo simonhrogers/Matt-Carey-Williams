@@ -1,6 +1,6 @@
 .scenes-page {
   flex: 1;
-  margin: var(--lh) 0;
-  margin-top: calc(3 * var(--lh));
+  margin: calc(3 * var(--lh)) 0;
+  margin-top: calc(4.5rem + 3 * var(--lh));
   transform: translateZ(0);
 }

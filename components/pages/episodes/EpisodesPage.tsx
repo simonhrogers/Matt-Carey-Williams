@@ -41,7 +41,7 @@ export function EpisodesPage({ data, encodeDataAttribute }: EpisodesPageProps) {
           <div key={key} className="filter">
             <button
               onClick={() => {
-                console.log('clicked')
+                // console.log('clicked')
               }}
             >
               {filter.name}

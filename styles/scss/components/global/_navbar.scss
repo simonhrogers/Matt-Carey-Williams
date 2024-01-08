@@ -1,4 +1,8 @@
 .navbar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   padding: 1em var(--lh);

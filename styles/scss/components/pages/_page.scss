@@ -1,9 +1,8 @@
-.about-page {
+.page {
   flex: 1;
-  display: flex;
-  flex-direction: column;
   margin: calc(3 * var(--lh)) var(--lh);
   margin-top: calc(4.5rem + 3 * var(--lh));
+  // transform: translateZ(0);
   .portable-text {
     margin-left: auto;
     max-width: unset;

@@ -139,8 +139,8 @@ export default defineType({
     },
     prepare({ title, names, firstArtist, artistsLength, media }) {
 
-      console.log('names', names);
-      console.log('firstArtist', firstArtist);
+      // console.log('names', names);
+      // console.log('firstArtist', firstArtist);
 
       let subtitle = firstArtist
       if (artistsLength > 1) {

@@ -56,7 +56,7 @@ export default function Navbar(props: NavbarProps) {
   const logoRef = useRef()
 
   const pathname = usePathname()
-  console.log(pathname)
+  // console.log(pathname)
 
   const [isPhoneMenuActive, setIsPhoneMenuActive] = useState(false)
   const [locationCanAnimate, setLocationCanAnimate] = useState(false)

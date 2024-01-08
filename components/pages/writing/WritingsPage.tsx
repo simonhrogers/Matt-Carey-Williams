@@ -19,7 +19,7 @@ export function WritingsPage({ data, encodeDataAttribute }: WritingsPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { writings = [], title = '' } = data ?? {}
 
-  console.log(writings)
+  // console.log(writings)
   
   return (
     <div className="writings-page">
