@@ -72,3 +72,10 @@ img {
 .lazyloaded {
   opacity: 1;
 }
+
+a, button {
+  transition: opacity 0.25s ease-in-out;
+  &:hover {
+    opacity: 0.333;
+  }
+}

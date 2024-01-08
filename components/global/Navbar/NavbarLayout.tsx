@@ -36,11 +36,11 @@ export default function Navbar(props: NavbarProps) {
     //   slug: 'writing',
     //   _type: 'page',
     // },
-    {
-      title: 'Coming Soon',
-      slug: '/',
-      _type: 'page',
-    },
+    // {
+    //   title: 'Coming Soon',
+    //   slug: '/',
+    //   _type: 'page',
+    // },
     {
       title: 'About',
       slug: 'about',
@@ -98,25 +98,24 @@ export default function Navbar(props: NavbarProps) {
 
   return (
     <div className={`navbar ${(visible || isPhoneMenuActive) ? 'visible' : 'hidden'} ${isPhoneMenuActive ? 'active' : ''}`}>
-      <Link 
-        className='title-wrapper'
-        href='/'
-      >
-        <div className="title">Matt Carey-Williams</div>
-        <Lottie 
-          lottieRef={logoRef}
-          animationData={LogoAnimation}
-          loop={false}
-          autoplay={true}
-          // onDataReady={() => (logoRef.current.play())}
-          onComplete={() => (setLocationCanAnimate(true))}
-          className="title-lottie"
-          aria-label="Matt Carey-Williams"
-        />
-        <NavbarLocation
-          canAnimate={locationCanAnimate}
-        /> 
-      </Link>
+      <div className="title-wrapper">
+        <Link className='title-link' href='/'>
+          <div className="title">Matt Carey-Williams</div>
+          <Lottie 
+            lottieRef={logoRef}
+            animationData={LogoAnimation}
+            loop={false}
+            autoplay={true}
+            // onDataReady={() => (logoRef.current.play())}
+            onComplete={() => (setLocationCanAnimate(true))}
+            className="title-lottie"
+            aria-label="Matt Carey-Williams"
+          />
+          <NavbarLocation
+            canAnimate={locationCanAnimate}
+          /> 
+        </Link>
+      </div>
       <button
         className={`phone-menu-button ${isPhoneMenuActive ? 'active' : ''}`}
         onClick={isPhoneMenuActive ? closePhoneMenu : openPhoneMenu}

@@ -4,7 +4,7 @@
     @include typography-small;
     .footer-item {
       & + .footer-item {
-        margin-left: var(--lh);
+        margin-left: var(--lh-rem);
       }
     }
   }

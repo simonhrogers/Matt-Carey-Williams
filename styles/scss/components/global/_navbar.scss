@@ -10,10 +10,15 @@
   }
   .title-wrapper {
     flex: 1;
+    .title-link {
+      display: block;
+      width: fit-content;
+    }
     .title {
       display: none;
     }
     .title-lottie {
+      width: fit-content;
       height: calc(1.25 * 1em);
       transform: translateY(0.14em);
       svg {

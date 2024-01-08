@@ -76,7 +76,7 @@ export default function NewsletterModal() {
         noValidate
       >
         <fieldset className={"fieldset"}>
-          <legend className={"legend"}>Your Details</legend>
+          {/* <legend className={"legend"}>Your Details</legend> */}
           <div className={"field"}>
             <label className={"label"} htmlFor="first-name-input">First Name</label>
             <input
@@ -87,7 +87,7 @@ export default function NewsletterModal() {
               placeholder="First Name"
               {...register('firstName')}
             />
-            <div className={"invalidFeedback"}>{errors.firstName?.message}</div>
+            {errors.firstName?.message && <div className={"invalidFeedback"}>{errors.firstName?.message}</div>}
           </div>
           <div className={"field"}>
             <label className={"label"} htmlFor="last-name-input">Last Name</label>
@@ -99,7 +99,7 @@ export default function NewsletterModal() {
               placeholder="Last Name"
               {...register('lastName')}
             />
-            <div className={"invalidFeedback"}>{errors.lastName?.message}</div>
+            {errors.lastName?.message && <div className={"invalidFeedback"}>{errors.lastName?.message}</div>}
           </div>
           <div className={"field"}>
             <label className={"label"} htmlFor="email-input">Email Address</label>
@@ -112,11 +112,11 @@ export default function NewsletterModal() {
               placeholder="Email Address"
               {...register('email')}
             />
-            <div className={"invalidFeedback"}>{errors.email?.message}</div>
+            {errors.email?.message && <div className={"invalidFeedback"}>{errors.email?.message}</div>}
           </div>
         </fieldset>
         <fieldset className={"fieldset"}>
-          <legend className={"legend"}>Privacy Policy</legend>
+          {/* <legend className={"legend"}>Privacy Policy</legend> */}
           <div className={"checkboxOption"}>
             <input
               className={`${"checkbox"} ${errors.gdpr ? "isInvalid" : ''}`}
@@ -133,14 +133,14 @@ export default function NewsletterModal() {
               I agree to Matt Carey Williams’ <Link href="/privacy-policy">Privacy Policy</Link>
             </label>
           </div>
-          <div className={"invalidFeedback"}>{errors.gdpr?.message}</div>
+          {errors.gdpr?.message && <div className={"invalidFeedback"}>{errors.gdpr?.message}</div>}
         </fieldset>
         <button
           disabled={state === 'Loading'}
           type="submit"
           className={"submitButton"}
         >
-          <LongArrow />Subscribe
+          Subscribe
         </button>
         {state === 'Error' && (
           <p className={"errorMessage"}>

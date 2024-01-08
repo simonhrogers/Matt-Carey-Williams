@@ -28,7 +28,7 @@ export default function Footer(props: FooterProps) {
     },
     {
       title: 'Instagram',
-      href: 'https://www.instagram.com/thisisnotagallery/',
+      href: 'https://www.instagram.com/matt_careywilliams/',
       type: 'external'
     },
     {

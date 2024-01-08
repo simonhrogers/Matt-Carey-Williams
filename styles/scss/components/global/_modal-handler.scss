@@ -1,3 +1,31 @@
+input, textarea {
+  font-family: 'Lardent', serif;
+  -webkit-appearance: none;
+  -webkit-border-radius:0px;
+  &::placeholder {
+    color: var(--color) !important;
+    opacity: 0.333;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
+input:-internal-autofill-selected {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: var(--color) !important;
+}
+
 .modalHandler {
   .modalClose {
     display: none;
@@ -26,7 +54,7 @@
     background-color: var(--background-color);
     border-left: 1px solid var(--color);
     overflow-y: scroll;
-    padding: calc(3 * var(--lh)) calc(1.5 * var(--lh));
+    padding: calc(3 * var(--lh)) calc(3 * var(--lh));
     transform: translateX(100%);
     transition: transform 0.5s ease-in-out;
     @include text-width;
@@ -50,7 +78,7 @@
         right: calc(1 * var(--lh));
       }
       .closeButton {
-        width: var(--lh);
+        width: 1em;
         stroke: var(--color);
       }
     }
@@ -59,18 +87,19 @@
 
 .modalHandlerEmailForm, .modalHandlerNewsletter {
   .title {
-    margin-bottom: var(--lh);
+    margin-bottom: 0;
     @include typography-small;
   }
   .formIntro {
-    margin-bottom: calc(3 * var(--lh));
+    margin-bottom: calc(2 * var(--lh));
+    @include typography-medium;
   }
   .form {
     .fieldset {
       margin: 0;
       padding: 0;
       border: none;
-      margin-bottom: calc(3 * var(--lh));
+      margin-bottom: calc(2 * var(--lh));
       .emailSubjects {
         .emailSubject {
           width: fit-content;
@@ -106,7 +135,7 @@
       }
       .field {
         &:not(:last-child) {
-          margin-bottom: calc(1 * var(--lh));
+          margin-bottom: calc(0.5 * var(--lh));
         }
       }
       .label {
@@ -130,13 +159,13 @@
           
           }
         }
-        &::placeholder {
-          color: #C2C2C2 !important;
-        }
+        // &::placeholder {
+        //   color: #C2C2C2 !important;
+        // }
         &.isInvalid {
           border-bottom: 1px solid var(--red);
         }
-        @include typography-small;
+        @include typography-medium;
         @include maxWidth(tablet) {
           @include typography-medium;
         }
@@ -163,7 +192,7 @@
         }
       }
       .informationItems {
-        margin-bottom: calc(3 * var(--lh));
+        margin-bottom: calc(2 * var(--lh));
       }
       .checkboxQuestion {
         display: block;
@@ -176,21 +205,19 @@
       .checkboxOption {
         display: flex;
         vertical-align: middle;
-        &:not(:last-child) {
-          margin-bottom: calc(0.5 * var(--lh));
-        }
         & + .checkboxOption {
+          margin-top: calc(0.5 * var(--lh));
           margin-left: calc(1 * var(--lh));
         }
       }
       .checkbox {
         border: 1px solid var(--color);
-        height: var(--lh);
-        width: var(--lh);
-        min-width: var(--lh);
-        min-height: var(--lh);
-        max-width: var(--lh);
-        max-height: var(--lh);
+        height: 1em;
+        width: 1em;
+        min-width: 1em;
+        min-height: 1em;
+        max-width: 1em;
+        max-height: 1em;
         -webkit-appearance: none;
         vertical-align: middle;
         &:checked {
@@ -198,7 +225,7 @@
         }
       }
       .checkboxLabel {
-        margin-left: calc(0.5 * var(--lh));
+        margin-left: calc(1 * var(--lh));
         padding-top: 0.1rem;
         @include typography-small;
         vertical-align: middle;
@@ -208,11 +235,20 @@
       }
     }
   }
-  .submitButton, .errorMessage, .completeMessage, .invalidFeedback {
+  .submitButton {
+    @include typography-medium;
+    padding: calc(0.25 * var(--lh)) calc(0.5 * var(--lh));
+    border: 1px solid var(--color);
+    &:hover {
+      background-color: var(--color);
+      color: var(--background-color, white);
+    }
+  }
+  .errorMessage, .completeMessage, .invalidFeedback {
     @include typography-small;
   }
   .errorMessage, .completeMessage {
-    margin-top: calc(3 * var(--lh));
+    margin-top: calc(2* var(--lh));
   }
   .errorMessage, .invalidFeedback {
     color: var(--red);
