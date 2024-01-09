@@ -31,7 +31,7 @@ export async function generateStaticParams() {
   const slugs = await generateStaticSlugs('page')
   console.log(slugs);
   
-  const filteredSlugs = slugs.filter((slug) => !['about','contact','episodes','scenes','writing'].includes(slug.slug))
+  const filteredSlugs = slugs.filter((slug) => !['about','contact','episodes','scenes','writing'].includes(slug))
   console.log(filteredSlugs);
   return filteredSlugs
 }
