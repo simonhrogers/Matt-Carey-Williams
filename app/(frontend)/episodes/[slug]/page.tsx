@@ -37,7 +37,7 @@ export async function generateMetadata(
 }
 
 export function generateStaticParams() {
-  return generateStaticSlugs('episodes')
+  return generateStaticSlugs('episode')
 }
 
 export default async function EpisodeSlugRoute({ params }: Props) {

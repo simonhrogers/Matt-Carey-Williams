@@ -21,7 +21,7 @@ export default function Footer(props: FooterProps) {
     },
     {
       title: 'Contact',
-      href: 'contact',
+      href: '/contact',
       type: 'internal'
     },
     {
@@ -31,7 +31,7 @@ export default function Footer(props: FooterProps) {
     },
     {
       title: 'Privacy Policy',
-      href: 'privacy-policy',
+      href: '/privacy-policy',
       type: 'internal'
     }
   ]

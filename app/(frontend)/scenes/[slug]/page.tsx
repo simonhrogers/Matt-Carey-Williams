@@ -37,7 +37,7 @@ export async function generateMetadata(
 }
 
 export function generateStaticParams() {
-  return generateStaticSlugs('scenes')
+  return generateStaticSlugs('scene')
 }
 
 export default async function SceneSlugRoute({ params }: Props) {
