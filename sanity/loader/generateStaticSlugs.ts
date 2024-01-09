@@ -16,7 +16,7 @@ export function generateStaticSlugs(type: string) {
       stega: false,
     })
     .fetch<string[]>(
-      groq`*[_type == $type && defined(slug.current)].slug.current`,
+      groq`*[_type == $type && defined(slug.current)]{"slug": slug.current}`,
       { type },
     )
 }
