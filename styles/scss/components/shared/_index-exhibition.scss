@@ -3,6 +3,11 @@
   .text {
     @include typography-small;
     margin-bottom: var(--lh);
+    @include maxWidth(tablet) {
+      margin-bottom: calc(0.5 * var(--lh));
+      margin-left: var(--lh-rem);
+      margin-right: var(--lh-rem);
+    }
     .title {
       font-style: italic;
     }
@@ -27,13 +32,25 @@
 .home-page {
   .index-exhibition {
     width: 55vw;
+    @include maxWidth(tablet) {
+      width: 100vw;
+    }
     &:nth-child(odd) {
-      margin-left: auto;
+      @include minWidth(tablet) {
+        margin-left: auto;
+      }
     }
     &:nth-child(even) {
-      width: 33.333vw;
-      margin-top: calc(-5 * var(--lh));
-      margin-left: calc(1 * var(--lh));
+      @include minWidth(tablet) {
+        width: 33.333vw;
+        margin-top: calc(-5 * var(--lh));
+        margin-left: calc(1 * var(--lh));
+      }
+    }
+    & + .index-exhibition {
+      @include maxWidth(tablet) {
+        margin-top: calc(2 * var(--lh));
+      }
     }
   }
 }

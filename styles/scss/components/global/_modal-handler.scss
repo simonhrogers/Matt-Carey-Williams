@@ -59,14 +59,14 @@ input:-internal-autofill-selected {
     transition: transform 0.5s ease-in-out;
     @include text-width;
     @include maxWidth(tablet) {
-      padding: calc(3 * var(--lh)) calc(1 * var(--lh));
-      width: 100%;
-      transform: translateY(125%);
+      padding: calc(4 * var(--lh)) calc(2 * var(--lh));
+      width: calc(100vw - var(--lh));
+      transform: translateX(125%);
     }
     &.isActive {
       transform: translateX(0);
       @include maxWidth(tablet) {
-        transform: translateY(0);
+        transform: translateX(0);
       }
     }
     .closeButtonWrapper {

@@ -1,13 +1,23 @@
 .page {
   flex: 1;
-  margin: calc(3 * var(--lh)) var(--lh);
-  margin-top: calc(4.5rem + 3 * var(--lh));
-  // transform: translateZ(0);
+  display: flex;
+  flex-direction: column;
+  @include minWidth(tablet) {
+    margin: calc(3 * var(--lh)) var(--lh);
+    margin-top: calc(4.5rem + 3 * var(--lh));
+  }
+  @include maxWidth(tablet) {
+    margin: var(--lh) calc(2 * var(--lh));
+    margin-top: calc(2 * var(--lh));
+  }
   .portable-text {
     margin-left: auto;
     max-width: unset;
     width: calc(66.666vw - var(--lh-rem));
     @include typography-medium;
+    @include maxWidth(tablet) {
+      width: 100%;
+    }
     .about {
       @include text-width;
       & + .about {

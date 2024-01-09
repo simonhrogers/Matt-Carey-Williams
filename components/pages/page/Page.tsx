@@ -22,27 +22,28 @@ export function Page({ data }: PageProps) {
   ]
 
   return (
-    <div className="page">
+    <div className="page-wrapper">
       {/* Header */}
       {/* <Header title={title} description={overview} /> */}
       <div className="shared-menu">
         {menuItems.map((item, key) => (
-          <Link
+          <div
             key={key}
-            href={item.slug}
             className={`item ${usePathname() === item.slug ? 'active' : ''}`}
           >
             {item.title}
-          </Link>
+          </div>
         ))}
       </div>
-      {/* Body */}
-      {body && (
-        <CustomPortableText
-          paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
-          value={body}
-        />
-      )}
+      <div className="page">
+        {/* Body */}
+        {body && (
+          <CustomPortableText
+            paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
+            value={body}
+          />
+        )}
+      </div>
     </div>
   )
 }
