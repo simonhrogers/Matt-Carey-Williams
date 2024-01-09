@@ -86,7 +86,7 @@ export default function Navbar(props: NavbarProps) {
 
   const handleScroll = () => {
     const currentScrollPos = window.scrollY
-    const visible = (currentScrollPos < 50 || prevScrollPos > currentScrollPos)
+    const visible = (currentScrollPos <= 100 || prevScrollPos > currentScrollPos && currentScrollPos > 100)
     setPrevScrollPos(currentScrollPos)
     setVisible(visible)
   }
