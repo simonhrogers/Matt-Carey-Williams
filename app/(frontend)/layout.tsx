@@ -94,11 +94,15 @@ export default async function IndexRoute({
         />
       )}
       <div className="layout">
-        <ModalHandler />
-        <div className="banners">
-          <NewsletterBanner />
-          <Consent />
-        </div>
+        <Suspense>
+          <ModalHandler />
+        </Suspense>
+        <Suspense>
+          <div className="banners">
+            <NewsletterBanner />
+            <Consent />
+          </div>
+        </Suspense>
         <Suspense>
           <Navbar />
         </Suspense>
