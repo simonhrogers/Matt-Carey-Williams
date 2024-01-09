@@ -58,6 +58,11 @@ input:-internal-autofill-selected {
     transform: translateX(100%);
     transition: transform 0.5s ease-in-out;
     @include text-width;
+    @include minWidth(tablet) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     @include maxWidth(tablet) {
       padding: calc(4 * var(--lh)) calc(2 * var(--lh));
       width: calc(100vw - var(--lh));

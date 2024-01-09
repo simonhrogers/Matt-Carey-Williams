@@ -2,9 +2,16 @@
   padding: var(--lh);
   .footer-items {
     @include typography-small;
+    @include maxWidth(tablet) {
+      margin-bottom: calc(-0.5 * var(--lh));
+    }
     .footer-item {
-      & + .footer-item {
-        margin-left: var(--lh-rem);
+      display: inline-block;
+      @include maxWidth(tablet) {
+        margin-bottom: calc(0.5 * var(--lh));
+      }
+      &:not(:last-child) {
+        margin-right: var(--lh-rem);
       }
     }
   }
