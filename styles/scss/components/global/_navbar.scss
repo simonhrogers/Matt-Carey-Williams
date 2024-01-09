@@ -10,7 +10,7 @@
   transition: transform 0.25s ease-in-out;
   background-color: white;
   &.hidden {
-    @minWidth(tablet) {
+    @include minWidth(tablet) {
       transform: translateY(-100%);
     }
   }
