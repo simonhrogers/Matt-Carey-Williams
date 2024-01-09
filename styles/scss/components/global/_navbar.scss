@@ -8,12 +8,7 @@
   padding: 1em var(--lh);
   line-height: 1.25;
   transition: transform 0.25s ease-in-out;
-  // @include maxWidth(tablet) {
-    background-color: white;
-  // }
-  &.visible {
-    
-  }
+  background-color: white;
   &.hidden {
     @minWidth(tablet) {
       transform: translateY(-100%);
