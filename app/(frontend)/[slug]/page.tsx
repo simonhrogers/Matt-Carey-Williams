@@ -27,8 +27,13 @@ export async function generateMetadata(
   }
 }
 
-export function generateStaticParams() {
-  return generateStaticSlugs('page')
+export async function generateStaticParams() {
+  const slugs = await generateStaticSlugs('page')
+  console.log(slugs);
+  
+  const filteredSlugs = slugs.filter((slug) => !['about','contact','episodes','scenes','writing'].includes(slug.slug))
+  console.log(filteredSlugs);
+  return filteredSlugs
 }
 
 export default async function PageSlugRoute({ params }: Props) {
