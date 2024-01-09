@@ -29,8 +29,10 @@
     }
     .banner-options {
       .banner-option {
-        &:hover {
-          color: var(--color);
+        @media (hover: hover) {
+          &:hover {
+            color: var(--color);
+          }
         }
         &:not(:last-child) {
           margin-right: calc(1.5 * var(--lh));

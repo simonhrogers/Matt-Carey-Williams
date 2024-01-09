@@ -21,8 +21,13 @@
     @include maxWidth(tablet) {
       @include typography-medium;
     }
-    &.active, &:hover {
+    &.active {
       opacity: 1;
+    }
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }
