@@ -3,11 +3,11 @@
   display: flex;
   flex-direction: column;
   @include minWidth(tablet) {
-    margin: calc(3 * var(--lh)) var(--lh);
-    margin-top: calc(4.5rem + 3 * var(--lh));
+    padding: calc(3 * var(--lh)) var(--lh);
+    padding-top: calc(4.5rem + 3 * var(--lh));
   }
   @include maxWidth(tablet) {
-    margin: var(--lh) calc(2 * var(--lh));
+    padding: var(--lh) calc(2 * var(--lh));
   }
   .content {
     width: calc(66.666vw - var(--lh-rem));

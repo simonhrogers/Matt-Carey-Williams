@@ -1,11 +1,11 @@
 .home-page {
   flex: 1;
-  margin: calc(3 * var(--lh)) 0;
-  margin-top: calc(4.5rem + 3 * var(--lh));
+  padding: calc(3 * var(--lh)) 0;
+  padding-top: calc(4.5rem + 3 * var(--lh));
   transform: translateZ(0);
   @include maxWidth(tablet) {
-    margin: var(--lh) 0;
-    margin-top: calc(4.5rem + 1 * var(--lh));
+    padding: var(--lh) 0;
+    padding-top: calc(4.5rem + 1 * var(--lh));
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
