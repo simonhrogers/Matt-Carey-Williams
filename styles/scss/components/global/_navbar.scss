@@ -15,7 +15,9 @@
     
   }
   &.hidden {
-    transform: translateY(-100%);
+    @minWidth(tablet) {
+      transform: translateY(-100%);
+    }
   }
   &.active {
     @include maxWidth(laptop) {
