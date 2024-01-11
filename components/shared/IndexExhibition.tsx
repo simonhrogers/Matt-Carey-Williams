@@ -38,11 +38,11 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
         {exhibition.pressRelease ? (
           <p>
             <a href={exhibition.pressRelease.asset.url + '?dl=' + exhibition.pressRelease.asset.originalFilename} target="_blank">
-              Download Press Release
+              Download press release
             </a>
           </p>
         ) : (
-          <p>Coming Soon</p>
+          <p>Coming soon</p>
         )}
       </div>
       <div className="image-wrapper">
