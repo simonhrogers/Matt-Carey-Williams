@@ -14,6 +14,8 @@ export interface IndexExhibitionProps {
 
 export function IndexExhibition({ exhibition, label, encodeDataAttribute }: IndexExhibitionProps) {
   
+  console.log(exhibition.pressRelease);
+
   return (
     <div
       key={exhibition._id}
@@ -32,6 +34,15 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
             startDate={exhibition.duration.start} 
             endDate={exhibition.duration.end} 
           />
+        )}
+        {exhibition.pressRelease ? (
+          <p>
+            <a href={exhibition.pressRelease.asset.url + '?dl=' + exhibition.pressRelease.asset.originalFilename} target="_blank">
+              Download Press Release
+            </a>
+          </p>
+        ) : (
+          <p>Coming Soon</p>
         )}
       </div>
       <div className="image-wrapper">

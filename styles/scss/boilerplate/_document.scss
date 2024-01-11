@@ -77,7 +77,7 @@ img {
 }
 
 a, button {
-  transition: opacity 0.25s ease-in-out;
+  // transition: opacity 0.25s ease-in-out;
   @media (hover: hover) {
     &:hover {
       opacity: 0.333;

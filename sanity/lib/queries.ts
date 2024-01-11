@@ -29,6 +29,12 @@ export const homePageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      pressRelease {
+        ...,
+        asset-> {
+          ...,
+        }
+      },
       "number": count(*[_type == "episode"]),
       location,
       duration,
@@ -39,6 +45,12 @@ export const homePageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      pressRelease {
+        ...,
+        asset-> {
+          ...,
+        }
+      },
       "number": count(*[_type == "scene"]),
       location,
       duration,

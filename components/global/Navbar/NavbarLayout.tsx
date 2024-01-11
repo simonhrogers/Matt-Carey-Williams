@@ -45,6 +45,13 @@ export default function Navbar(props: NavbarProps) {
       title: 'About',
       slug: 'about',
       _type: 'page',
+      children: [
+        {
+          title: 'Contact',
+          slug: 'contact',
+          _type: 'page',
+        },
+      ]
     },
     // {
     //   title: 'Contact',
@@ -133,7 +140,7 @@ export default function Navbar(props: NavbarProps) {
             <Link
               key={key}
               className={`
-                menu-item ${(`/${menuItem.slug}` === pathname || menuItem.slug === pathname) ? 'active' : ''}
+                menu-item ${(`/${menuItem.slug}` === pathname || menuItem.children?.some(item => `/${item.slug}` === pathname)) ? 'active' : ''}
               `}
               href={href}
             >

@@ -28,19 +28,19 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
 
   return (
     <div className="home-page">
-      {/* episode */}
-      {episode ? (
-        <IndexExhibition 
-          exhibition={episode}
-          label="Episode"
-          encodeDataAttribute={encodeDataAttribute}
-        />
-      ) : null}
       {/* scene */}
       {scene ? (
         <IndexExhibition 
           exhibition={scene}
           label="Scene"
+          encodeDataAttribute={encodeDataAttribute}
+        />
+      ) : null}
+      {/* episode */}
+      {episode ? (
+        <IndexExhibition 
+          exhibition={episode}
+          label="Episode"
           encodeDataAttribute={encodeDataAttribute}
         />
       ) : null}
