@@ -36,6 +36,14 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'pressRelease',
+      title: 'Press Release',
+      type: 'file',
+      options: {
+        storeOriginalFilename: true,
+      },
+    }),
+    defineField({
       name: 'duration',
       title: 'Duration',
       type: 'duration',

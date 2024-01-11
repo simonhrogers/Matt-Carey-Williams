@@ -39,6 +39,9 @@ export default defineType({
       name: 'pressRelease',
       title: 'Press Release',
       type: 'file',
+      options: {
+        storeOriginalFilename: true,
+      },
     }),
     defineField({
       name: 'duration',
