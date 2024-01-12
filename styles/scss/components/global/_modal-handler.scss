@@ -225,9 +225,11 @@ input:-internal-autofill-selected {
         -webkit-appearance: none;
         vertical-align: middle;
         cursor: pointer;
-        &:checked {
+        &:checked, &:focus {
           // background-image: url('/images/cross.svg');
           background-color: var(--color);
+          border-radius: 0;
+          
         }
       }
       .checkboxLabel {
