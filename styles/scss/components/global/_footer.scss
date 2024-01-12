@@ -1,5 +1,6 @@
 .footer {
   padding: var(--lh);
+  padding-bottom: 1.1rem;
   .footer-items {
     @include typography-small;
     @include maxWidth(tablet) {
