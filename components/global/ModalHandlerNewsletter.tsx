@@ -130,7 +130,7 @@ export default function NewsletterModal() {
               className={"checkboxLabel"} 
               htmlFor="gdpr-checkbox"
             >
-              I agree to Matt Carey Williams’ <Link href="/privacy-policy">Privacy Policy</Link>
+              I agree to Matt Carey-Williams’ <Link href="/privacy-policy">Privacy Policy</Link>
             </label>
           </div>
           {errors.gdpr?.message && <div className={"invalidFeedback"}>{errors.gdpr?.message}</div>}
