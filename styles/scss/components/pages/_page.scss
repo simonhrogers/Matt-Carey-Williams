@@ -10,7 +10,7 @@
     padding: var(--lh) calc(2 * var(--lh));
     // padding-top: calc(2 * var(--lh));
   }
-  .portable-text {
+  .portable-text-wrapper {
     margin-left: auto;
     max-width: unset;
     width: calc(66.666vw - var(--lh-rem));

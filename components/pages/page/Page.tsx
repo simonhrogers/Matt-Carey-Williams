@@ -38,10 +38,11 @@ export function Page({ data }: PageProps) {
       <div className="page">
         {/* Body */}
         {body && (
-          <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
-            value={body}
-          />
+          <div className="portable-text-wrapper">
+            <CustomPortableText
+              value={body}
+            />
+          </div>
         )}
       </div>
     </div>

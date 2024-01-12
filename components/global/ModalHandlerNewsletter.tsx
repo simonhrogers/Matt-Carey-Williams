@@ -145,7 +145,7 @@ export default function NewsletterModal() {
         {state === 'Error' && (
           <p className={"errorMessage"}>
             {errorMsg === 'generic' ? (
-              <>Sorry, we were unable to subscribe you. This may be because you have already subscribed. Email <a href="mailto:info@sergehillproject.co.uk">info@sergehillproject.co.uk</a> for information.</>
+              <>Sorry, we were unable to subscribe you. This may be because you have already subscribed. Email <a href="mailto:info@mattcareywilliams.com">info@mattcareywilliams.com</a> for information.</>
             ) : (
               errorMsg
             )}
