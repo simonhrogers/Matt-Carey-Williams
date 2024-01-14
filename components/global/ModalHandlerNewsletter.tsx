@@ -52,7 +52,14 @@ export default function NewsletterModal() {
       return
     }
     try {
-      const response = await axios.post('/api/subscribe', { email, firstName, lastName })
+      // const response = await axios.post('/api/subscribe', { email, firstName, lastName })
+      fetch('/api/subscribe', {
+        method: 'POST',
+        body: JSON.stringify({ email, firstName, lastName }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
       setState('Success')
       reset()
     } catch (e) {
