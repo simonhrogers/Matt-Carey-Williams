@@ -20,7 +20,7 @@ export default function Duration({ startDate, endDate }) {
           <time dateTime={startDate}>{format(start, 'EEEE d LLLL yyyy')}</time>
           <br />
           <span>
-            {format(start, 'h:mm aaa')} – {format(end, 'h:mm aaa')}
+            {format(start, 'h:mm aaa')}–{format(end, 'h:mm aaa')}
           </span>
         </span>
       )
@@ -37,7 +37,7 @@ export default function Duration({ startDate, endDate }) {
     return (
       <span>
         <time dateTime={startDate}>{format(start, 'd LLLL')}</time>
-        {' – '}
+        {'–'}
         <time dateTime={endDate}>{format(end, 'd LLLL yyyy')}</time>
       </span>
     )
@@ -45,7 +45,7 @@ export default function Duration({ startDate, endDate }) {
     return (
       <span>
         <time dateTime={startDate}>{format(start, 'd LLLL yyyy')}</time>
-        {' – '}
+        {'–'}
         <time dateTime={endDate}>{format(end, 'd LLLL yyyy')}</time>
       </span>
     )
@@ -56,7 +56,7 @@ export default function Duration({ startDate, endDate }) {
   //     {format(start, 'LLLL d, yyyy')}
   //     {end && (
   //       <>
-  //         {' – '}
+  //         {'–'}
   //         {format(end, 'LLLL d, yyyy')}
   //       </>
   //     )}
