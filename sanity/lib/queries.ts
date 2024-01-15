@@ -29,6 +29,7 @@ export const homePageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      names,
       pressRelease {
         ...,
         asset-> {
@@ -45,6 +46,7 @@ export const homePageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      names,
       pressRelease {
         ...,
         asset-> {

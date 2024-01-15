@@ -13,6 +13,11 @@ export interface IndexExhibitionProps {
 }
 
 export function IndexExhibition({ exhibition, label, encodeDataAttribute }: IndexExhibitionProps) {
+
+  
+  const { names } = exhibition
+  const name = names?.length === 1 ? names[0] : null
+
   return (
     <div
       key={exhibition._id}
@@ -25,7 +30,7 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
       className="index-exhibition"
     >
       <div className="text">
-        {label} <RomanNumeral number={exhibition.number} />, <span className="title">{exhibition.title}</span><br />
+        {label} <RomanNumeral number={exhibition.number} />, {name ? <span>{name},</span> : null} <span className="title">{exhibition.title}</span><br />
         at {exhibition.location}, {(
           <Duration
             startDate={exhibition.duration.start} 
