@@ -59,7 +59,7 @@ export default async function IndexRoute({
   return (
     <>
       {/* init gtag analytics */}
-      <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-RTD9NJDZE1"/>
+      <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-463X2E2R4R"/>
       <Script
         id="gtag"
         strategy="afterInteractive"
