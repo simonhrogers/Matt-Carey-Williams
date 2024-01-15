@@ -41,9 +41,7 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
               (Download press release)
             </a>
           </p>
-        ) : (
-          <p>(Download press release)</p>
-        )}
+        ) : null}
       </div>
       <div className="image-wrapper">
         <SanityImage
