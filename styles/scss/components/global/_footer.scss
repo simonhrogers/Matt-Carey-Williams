@@ -1,0 +1,19 @@
+.footer {
+  padding: var(--lh);
+  padding-bottom: 1.1rem;
+  .footer-items {
+    @include typography-small;
+    @include maxWidth(tablet) {
+      margin-bottom: calc(-0.5 * var(--lh));
+    }
+    .footer-item {
+      display: inline-block;
+      @include maxWidth(tablet) {
+        margin-bottom: calc(0.5 * var(--lh));
+      }
+      &:not(:last-child) {
+        margin-right: var(--lh-rem);
+      }
+    }
+  }
+}

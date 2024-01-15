@@ -22,98 +22,71 @@ export default defineType({
       },
       validation: (rule) => rule.required(),
     }),
+    // blockContent
     defineField({
-      name: 'overview',
-      description:
-        'Used both for the <meta> description tag for SEO, and the personal website subheader.',
-      title: 'Overview',
-      type: 'array',
-      of: [
-        // Paragraphs
-        defineArrayMember({
-          lists: [],
-          marks: {
-            annotations: [],
-            decorators: [
-              {
-                title: 'Italic',
-                value: 'em',
-              },
-              {
-                title: 'Strong',
-                value: 'strong',
-              },
-            ],
-          },
-          styles: [],
-          type: 'block',
-        }),
-      ],
-      validation: (rule) => rule.max(155).required(),
-    }),
-    defineField({
-      type: 'array',
+      type: 'blockContent',
       name: 'body',
       title: 'Body',
-      description:
-        "This is where you can write the page's content. Including custom blocks like timelines for more a more visual display of information.",
+      hidden: ({ parent }) => !['about', 'privacy-policy'].includes(parent?.slug?.current),
+    }),
+    // address
+    defineField({
+      type: 'blockContent',
+      name: 'address',
+      title: 'Address',
+      hidden: ({ parent }) => parent?.slug?.current !== 'contact',
+    }),
+    // staffMembers
+    defineField({
+      type: 'array',
+      name: 'staffMembers',
+      title: 'Staff Members',
       of: [
-        // Paragraphs
-        defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
+        defineArrayMember(
+          {  
+            type: 'object',
+            name: 'staffMember',
+            title: 'Staff Member',
+            fields: [
+              defineField({
+                type: 'string',
+                name: 'name',
+                title: 'Name',
+                validation: (rule) => rule.required(),
+              }),
+              defineField({
+                type: 'string',
+                name: 'title',
+                title: 'Title',
+                validation: (rule) => rule.required(),
+              }),
+              defineField({
+                type: 'image',
+                name: 'image',
+                title: 'Image',
+                options: {
+                  hotspot: true,
+                },
+                validation: (rule) => rule.required(),
+              }),
+              defineField({
+                type: 'blockContent',
+                name: 'body',
+                title: 'Body',
+                validation: (rule) => rule.required(),
+              }),
             ],
-          },
-          styles: [],
-        }),
-        // Custom blocks
-        defineArrayMember({
-          name: 'timeline',
-          type: 'timeline',
-        }),
-        defineField({
-          type: 'image',
-          icon: ImageIcon,
-          name: 'image',
-          title: 'Image',
-          options: {
-            hotspot: true,
-          },
-          preview: {
-            select: {
-              imageUrl: 'asset.url',
-              title: 'caption',
+            preview: {
+              select: {
+                title: 'name',
+                subtitle: 'title',
+                media: 'image',
+              },
             },
-          },
-          fields: [
-            defineField({
-              title: 'Caption',
-              name: 'caption',
-              type: 'string',
-            }),
-            defineField({
-              name: 'alt',
-              type: 'string',
-              title: 'Alt text',
-              description:
-                'Alternative text for screenreaders. Falls back on caption if not set',
-            }),
-          ],
-        }),
+          }
+        )
       ],
+      hidden: ({ parent }) => parent?.slug?.current !== 'contact',
     }),
   ],
   preview: {

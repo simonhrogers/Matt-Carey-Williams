@@ -1,0 +1,64 @@
+.index-exhibition {
+  display: block;
+  .text {
+    @include typography-small;
+    margin-bottom: var(--lh);
+    @include maxWidth(tablet) {
+      margin-bottom: calc(0.5 * var(--lh));
+      margin-left: var(--lh-rem);
+      margin-right: var(--lh-rem);
+    }
+    .title {
+      font-style: italic;
+    }
+  }
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
+    overflow: hidden;
+    .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.home-page {
+  .index-exhibition {
+    width: 55vw;
+    @include maxWidth(tablet) {
+      width: 100vw;
+    }
+    &:nth-child(odd) {
+      @include minWidth(tablet) {
+        margin-left: auto;
+      }
+    }
+    &:nth-child(even) {
+      @include minWidth(tablet) {
+        width: 33.333vw;
+        margin-top: calc(-5 * var(--lh));
+        margin-left: calc(1 * var(--lh));
+      }
+    }
+    & + .index-exhibition {
+      @include maxWidth(tablet) {
+        margin-top: calc(2 * var(--lh));
+      }
+    }
+  }
+}
+
+.episodes-page,
+.scenes-page {
+  .index-exhibition {
+    width: 66.666vw;
+    margin-left: auto;
+  }
+}

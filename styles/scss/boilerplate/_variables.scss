@@ -2,12 +2,13 @@
 
 :root {
   --window-height: 100vh;
-  --line-height: 1.25;
+  --line-height: 1.4;
   --paragraph-space: calc(1em * var(--line-height));
-  --lh: calc(1rem * var(--line-height));
-  --lh-x2: calc(2rem * var(--line-height));
+  --lh: calc(1em * var(--line-height));
+  --lh-rem: calc(1rem * var(--line-height));
+  --lh-x2: calc(2em * var(--line-height));
   --border-width: 6px;
-  --color: black;
+  --color: #1C7464;
 
   --gutter: var(--lh);
   --outer-gutter: var(--lh);
@@ -28,8 +29,8 @@
     --outer-gutter: var(--lh);
   }
 
-  @include minWidth(desktop) {
-    font-size: 24px;
+  @include minWidth(laptop) {
+    font-size: 25px;
     --columns: 4;
     --gutter: #{(math.div(20px, 960px) * 100)}vw;
     --outer-gutter: #{(math.div(20px, 960px) * 100)}vw;
@@ -38,8 +39,8 @@
     );
   }
 
-  @include minWidth(hires) {
-    font-size: 25px;
+  @include minWidth(desktop) {
+    font-size: 28px;
     --columns: 5;
     --gutter: 40px;
     --outer-gutter: 140px;

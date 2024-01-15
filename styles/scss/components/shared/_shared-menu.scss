@@ -1,0 +1,33 @@
+.shared-menu-layout {
+  // transform: translateZ(0);
+}
+.shared-menu {
+  @include minWidth(tablet) {
+    position: absolute;
+    top: calc(4.5rem + 3 * var(--lh));
+    left: var(--lh);
+    z-index: 2;
+  }
+  @include maxWidth(tablet) {
+    position: relative;
+    margin: var(--lh);
+    margin-top: calc(4.5rem + 1 * var(--lh));
+  }
+  .item {
+    @include typography-small;
+    display: block;
+    opacity: 0.5;
+    // transition: opacity 0.25s ease-in-out;
+    @include maxWidth(tablet) {
+      @include typography-medium;
+    }
+    &.active {
+      opacity: 1;
+    }
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

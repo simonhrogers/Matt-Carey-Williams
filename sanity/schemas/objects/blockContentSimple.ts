@@ -16,23 +16,24 @@ export default defineType({
         decorators: [
           { title: 'Italic', value: 'em' }
         ],
-        annotations: [
-          {
-            title: 'External Link',
-            name: 'link',
-            type: 'object',
-            fields: [
-              {
-                title: 'URL',
-                name: 'href',
-                type: 'url',
-                validation: Rule => Rule.uri({
-                  scheme: ['http', 'https', 'mailto', 'tel']
-                })
-              }
-            ]
-          },
-        ]
+        annotations: []
+        // annotations: [
+        //   {
+        //     title: 'External Link',
+        //     name: 'link',
+        //     type: 'object',
+        //     fields: [
+        //       {
+        //         title: 'URL',
+        //         name: 'href',
+        //         type: 'url',
+        //         validation: Rule => Rule.uri({
+        //           scheme: ['http', 'https', 'mailto', 'tel']
+        //         })
+        //       }
+        //     ]
+        //   },
+        // ]
       }
     })
   ]

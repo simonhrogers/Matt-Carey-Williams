@@ -1,0 +1,35 @@
+.portable-text {
+  @include text-width;
+  h5 {
+    @include typography-small;
+    // margin-bottom: calc(0.5 * var(--lh));
+  }
+  p, ul {
+    &:not(:last-child) {
+      margin-bottom: var(--lh);
+    }
+  }
+  a {
+    color: var(--color);
+    // text-decoration: underline;
+    // text-underline-offset: 2px;
+    // text-decoration-thickness: 1px;
+  }
+  ul {
+    // list-style: circle;
+    // list-style-position: inside;
+    margin-left: calc(1.5 * var(--lh));
+    li {
+      text-indent: calc(-0.5 * var(--lh));
+      // padding-left: calc(1 *  var(--lh));
+      &::before { 
+        display: inline-block;
+        content: '•';
+        width: calc(0.5 * var(--lh));
+        // padding-right: calc(1 *  var(--lh));
+        // margin-left: calc(-1 *  var(--lh));
+        // margin-right: calc(1 *  var(--lh));
+      }
+    }
+  }
+}

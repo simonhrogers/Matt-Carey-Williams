@@ -1,0 +1,19 @@
+.index-writing {
+  display: block;
+  width: calc(66.666vw - var(--lh-rem));
+  // max-width: 30em;
+  margin: calc(5 * var(--lh)) 0;
+  margin-left: auto;
+  &:first-child {
+    margin-top: 0;
+  }
+  .title, .continue-reading {
+    @include typography-small;
+  }
+  .continue-reading {
+    line-height: var(--lh-rem);
+  }
+  .excerpt {
+    margin-bottom: 0;
+  }
+}

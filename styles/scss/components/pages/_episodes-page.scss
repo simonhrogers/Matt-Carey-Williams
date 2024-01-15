@@ -1,0 +1,10 @@
+.episodes-page {
+  flex: 1;
+  margin: calc(3 * var(--lh)) 0;
+  margin-top: calc(4.5rem + 3 * var(--lh));
+  .filters {
+    position: absolute;
+    @include typography-small;
+    margin-left: var(--lh-rem);
+  }
+}

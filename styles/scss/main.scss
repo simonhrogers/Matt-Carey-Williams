@@ -2,12 +2,30 @@
 @import "boilerplate/fonts";
 
 @import "boilerplate/variables";
+@import "boilerplate/typography";
 @import "boilerplate/reset";
 @import "boilerplate/document";
 
 // @import "components/global/";
+@import "components/global/banners";
+@import "components/global/consent";
+@import "components/global/footer";
 @import "components/global/layout";
+@import "components/global/modal-handler";
+@import "components/global/navbar";
+@import "components/global/navbar-location";
 // @import "components/pages/";
-@import "components/pages/homepage";
+@import "components/pages/about-page";
+@import "components/pages/contact-page";
+@import "components/pages/episodes-page";
+@import "components/pages/home-page";
+@import "components/pages/page";
+@import "components/pages/scenes-page";
+@import "components/pages/writings-page";
 
 // @import "components/shared/";
+@import "components/shared/custom-portable-text";
+@import "components/shared/index-exhibition";
+@import "components/shared/index-writing";
+@import "components/shared/long-arrow-right";
+@import "components/shared/shared-menu";

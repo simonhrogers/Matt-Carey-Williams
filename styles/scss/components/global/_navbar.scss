@@ -1,0 +1,110 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em var(--lh);
+  line-height: 1.25;
+  transition: transform 0.25s ease-in-out;
+  background-color: white;
+  &.hidden {
+    @include minWidth(tablet) {
+      transform: translateY(-100%);
+    }
+  }
+  &.active {
+    @include maxWidth(laptop) {
+      border-bottom: 1px solid var(--color);
+    }
+  }
+  .title-wrapper {
+    flex: 1;
+    .title-link {
+      display: block;
+      width: fit-content;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .title {
+      display: none;
+    }
+    .title-lottie {
+      width: fit-content;
+      height: calc(1.25 * 1em);
+      width: 13.366383em;
+      transform: translateY(0.14em);
+      // margin-right: auto;
+      svg {
+        font-size: 0.94em;
+        height: 1em !important;
+        // width: fit-content !important;
+        width: 13.366383em !important;
+        fill: #1C7464;
+        // margin-right: auto;
+      }
+    }
+    .location {
+      @include uppercase;
+    }
+  }
+
+  .phone-menu-button {
+    @include minWidth(laptop) {
+      display: none;
+    }
+    width: 1em;
+    padding-top: 0.25em;
+    align-self: flex-start;
+    .svg {
+      stroke: var(--color);
+      transition: transform 0.25s ease-in-out;
+      &.active {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .menu-items {
+    @include maxWidth(laptop) {
+      margin-top: var(--lh);
+      flex-basis: 100%;
+    }
+    @include maxWidth(tablet) {
+      display: flex;
+      justify-content: space-between;
+    }
+    &:not(.active) {
+      @include maxWidth(laptop) {
+        display: none;
+        opacity: 0;
+      }
+    }
+    .menu-item {
+      @include typography-medium;
+      @include minWidth(laptop) {
+        margin-left: calc(1.5 * var(--lh));
+        display: inline-block;
+        transition: transform 0.25s ease-in-out;
+        &.active {
+          transform: translateY(1.25 * 1rem);
+        }
+      }
+      & + .menu-item {
+        @include maxWidth(laptop) {
+          margin-left: var(--lh);
+        }
+      }
+    }
+  }
+
+  // .menu-items-small {
+  //   color: red;
+  //   @include minWidth(laptop) {
+  //     display: none;
+  //   }
+  // }
+  
+}

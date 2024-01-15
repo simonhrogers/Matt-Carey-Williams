@@ -26,9 +26,9 @@ export default defineType({
       // use your content.
       styles: [
         {title: 'Body', value: 'normal'},
-        {title: 'Title', value: 'h4'},
-        {title: 'Subtitle', value: 'h5'},
-        {title: 'Quote', value: 'blockquote'},
+        {title: 'Title', value: 'h5'},
+        // {title: 'Subtitle', value: 'h5'},
+        // {title: 'Quote', value: 'blockquote'},
       ],
       lists: [{title: 'Bullet', value: 'bullet'}],
       // Marks let you mark up inline text in the block editor.
@@ -83,17 +83,17 @@ export default defineType({
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
-    {
-      type: 'image',
-      // options: {hotspot: true}
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        }
-      ]
-    }
+    // {
+    //   type: 'image',
+    //   // options: {hotspot: true}
+    //   fields: [
+    //     {
+    //       name: 'alt',
+    //       type: 'string',
+    //       title: 'Alternative text',
+    //     }
+    //   ]
+    // }
   ]
 })
  

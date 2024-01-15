@@ -1,0 +1,270 @@
+input, textarea {
+  font-family: 'Lardent', serif;
+  -webkit-appearance: none;
+  -webkit-border-radius:0px;
+  &::placeholder {
+    color: var(--color) !important;
+    opacity: 0.333;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
+input:-internal-autofill-selected {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: var(--color) !important;
+}
+
+.modalHandler {
+  .modalClose {
+    display: none;
+    position: fixed;
+    z-index: 9998;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    &.isActive {
+      display: block;
+    }
+    @include maxWidth(tablet) {
+      display: none;
+    }
+  }
+  .modal {
+    position: fixed;
+    z-index: 9999;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    --background-color: white;
+    background-color: var(--background-color);
+    border-left: 1px solid var(--color);
+    overflow-y: scroll;
+    padding: calc(3 * var(--lh)) calc(3 * var(--lh));
+    transform: translateX(100%);
+    @include text-width;
+    @include minWidth(tablet) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @include maxWidth(tablet) {
+      padding: calc(4 * var(--lh)) calc(2 * var(--lh));
+      width: calc(100vw - var(--lh));
+      transform: translateX(125%);
+    }
+    &.isActive {
+      transform: translateX(0);
+      @include maxWidth(tablet) {
+        transform: translateX(0);
+      }
+    }
+    .closeButtonWrapper {
+      position: absolute;
+      top: calc(1.000 *  var(--lh));
+      right: calc(1.000 *  var(--lh));
+      @include maxWidth(tablet) {
+        top: calc(1 * var(--lh));
+        right: calc(1 * var(--lh));
+      }
+      .closeButton {
+        width: 1em;
+        stroke: var(--color);
+      }
+    }
+  }
+}
+
+.modalHandlerEmailForm, .modalHandlerNewsletter {
+  .title {
+    margin-bottom: 0;
+    @include typography-small;
+  }
+  .formIntro {
+    margin-bottom: calc(2 * var(--lh));
+    @include typography-medium;
+  }
+  .form {
+    .fieldset {
+      margin: 0;
+      padding: 0;
+      border: none;
+      margin-bottom: calc(2 * var(--lh));
+      .emailSubjects {
+        .emailSubject {
+          width: fit-content;
+          &:not(:last-child) {
+            margin-bottom: calc(0.25 * var(--lh));
+            @include maxWidth(tablet) {
+              margin-bottom: calc(1 * var(--lh));
+            }
+          }
+          &.active {
+            .checkboxLabel {
+              background-color: var(--color);
+              color: var(--background-color, white);
+            }
+          }
+          .checkbox {
+            display: none;
+          }
+          .checkboxLabel {
+            display: block;
+            border: 1px solid var(--color);
+            padding: calc(0.25 * var(--lh)) calc(0.333 * var(--lh));
+            cursor: pointer;
+          }
+          label {
+            margin-left: 0;
+          }
+        }
+      }
+      .legend {
+        margin-bottom: var(--lh);
+        @include typography-small;
+      }
+      .field {
+        &:not(:last-child) {
+          margin-bottom: calc(0.5 * var(--lh));
+        }
+      }
+      .label {
+        display: block;
+        opacity: 0;
+        height: 0;
+      }
+      .input {
+        width: 100%;
+        border-bottom: 1px solid var(--color);
+        line-height: 1.666;
+        mix-blend-mode: multiply;
+        background-color:transparent;
+        color: var(--color);
+        // -webkit-text-fill-color: var(--color);
+        &:-webkit-autofill{
+          -webkit-text-fill-color: var(--color) !important;
+          &::selection {
+            background-color: var(--color);
+            color: var(--background-color, white);
+          
+          }
+        }
+        // &::placeholder {
+        //   color: #C2C2C2 !important;
+        // }
+        &.isInvalid {
+          border-bottom: 1px solid var(--red);
+        }
+        @include typography-medium;
+        @include maxWidth(tablet) {
+          @include typography-medium;
+        }
+      }
+      .textareaLabel, .inputLabel {
+        display: block;
+        margin-bottom: var(--lh);
+        @include typography-small;
+      }
+      .textareaDescription {
+        margin-bottom: var(--lh);
+      }
+      .textarea {
+        width: 100%;
+        border: 1px solid var(--color);
+        padding: calc(0.5 * var(--lh));
+        mix-blend-mode: multiply;
+        background-color: transparent;
+        letter-spacing: var(--letter-spacing);
+        color: var(--color);
+        -webkit-text-fill-color: var(--color);
+        &.isInvalid {
+          border: 1px solid var(--red);
+        }
+      }
+      .informationItems {
+        margin-bottom: calc(2 * var(--lh));
+      }
+      .checkboxQuestion {
+        display: block;
+        margin-bottom: var(--lh);
+        @include typography-small;
+      }
+      .checkboxOptions {
+        display: flex;
+      }
+      .checkboxOption {
+        display: flex;
+        vertical-align: middle;
+        & + .checkboxOption {
+          margin-top: calc(0.5 * var(--lh));
+          margin-left: calc(1 * var(--lh));
+        }
+      }
+      .checkbox {
+        border: 1px solid var(--color);
+        height: 1em;
+        width: 1em;
+        min-width: 1em;
+        min-height: 1em;
+        max-width: 1em;
+        max-height: 1em;
+        -webkit-appearance: none;
+        vertical-align: middle;
+        cursor: pointer;
+        &:checked, &:focus {
+          // background-image: url('/images/cross.svg');
+          background-color: var(--color);
+          border-radius: 0;
+          
+        }
+      }
+      .checkboxLabel {
+        margin-left: calc(1 * var(--lh));
+        padding-top: 0.1rem;
+        @include typography-small;
+        vertical-align: middle;
+        @include maxWidth(tablet) {
+          @include typography-medium;
+        }
+      }
+    }
+  }
+  .submitButton {
+    @include typography-medium;
+    padding: calc(0.25 * var(--lh)) calc(0.5 * var(--lh));
+    border: 1px solid var(--color);
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+        background-color: var(--color);
+        color: var(--background-color, white);
+      }
+    }
+  }
+  .errorMessage, .completeMessage, .invalidFeedback {
+    @include typography-small;
+  }
+  .errorMessage, .completeMessage {
+    margin-top: calc(2* var(--lh));
+  }
+  .errorMessage, .invalidFeedback {
+    color: var(--red);
+  }
+  .invalidFeedback {
+    margin-top: calc(0.5 * var(--lh));
+  }
+}

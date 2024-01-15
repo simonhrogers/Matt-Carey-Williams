@@ -36,9 +36,23 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'pressRelease',
+      title: 'Press Release',
+      type: 'file',
+      options: {
+        storeOriginalFilename: true,
+      },
+    }),
+    defineField({
       name: 'duration',
       title: 'Duration',
       type: 'duration',
+    }),
+    defineField({
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+      validation: (rule) => rule.required(),
     }),
     // Names (array) of people involved (string)
     defineField({
@@ -133,8 +147,8 @@ export default defineType({
     },
     prepare({ title, names, firstArtist, artistsLength, media }) {
 
-      console.log('names', names);
-      console.log('firstArtist', firstArtist);
+      // console.log('names', names);
+      // console.log('firstArtist', firstArtist);
 
       let subtitle = firstArtist
       if (artistsLength > 1) {

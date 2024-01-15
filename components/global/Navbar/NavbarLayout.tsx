@@ -1,20 +1,137 @@
+'use client'
+
 import Link from 'next/link'
 
 import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem, SettingsPayload } from '@/types'
+
+import Lottie from "lottie-react"
+import Logo from 'assets/svg/Logo.svg'
+import LogoAnimation from "assets/svg/Logo.json"
+import Menu from "assets/svg/Menu.svg"
+import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import NavbarLocation from './NavbarLocation'
 
 interface NavbarProps {
   data: SettingsPayload
 }
 export default function Navbar(props: NavbarProps) {
   const { data } = props
-  const menuItems = data?.menuItems || ([] as MenuItem[])
+  // const menuItems = data?.menuItems || ([] as MenuItem[])
+
+  const menuItems = [
+    // {
+    //   title: 'Episodes',
+    //   slug: 'episodes',
+    //   _type: 'page',
+    // },
+    // {
+    //   title: 'Scenes',
+    //   slug: 'scenes',
+    //   _type: 'page',
+    // },
+    // {
+    //   title: 'Writing',
+    //   slug: 'writing',
+    //   _type: 'page',
+    // },
+    // {
+    //   title: 'Coming Soon',
+    //   slug: '/',
+    //   _type: 'page',
+    // },
+    {
+      title: 'About',
+      slug: 'about',
+      _type: 'page',
+      children: [
+        {
+          title: 'Contact',
+          slug: 'contact',
+          _type: 'page',
+        },
+      ]
+    },
+    // {
+    //   title: 'Contact',
+    //   slug: 'contact',
+    //   _type: 'page',
+    // },
+  ] as MenuItem[]
+
+  const logoRef = useRef()
+
+  const pathname = usePathname()
+  // console.log(pathname)
+
+  const [isPhoneMenuActive, setIsPhoneMenuActive] = useState(false)
+  const [locationCanAnimate, setLocationCanAnimate] = useState(false)
+  
+  const openPhoneMenu = () => {
+    setIsPhoneMenuActive(true)
+  }
+
+  const closePhoneMenu = () => {
+    setIsPhoneMenuActive(false)
+  }
+
+  const handleClick = (page) => {
+    if (page.slug === pathname) {
+      setIsPhoneMenuActive(false)
+    }
+  }
+
+  useEffect(() => {
+    closePhoneMenu()
+  }, [pathname])
+
+  // make header disappear on scroll down
+
+  const [prevScrollPos, setPrevScrollPos] = useState(0)
+  const [visible, setVisible] = useState(true)
+
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY
+    const visible = (currentScrollPos <= 100 || prevScrollPos > currentScrollPos && currentScrollPos > 100)
+    setPrevScrollPos(currentScrollPos)
+    setVisible(visible)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [prevScrollPos, visible, handleScroll])
+
   return (
-    <div className="sticky top-0 z-10 flex flex-wrap items-center gap-x-5 bg-white/80 px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32">
-      Matt Carey-Williams
-      Coming Soon
-      {menuItems &&
-        menuItems.map((menuItem, key) => {
+    <div className={`navbar ${(visible || isPhoneMenuActive) ? 'visible' : 'hidden'} ${isPhoneMenuActive ? 'active' : ''}`}>
+      <div className="title-wrapper">
+        <Link className='title-link' href='/'>
+          <div className="title">Matt Carey-Williams</div>
+          <Lottie 
+            lottieRef={logoRef}
+            animationData={LogoAnimation}
+            loop={false}
+            autoplay={true}
+            // onDataReady={() => (logoRef.current.play())}
+            onComplete={() => (setLocationCanAnimate(true))}
+            className="title-lottie"
+            aria-label="Matt Carey-Williams"
+          />
+          <NavbarLocation
+            canAnimate={locationCanAnimate}
+          /> 
+        </Link>
+      </div>
+      <button
+        className={`phone-menu-button ${isPhoneMenuActive ? 'active' : ''}`}
+        onClick={isPhoneMenuActive ? closePhoneMenu : openPhoneMenu}
+        aria-label={isPhoneMenuActive ? 'Close Menu' : 'Open Menu'}
+      >
+        <Menu className={`svg ${isPhoneMenuActive ? 'active' : ''}`} />
+      </button>
+      <div className={`menu-items ${isPhoneMenuActive ? 'active' : ''}`}>
+        {menuItems && menuItems.map((menuItem, key) => {
           const href = resolveHref(menuItem?._type, menuItem?.slug)
           if (!href) {
             return null
@@ -22,17 +139,16 @@ export default function Navbar(props: NavbarProps) {
           return (
             <Link
               key={key}
-              className={`text-lg hover:text-black md:text-xl ${
-                menuItem?._type === 'home'
-                  ? 'font-extrabold text-black'
-                  : 'text-gray-600'
-              }`}
+              className={`
+                menu-item ${(`/${menuItem.slug}` === pathname || menuItem.children?.some(item => `/${item.slug}` === pathname)) ? 'active' : ''}
+              `}
               href={href}
             >
               {menuItem.title}
             </Link>
           )
         })}
+      </div>
     </div>
   )
 }

@@ -4,16 +4,29 @@ import { draftMode } from 'next/headers'
 
 import { client } from '@/sanity/lib/client'
 import {
+  aboutPageQuery,
+  contactPageQuery,
   homePageQuery,
   pagesBySlugQuery,
   projectBySlugQuery,
+  episodesPageQuery,
+  episodeBySlugQuery,
+  scenesPageQuery,
+  sceneBySlugQuery,
+  writingsPageQuery,
+  writingBySlugQuery,
   settingsQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
+  AboutPagePayload,
+  ContactPagePayload,
   HomePagePayload,
   PagePayload,
   ProjectPayload,
+  EpisodePayload,
+  ScenePayload,
+  WritingPayload,
   SettingsPayload,
 } from '@/types'
 
@@ -81,11 +94,75 @@ export function loadHomePage() {
   )
 }
 
+export function loadAboutPage() {
+  return loadQuery<AboutPagePayload | null>(
+    aboutPageQuery,
+    {},
+    { next: { tags: ['about'] } },
+  )
+}
+
+export function loadContactPage() {
+  return loadQuery<ContactPagePayload | null>(
+    contactPageQuery,
+    {},
+    { next: { tags: ['contact'] } },
+  )
+}
+
 export function loadProject(slug: string) {
   return loadQuery<ProjectPayload | null>(
     projectBySlugQuery,
     { slug },
     { next: { tags: [`project:${slug}`] } },
+  )
+}
+
+export function loadEpisodesPage() {
+  return loadQuery<EpisodePayload[]>(
+    episodesPageQuery,
+    {},
+    { next: { tags: ['episode'] } },
+  )
+}
+
+export function loadEpisode(slug: string) {
+  return loadQuery<EpisodePayload | null>(
+    episodeBySlugQuery,
+    { slug },
+    { next: { tags: [`episode:${slug}`] } },
+  )
+}
+
+export function loadScenesPage() {
+  return loadQuery<ScenePayload[]>(
+    scenesPageQuery,
+    {},
+    { next: { tags: ['scene'] } },
+  )
+}
+
+export function loadScene(slug: string) {
+  return loadQuery<ScenePayload | null>(
+    sceneBySlugQuery,
+    { slug },
+    { next: { tags: [`scene:${slug}`] } },
+  )
+}
+
+export function loadWritingsPage() {
+  return loadQuery<WritingPayload[]>(
+    writingsPageQuery,
+    {},
+    { next: { tags: ['writing'] } },
+  )
+}
+
+export function loadWriting(slug: string) {
+  return loadQuery<WritingPayload | null>(
+    writingBySlugQuery,
+    { slug },
+    { next: { tags: [`writing:${slug}`] } },
   )
 }
 
