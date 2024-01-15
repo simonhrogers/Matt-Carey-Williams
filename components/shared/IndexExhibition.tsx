@@ -38,7 +38,7 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
         {exhibition.pressRelease ? (
           <p>
             <a href={exhibition.pressRelease.asset.url} target="_blank">
-              (Download press release)
+              (Download essay)
             </a>
           </p>
         ) : null}
