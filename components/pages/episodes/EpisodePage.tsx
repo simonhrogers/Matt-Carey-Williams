@@ -14,19 +14,6 @@ export interface EpisodePageProps {
 
 export function EpisodePage({ data, encodeDataAttribute }: EpisodePageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const {
-    client,
-    coverImage,
-    description,
-    duration,
-    overview,
-    site,
-    tags,
-    title,
-  } = data ?? {}
-
-  const startYear = new Date(duration?.start!).getFullYear()
-  const endYear = duration?.end ? new Date(duration?.end).getFullYear() : 'Now'
 
   return (
     <ExhibitionPage 
