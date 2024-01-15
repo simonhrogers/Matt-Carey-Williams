@@ -19,6 +19,20 @@ const imageFields = groq`
 
 const image = groq`image {${imageFields}}`
 
+const exhibitionBySlug = groq`
+_id,
+"slug": slug.current,
+title,
+names,
+"number": count(*[_type == "episode"]),
+location,
+duration,
+images[] {
+  ${imageFields}
+},
+body
+`
+
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
@@ -152,13 +166,7 @@ export const episodesPageQuery = groq`
 
 export const episodeBySlugQuery = groq`
   *[_type == "episode" && slug.current == $slug][0] {
-    _id,
-    "slug": slug.current,
-    title,
-    names,
-    "number": count(*[_type == "episode"]),
-    location,
-    duration,
+    ${exhibitionBySlug}
   }
 `
 
@@ -183,13 +191,7 @@ export const scenesPageQuery = groq`
 
 export const sceneBySlugQuery = groq`
   *[_type == "scene" && slug.current == $slug][0] {
-    _id,
-    "slug": slug.current,
-    title,
-    names,
-    "number": count(*[_type == "scene"]),
-    location,
-    duration,
+    ${exhibitionBySlug}
   }
 `
 

@@ -14,7 +14,6 @@ export interface IndexExhibitionProps {
 
 export function IndexExhibition({ exhibition, label, encodeDataAttribute }: IndexExhibitionProps) {
 
-  
   const { names } = exhibition
   const name = names?.length === 1 ? names[0] : null
 

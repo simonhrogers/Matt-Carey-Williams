@@ -1,0 +1,46 @@
+.exhibition-page-title-card-wrapper {
+  cursor: pointer;
+  @include minWidth(tablet) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .exhibition-page-title-card {
+    width: 100%;
+    @include minWidth(laptop) {
+      width: calc(100% - 4 * var(--lh));
+    }
+    @include minWidth(desktop) {
+      width: 66.666%;
+    }
+    .logo-location-wrapper {
+      margin-bottom: calc(2 * var(--lh));
+      @include minWidth(tablet) {
+        display: flex;
+      }
+      .location {
+        @include uppercase;
+      }
+    }
+    .title-date-wrapper {
+      text-align: right;
+      margin-bottom: calc(2 * var(--lh));
+      .title {
+        font-style: italic;
+      }
+    }
+    .names-wrapper {
+      .with {
+        @include uppercase;
+      }
+    }
+  }
+}
