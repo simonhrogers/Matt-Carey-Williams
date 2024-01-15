@@ -13,9 +13,6 @@ export interface IndexExhibitionProps {
 }
 
 export function IndexExhibition({ exhibition, label, encodeDataAttribute }: IndexExhibitionProps) {
-  
-  console.log(exhibition.pressRelease);
-
   return (
     <div
       key={exhibition._id}
