@@ -17,11 +17,11 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
     <div
       key={exhibition._id}
       // href={resolveHref(exhibition._type, exhibition.slug) ?? '/'}
-      data-sanity={encodeDataAttribute?.([
-        exhibition._type,
-        exhibition._id,
-        'slug',
-      ])}
+      // data-sanity={encodeDataAttribute?.([
+      //   exhibition._type,
+      //   exhibition._id,
+      //   'slug',
+      // ])}
       className="index-exhibition"
     >
       <div className="text">
