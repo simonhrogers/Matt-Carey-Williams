@@ -1,5 +1,13 @@
 .index-exhibition {
   display: block;
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+      // .text {
+      //   opacity: 0.333;
+      // }
+    }
+  }
   .text {
     @include typography-small;
     margin-bottom: var(--lh);
@@ -7,6 +15,11 @@
       margin-bottom: calc(0.5 * var(--lh));
       margin-left: var(--lh-rem);
       margin-right: var(--lh-rem);
+    }
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.333;
+      }
     }
     .title {
       font-style: italic;

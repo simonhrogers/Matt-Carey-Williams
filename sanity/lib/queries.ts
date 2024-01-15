@@ -141,6 +141,7 @@ export const episodesPageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      names,
       "number": count(*[_type == "episode"]),
       location,
       duration,
@@ -154,6 +155,10 @@ export const episodeBySlugQuery = groq`
     _id,
     "slug": slug.current,
     title,
+    names,
+    "number": count(*[_type == "episode"]),
+    location,
+    duration,
   }
 `
 
@@ -167,6 +172,7 @@ export const scenesPageQuery = groq`
       _type,
       "slug": slug.current,
       title,
+      names,
       "number": count(*[_type == "scene"]),
       location,
       duration,
@@ -180,6 +186,10 @@ export const sceneBySlugQuery = groq`
     _id,
     "slug": slug.current,
     title,
+    names,
+    "number": count(*[_type == "scene"]),
+    location,
+    duration,
   }
 `
 

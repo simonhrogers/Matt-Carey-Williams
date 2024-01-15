@@ -19,38 +19,6 @@
       border-bottom: 1px solid var(--color);
     }
   }
-  .title-wrapper {
-    flex: 1;
-    .title-link {
-      display: block;
-      width: fit-content;
-      &:hover {
-        opacity: 1;
-      }
-    }
-    .title {
-      display: none;
-    }
-    .title-lottie {
-      width: fit-content;
-      height: calc(1.25 * 1em);
-      width: 13.366383em;
-      transform: translateY(0.14em);
-      // margin-right: auto;
-      svg {
-        font-size: 0.94em;
-        height: 1em !important;
-        // width: fit-content !important;
-        width: 13.366383em !important;
-        fill: #1C7464;
-        // margin-right: auto;
-      }
-    }
-    .location {
-      @include uppercase;
-    }
-  }
-
   .phone-menu-button {
     @include minWidth(laptop) {
       display: none;

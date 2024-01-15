@@ -5,13 +5,11 @@ import Link from 'next/link'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem, SettingsPayload } from '@/types'
 
-import Lottie from "lottie-react"
-import Logo from 'assets/svg/Logo.svg'
-import LogoAnimation from "assets/svg/Logo.json"
 import Menu from "assets/svg/Menu.svg"
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import NavbarLocation from './NavbarLocation'
+import { LogoWrapper } from '@/components/shared/LogoWrapper'
+
 
 interface NavbarProps {
   data: SettingsPayload
@@ -21,26 +19,21 @@ export default function Navbar(props: NavbarProps) {
   // const menuItems = data?.menuItems || ([] as MenuItem[])
 
   const menuItems = [
-    // {
-    //   title: 'Episodes',
-    //   slug: 'episodes',
-    //   _type: 'page',
-    // },
-    // {
-    //   title: 'Scenes',
-    //   slug: 'scenes',
-    //   _type: 'page',
-    // },
-    // {
-    //   title: 'Writing',
-    //   slug: 'writing',
-    //   _type: 'page',
-    // },
-    // {
-    //   title: 'Coming Soon',
-    //   slug: '/',
-    //   _type: 'page',
-    // },
+    {
+      title: 'Episodes',
+      slug: 'episodes',
+      _type: 'page',
+    },
+    {
+      title: 'Scenes',
+      slug: 'scenes',
+      _type: 'page',
+    },
+    {
+      title: 'Writing',
+      slug: 'writing',
+      _type: 'page',
+    },
     {
       title: 'About',
       slug: 'about',
@@ -53,21 +46,11 @@ export default function Navbar(props: NavbarProps) {
         },
       ]
     },
-    // {
-    //   title: 'Contact',
-    //   slug: 'contact',
-    //   _type: 'page',
-    // },
   ] as MenuItem[]
 
-  const logoRef = useRef()
-
   const pathname = usePathname()
-  // console.log(pathname)
-
   const [isPhoneMenuActive, setIsPhoneMenuActive] = useState(false)
-  const [locationCanAnimate, setLocationCanAnimate] = useState(false)
-  
+
   const openPhoneMenu = () => {
     setIsPhoneMenuActive(true)
   }
@@ -105,24 +88,11 @@ export default function Navbar(props: NavbarProps) {
 
   return (
     <div className={`navbar ${(visible || isPhoneMenuActive) ? 'visible' : 'hidden'} ${isPhoneMenuActive ? 'active' : ''}`}>
-      <div className="title-wrapper">
-        <Link className='title-link' href='/'>
-          <div className="title">Matt Carey-Williams</div>
-          <Lottie 
-            lottieRef={logoRef}
-            animationData={LogoAnimation}
-            loop={false}
-            autoplay={true}
-            // onDataReady={() => (logoRef.current.play())}
-            onComplete={() => (setLocationCanAnimate(true))}
-            className="title-lottie"
-            aria-label="Matt Carey-Williams"
-          />
-          <NavbarLocation
-            canAnimate={locationCanAnimate}
-          /> 
-        </Link>
-      </div>
+      <LogoWrapper
+        shouldAnimate={true}
+        formatAsLink={true}
+        showLocation={true}
+      />
       <button
         className={`phone-menu-button ${isPhoneMenuActive ? 'active' : ''}`}
         onClick={isPhoneMenuActive ? closePhoneMenu : openPhoneMenu}

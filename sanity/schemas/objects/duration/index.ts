@@ -14,11 +14,13 @@ export default defineField({
       type: 'datetime',
       name: 'start',
       title: 'Start',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       type: 'datetime',
       name: 'end',
       title: 'End',
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })

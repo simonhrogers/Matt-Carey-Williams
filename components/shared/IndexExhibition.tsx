@@ -19,14 +19,14 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
   const name = names?.length === 1 ? names[0] : null
 
   return (
-    <div
+    <Link
       key={exhibition._id}
-      // href={resolveHref(exhibition._type, exhibition.slug) ?? '/'}
-      // data-sanity={encodeDataAttribute?.([
-      //   exhibition._type,
-      //   exhibition._id,
-      //   'slug',
-      // ])}
+      href={resolveHref(exhibition._type, exhibition.slug) ?? '/'}
+      data-sanity={encodeDataAttribute?.([
+        exhibition._type,
+        exhibition._id,
+        'slug',
+      ])}
       className="index-exhibition"
     >
       <div className="text">
@@ -37,13 +37,6 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
             endDate={exhibition.duration.end} 
           />
         )}
-        {exhibition.pressRelease ? (
-          <p>
-            <a href={exhibition.pressRelease.asset.url} target="_blank">
-              (Download essay)
-            </a>
-          </p>
-        ) : null}
       </div>
       <div className="image-wrapper">
         <SanityImage
@@ -52,7 +45,7 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
           aspectRatio="0.75"
         />
       </div>
-    </div>
+    </Link>
   )
 }
 

@@ -1,0 +1,14 @@
+.close-button-wrapper {
+  position: absolute;
+  top: calc(1 *  var(--lh));
+  right: calc(1 *  var(--lh));
+  z-index: 5;
+  @include maxWidth(tablet) {
+    top: calc(1 * var(--lh));
+    right: calc(1 * var(--lh));
+  }
+  .close-button {
+    width: 1em;
+    stroke: var(--color);
+  }
+}
