@@ -59,6 +59,8 @@ export default function NewsletterModal() {
         headers: {
           'Content-Type': 'application/json'
         }
+      }).then(response => {
+        console.log(response)
       })
       setState('Success')
       reset()

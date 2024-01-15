@@ -20,7 +20,14 @@ export async function POST(req, res) {
     merge_fields: {
       FNAME: firstName,
       LNAME: lastName
-    }
+    },
+    marketing_permissions: [
+      {
+        marketing_permission_id: '0dc22df99b',
+        text: 'Email',
+        enabled: true
+      }
+    ]
   }
 
   const options = {
@@ -38,8 +45,9 @@ export async function POST(req, res) {
         { status: res.status}
       )
     }
+    console.log(res.data);
     return new Response(
-      'success', 
+      JSON.stringify(res.data), 
       { status: 201 }
     )
   } catch (error) {
