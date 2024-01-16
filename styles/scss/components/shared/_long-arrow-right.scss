@@ -1,5 +1,6 @@
 .long-arrow-svg {
-  width: calc(3.75 * var(--lh));
+  width: 3.75em;
+  height: var(--lh);
   transform: translateY(0.125em);
   // margin-right: calc(0.5 * var(--lh));
   // transition: stroke 0.2s ease-in-out;

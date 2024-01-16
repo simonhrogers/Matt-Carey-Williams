@@ -10,6 +10,7 @@
   .close-button {
     padding: var(--lh);
     stroke: var(--color);
+    stroke-width: 2;
     svg {
       width: 1em;
     }
@@ -20,7 +21,6 @@
   .close-button-wrapper {
     svg {
       stroke: white;
-      fill: white;
     }
   }
 }

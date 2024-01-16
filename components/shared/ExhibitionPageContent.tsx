@@ -1,6 +1,4 @@
-import CloseButton from "./CloseButton"
 import CustomPortableText from "./CustomPortableText"
-import ExhibitionPageTitleCard from "./ExhibitionPageTitleCard"
 import SanityImage from "./SanityImage"
 
 export function ExhibitionPageContent({exhibition, activeIndex}) {
@@ -34,9 +32,7 @@ export function ExhibitionPageContent({exhibition, activeIndex}) {
           </div>
         )
       })}
-      <div 
-        className={`item ${exhibition.images.length + 1 === activeIndex ? 'active' : ''}`}
-      >
+      <div className={`item ${exhibition.images.length + 1 === activeIndex ? 'active' : ''}`}>
         <div className="text-scroll-wrapper">
           <div className="text-wrapper">
             <div className="text">
