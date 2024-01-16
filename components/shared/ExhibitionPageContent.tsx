@@ -3,30 +3,34 @@ import CustomPortableText from "./CustomPortableText"
 import ExhibitionPageTitleCard from "./ExhibitionPageTitleCard"
 import SanityImage from "./SanityImage"
 
-export function ExhibitionPageContent({exhibition, activeIndex, setActiveIndex}) {
+export function ExhibitionPageContent({exhibition, activeIndex}) {
   return (
     <div className="exhibition-page-content">
       {exhibition.images.map((image, index) => {
         return (
           <div 
-            onClick={() => setActiveIndex(index + 1)}
             className={`item ${index + 1 === activeIndex ? 'active' : ''}`}
             key={index}
           >
-            <SanityImage
-              image={image}
-              alt={image.alt}
-              // aspectRatio="0.75"
-            />
+            <div className="image-wrapper">
+              <SanityImage
+                image={image}
+                alt={image.alt}
+              />
+            </div>
           </div>
         )
       })}
       <div 
-        className={`item ${exhibition.images.length + 2 === activeIndex ? 'active' : ''}`}
+        className={`item ${exhibition.images.length + 1 === activeIndex ? 'active' : ''}`}
       >
-        <CustomPortableText 
-          value={exhibition.body} 
-        />
+        <div className="text-scroll-wrapper">
+          <div className="text-wrapper">
+            <CustomPortableText 
+              value={exhibition.body} 
+            />
+          </div>
+        </div>
       </div>
     </div>
   )

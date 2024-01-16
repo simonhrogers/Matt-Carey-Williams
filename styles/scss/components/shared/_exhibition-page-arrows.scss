@@ -1,0 +1,19 @@
+.exhibition-page-arrows {
+  @include maxWidth(tablet) {
+    display: none;
+  }
+  .left, .right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 7;
+    cursor: pointer;
+  }
+  .left {
+    transform: rotate(180deg);
+    left: 0;
+  }
+  .right {
+    right: 0;
+  }
+}

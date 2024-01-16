@@ -3,7 +3,7 @@ import { LogoWrapper } from "./LogoWrapper"
 import RomanNumeral from "./RomanNumeral"
 
 
-export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setActiveIndex}) {
+export function ExhibitionPageTitleCard({exhibition, label, activeIndex}) {
 
   const { names } = exhibition
   const name = names?.length === 1 ? names[0] : null
@@ -11,14 +11,8 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setActi
   return (
     <div 
       className={`exhibition-page-title-card-wrapper ${activeIndex === 0 ? 'active' : ''}`}
-      style={{ 
-        zIndex: 100,
-      }}
     >
-      <div 
-        className="exhibition-page-title-card"
-        onClick={() => (console.log('clicked'), setActiveIndex(1))}
-      >
+      <div className="exhibition-page-title-card">
         <div className="logo-location-wrapper">
           <LogoWrapper
             shouldAnimate={false}

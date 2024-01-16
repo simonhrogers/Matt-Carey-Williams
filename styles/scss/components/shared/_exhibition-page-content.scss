@@ -7,9 +7,50 @@
       width: 100%;
       height: 100%;
       opacity: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       &.active {
+        z-index: 6;
         opacity: 1;
         // transition: opacity 0.5s ease-in-out;
+      }
+    }
+    .image-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .image {
+        width: calc(100lvh - 4 * var(--lh));
+        height: calc(100lvh - 4 * var(--lh));
+        object-fit: contain;
+      }
+    }
+    .text-scroll-wrapper {  
+      @include minWidth(tablet) {
+        width: 100%;
+        height: 100%;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        overflow: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        &::-webkit-scrollbar {
+          display: none;
+        }   
+      }
+      .text-wrapper {
+        @include typography-medium;
+        @include minWidth(tablet) {
+          width: 100%;
+          height: 100%;
+          padding: var(--lh);     
+        }
       }
     }
   }

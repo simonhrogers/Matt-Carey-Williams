@@ -9,6 +9,7 @@
     justify-content: center;
     opacity: 0;
     &.active {
+      z-index: 6;
       opacity: 1;
     }
   }

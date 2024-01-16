@@ -2,7 +2,7 @@
   position: absolute;
   top: calc(1 *  var(--lh));
   right: calc(1 *  var(--lh));
-  z-index: 5;
+  z-index: 7;
   @include maxWidth(tablet) {
     top: calc(1 * var(--lh));
     right: calc(1 * var(--lh));
