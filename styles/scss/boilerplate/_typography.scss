@@ -25,4 +25,7 @@
 
 @mixin text-width {
   max-width: 30em;
+  @include maxWidth(tablet) {
+    max-width: 100%;
+  }
 }

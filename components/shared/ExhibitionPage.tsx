@@ -16,6 +16,9 @@ export function ExhibitionPage({exhibition, label}) {
   //   console.log('activeIndex', activeIndex)
   // }, [activeIndex])
 
+  const currentItem = activeIndex > 0 && activeIndex <= exhibition.images.length ? exhibition.images[activeIndex - 1] : null
+  const currentItemLayout = currentItem ? currentItem.layout : null
+
   const router = useRouter()
   const isWithinPage = useContext(OriginContext)
 
@@ -26,7 +29,7 @@ export function ExhibitionPage({exhibition, label}) {
 
   return (
     <div className="exhibition-page-wrapper">
-      <div className='exhibition-page'>
+      <div className={`exhibition-page ${currentItemLayout}`}>
         <CloseButton 
           handleClose={handleClose}
         />

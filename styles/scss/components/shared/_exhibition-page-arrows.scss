@@ -30,3 +30,11 @@
     justify-content: flex-end;
   }
 }
+
+.fullBleed {
+  .exhibition-page-arrows {
+    svg {
+      stroke: white;
+    }
+  }
+}

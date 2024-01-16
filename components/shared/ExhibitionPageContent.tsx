@@ -9,14 +9,27 @@ export function ExhibitionPageContent({exhibition, activeIndex}) {
       {exhibition.images.map((image, index) => {
         return (
           <div 
-            className={`item ${index + 1 === activeIndex ? 'active' : ''}`}
+            className={`item ${index + 1 === activeIndex ? 'active' : ''} ${image.layout}`}
             key={index}
           >
             <div className="image-wrapper">
               <SanityImage
                 image={image}
                 alt={image.alt}
+                aspectRatio={image.layout === 'fullBleed' ? 0.75 : null}
               />
+            </div>
+            <div className="image-text">
+              <div className="caption">
+                {image.caption ? <CustomPortableText 
+                  value={image.caption} 
+                /> : null}
+              </div>
+              {image.credit ? <div className="credit">
+                <CustomPortableText 
+                  value={image.credit} 
+                />
+              </div> : null}
             </div>
           </div>
         )

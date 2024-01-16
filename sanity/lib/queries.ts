@@ -14,7 +14,7 @@ const imageFields = groq`
     left,
     right,
     top,
-  },
+  }
 `
 
 const image = groq`image {${imageFields}}`
@@ -28,7 +28,10 @@ names,
 location,
 duration,
 images[] {
-  ${imageFields}
+  ${imageFields},
+  layout,
+  caption,
+  credit
 },
 body
 `

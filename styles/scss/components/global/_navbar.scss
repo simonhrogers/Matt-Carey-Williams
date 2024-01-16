@@ -28,7 +28,7 @@
     align-self: flex-start;
     .svg {
       stroke: var(--color);
-      transition: transform 0.25s ease-in-out;
+      // transition: transform 0.25s ease-in-out;
       &.active {
         transform: rotate(45deg);
       }
