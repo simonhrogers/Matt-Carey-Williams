@@ -1,6 +1,8 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback, useContext } from "react"
+import { useRouter } from "next/navigation"
+import { OriginContext } from "@/components/global/OriginTracker";
 import CloseButton from "./CloseButton"
 import ExhibitionPageTitleCard from "./ExhibitionPageTitleCard"
 import ExhibitionPageContent from "./ExhibitionPageContent"
@@ -10,15 +12,23 @@ export function ExhibitionPage({exhibition, label}) {
 
   const [activeIndex, setActiveIndex] = useState(0)
 
-  useEffect(() => {
-    console.log('activeIndex', activeIndex)
-  }, [activeIndex])
+  // useEffect(() => {
+  //   console.log('activeIndex', activeIndex)
+  // }, [activeIndex])
+
+  const router = useRouter()
+  const isWithinPage = useContext(OriginContext)
+
+  const handleClose = useCallback(() => {
+    if (isWithinPage) router.back()
+    else router.push('/')
+  }, [isWithinPage, router])
 
   return (
     <div className="exhibition-page-wrapper">
       <div className='exhibition-page'>
         <CloseButton 
-          // onClose={() => handleClose()}
+          handleClose={handleClose}
         />
         <ExhibitionPageTitleCard
           exhibition={exhibition}

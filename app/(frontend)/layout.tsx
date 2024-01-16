@@ -18,6 +18,7 @@ import Consent from '@/components/global/Consent'
 import ModalHandler from '@/components/global/ModalHandler'
 import NewsletterBanner from '@/components/global/NewsletterBanner'
 import SharedMenu from '@/components/shared/SharedMenu'
+import OriginTracker from '@/components/global/OriginTracker'
 
 const VisualEditing = dynamic(() => import('@/sanity/loader/VisualEditing'))
 
@@ -93,30 +94,32 @@ export default async function IndexRoute({
           }}
         />
       )}
-      <div className="layout">
-        <Suspense>
-          <ModalHandler />
-        </Suspense>
-        <Suspense>
-          <div className="banners">
-            <NewsletterBanner />
-            <Consent />
-          </div>
-        </Suspense>
-        <Suspense>
-          <Navbar />
-        </Suspense>
-        <Suspense>
-          <>
-            <SharedMenu />
-            {children}
-          </>
-        </Suspense>
-        <Suspense>
-          <Footer />
-        </Suspense>
-        {/* <IntroTemplate /> */}
-      </div>
+      <OriginTracker>
+        <div className="layout">
+          <Suspense>
+            <ModalHandler />
+          </Suspense>
+          <Suspense>
+            <div className="banners">
+              <NewsletterBanner />
+              <Consent />
+            </div>
+          </Suspense>
+          <Suspense>
+            <Navbar />
+          </Suspense>
+          <Suspense>
+            <>
+              <SharedMenu />
+              {children}
+            </>
+          </Suspense>
+          <Suspense>
+            <Footer />
+          </Suspense>
+          {/* <IntroTemplate /> */}
+        </div>
+      </OriginTracker>
       {draftMode().isEnabled && <VisualEditing />}
     </>
   )

@@ -4,16 +4,29 @@
   }
   .left, .right {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    height: 100%;
+    width: 50%;
     z-index: 7;
-    cursor: pointer;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    padding: var(--lh);
+    &.show {
+      cursor: pointer;
+      @media (hover: hover) {
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
   }
   .left {
-    transform: rotate(180deg);
     left: 0;
+    justify-content: flex-start;
   }
   .right {
     right: 0;
+    justify-content: flex-end;
   }
 }

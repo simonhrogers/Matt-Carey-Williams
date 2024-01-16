@@ -1,10 +1,10 @@
 import Close from 'assets/svg/cross.svg'
 
-export function CloseButton() {
+export function CloseButton({handleClose}) {
   return (
     <div className="close-button-wrapper">
       <button
-        // onClick={() => handleClose()} 
+        onClick={handleClose}
         aria-label='Close'
         className="close-button"
       >

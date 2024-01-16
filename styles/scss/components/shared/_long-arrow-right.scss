@@ -1,7 +1,17 @@
 .long-arrow-svg {
   width: calc(3.75 * var(--lh));
   transform: translateY(0.125em);
-  margin-right: calc(0.5 * var(--lh));
+  // margin-right: calc(0.5 * var(--lh));
   transition: stroke 0.2s ease-in-out;
   stroke: var(--color, black);
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.333;
+    }
+  }
+  &.long-arrow-svg-left {
+    transform: rotate(180deg) translateY(-0.125em);
+    margin-right: 0;
+    // margin-left: calc(0.5 * var(--lh));
+  }
 }
