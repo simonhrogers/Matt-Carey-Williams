@@ -33,23 +33,25 @@
       @include minWidth(tablet) {
         width: 100%;
         height: 100%;
-        // display: flex;
-        // flex-direction: column;
-        // align-items: center;
-        // justify-content: center;
-        overflow: scroll;
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-        &::-webkit-scrollbar {
-          display: none;
-        }   
+        overflow-x: auto;
+        // -ms-overflow-style: none;  /* IE and Edge */
+        // scrollbar-width: none;  /* Firefox */
+        // &::-webkit-scrollbar {
+        //   display: none;
+        // }   
       }
-      .text-wrapper {
-        @include typography-medium;
+      .text-wrapper {@include typography-medium;
         @include minWidth(tablet) {
-          width: 100%;
+          display: flex;
+          flex-direction: column;
           height: 100%;
-          padding: var(--lh);     
+          .text {
+            margin: auto;
+            padding: var(--lh);
+            .portable-text {
+              @include typography-medium;
+            }
+          }   
         }
       }
     }

@@ -26,9 +26,11 @@ export function ExhibitionPageContent({exhibition, activeIndex}) {
       >
         <div className="text-scroll-wrapper">
           <div className="text-wrapper">
-            <CustomPortableText 
-              value={exhibition.body} 
-            />
+            <div className="text">
+              <CustomPortableText 
+                value={exhibition.body} 
+              />
+            </div>
           </div>
         </div>
       </div>
