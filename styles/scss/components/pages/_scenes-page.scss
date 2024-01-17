@@ -1,6 +1,11 @@
 .scenes-page {
   flex: 1;
-  margin: calc(3 * var(--lh)) 0;
-  margin-top: calc(4.5rem + 3 * var(--lh));
-  transform: translateZ(0);
+  @include minWidth(tablet) {
+    padding: calc(3 * var(--lh)) 0;
+    padding-top: calc(4.5rem + 3 * var(--lh));
+  }
+  @include maxWidth(tablet) {
+    padding: var(--lh) 0;
+    padding-top: calc(4.5rem + 1 * var(--lh));
+  }
 }

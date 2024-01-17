@@ -1,5 +1,11 @@
 .writings-page {
   flex: 1;
-  margin: calc(3 * var(--lh)) var(--lh);
-  margin-top: calc(4.5rem + 3 * var(--lh));
+  @include minWidth(tablet) {
+    padding: calc(3 * var(--lh)) var(--lh);
+    padding-top: calc(4.5rem + 3 * var(--lh));
+  }
+  @include maxWidth(tablet) {
+    padding: var(--lh);
+    padding-top: calc(4.5rem + 1 * var(--lh));
+  }
 }

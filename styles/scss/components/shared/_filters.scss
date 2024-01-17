@@ -1,7 +1,18 @@
 .filters {
-  position: absolute;
-  @include typography-small;
+  @include maxWidth(tablet) {
+    @include typography-medium;
+    margin-bottom: calc(2 * var(--lh));
+  }
+  @include minWidth(tablet) {
+    position: absolute;
+    @include typography-small;
+  }
   .filter {
+    & + .filter {
+      @include maxWidth(tablet) {
+        margin-top: calc(0.25 * var(--lh));
+      }
+    }
     &.active {
       button {
         opacity: 1;

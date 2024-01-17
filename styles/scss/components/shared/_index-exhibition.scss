@@ -76,5 +76,9 @@
     & + .index-exhibition {
       margin-top: calc(2 * var(--lh));
     }
+    @include maxWidth(tablet) {
+      width: 100vw;
+      margin-left: calc(-1 * var(--lh-rem));
+    }
   }
 }

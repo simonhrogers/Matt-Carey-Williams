@@ -1,9 +1,12 @@
 .index-writing {
   display: block;
   width: calc(66.666vw - var(--lh-rem));
-  // max-width: 30em;
   margin: calc(3 * var(--lh)) 0;
   margin-left: auto;
+  @include maxWidth(tablet) {
+    width: 100%;
+    margin: calc(2 * var(--lh)) 0;
+  }
   &:first-child {
     margin-top: 0;
   }
@@ -15,15 +18,17 @@
       opacity: 1;
     }
   }
-  &:nth-child(3n + 2) {
-    .index-writing-inner {
-      margin-left: calc(-4 * var(--lh));
-      margin-right: calc(4 * var(--lh));
+  @include minWidth(tablet) {
+    &:nth-child(3n + 2) {
+      .index-writing-inner {
+        margin-left: calc(-4 * var(--lh));
+        margin-right: calc(4 * var(--lh));
+      }
     }
-  }
-  &:nth-child(3n + 3) {
-    .index-writing-inner {
-      margin-left: auto;
+    &:nth-child(3n + 3) {
+      .index-writing-inner {
+        margin-left: auto;
+      }
     }
   }
   .index-writing-inner {
@@ -39,6 +44,19 @@
     }
     .long-arrow-svg {
       margin-right: calc(0.5 * var(--lh));
+    }
+  }
+}
+
+.home-page {
+  .index-writing {
+    @include maxWidth(tablet) {
+      width: 100%;
+      margin: calc(2 * var(--lh)) 0;
+      padding: 0 var(--lh);
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
