@@ -9,6 +9,7 @@ import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { EpisodesPagePayload } from '@/types'
 import IndexExhibition from '@/components/shared/IndexExhibition'
+import Filters from '@/components/shared/Filters'
 
 export interface EpisodesPageProps {
   data: EpisodesPagePayload | null
@@ -34,23 +35,30 @@ export function EpisodesPage({ data, encodeDataAttribute }: EpisodesPageProps) {
     },
   ])
 
+  const [activeFilter, setActiveFilter] = useState(filters[0])
+
+  const filteredEpisodes = activeFilter.value === 'all' ? episodes : episodes.filter(episode => {
+    const startDate = new Date(episode.duration.start)
+    const endDate = new Date(episode.duration.end)
+    if (activeFilter.value === 'current') {
+      return startDate <= currentDate && currentDate <= endDate
+    } else if (activeFilter.value === 'upcoming') {
+      return startDate > currentDate
+    } else if (activeFilter.value === 'past') {
+      return endDate < currentDate
+    }
+    return true
+  })
+
   return (
     <div className="episodes-page">
-      <div className="filters">
-        {filters.map((filter, key) => (
-          <div key={key} className="filter">
-            <button
-              onClick={() => {
-                // console.log('clicked')
-              }}
-            >
-              {filter.name}
-            </button>
-          </div>
-        ))}
-      </div>
+      <Filters 
+        filters={filters}
+        activeFilter={activeFilter}
+        setActiveFilter={setActiveFilter}
+      />
       <div className="episodes">
-        {episodes.map((episode, key) => (
+        {filteredEpisodes.map((episode, key) => (
           <IndexExhibition
             key={key}
             exhibition={episode}

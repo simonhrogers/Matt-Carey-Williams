@@ -1,6 +1,23 @@
 .filters {
   position: absolute;
-  // top: 0;
   @include typography-small;
+  .filter {
+    &.active {
+      button {
+        opacity: 1;
+      }
+    }
+    button {
+      opacity: 0.333;
+      @media (hover: hover) {
+        &:hover {
+          opacity: 1 !important;
+        }
+      }
+    }
+  }
+}
+
+.episodes-page, .scenes-page {
   margin-left: var(--lh-rem);
 }

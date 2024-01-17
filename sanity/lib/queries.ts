@@ -213,6 +213,7 @@ export const writingsPageQuery = groq`
       title,
       excerpt,
       date,
+      "referenceType": reference->_type
     }
   }
 `
