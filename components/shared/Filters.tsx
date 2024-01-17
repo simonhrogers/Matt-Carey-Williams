@@ -1,7 +1,7 @@
 export function Filters({filters, activeFilter, setActiveFilter}) {
   return (
     <div className="filters">
-      {filters.map((filter, key) => (
+      {filters.map((filter, key) => (filter?.items?.length > 0 &&
         <div 
           key={key} 
           className={`filter ${filter.value === activeFilter.value ? 'active' : ''}`}
