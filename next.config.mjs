@@ -22,7 +22,7 @@ const config = {
   },
   experimental: {
     taint: true,
-    windowHistorySupport: true,
+    // windowHistorySupport: true,
   },
   webpack: (webpackConfig) => {
     webpackConfig.module.rules.push({
