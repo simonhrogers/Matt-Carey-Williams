@@ -43,6 +43,7 @@ export function ExhibitionPage({exhibition, label}) {
         <ExhibitionPageContent 
           exhibition={exhibition}
           activeIndex={activeIndex}
+          canShowContent={canShowArrows}
         />
         <ExhibitionPageArrows
           exhibition={exhibition}

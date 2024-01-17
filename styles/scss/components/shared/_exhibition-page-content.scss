@@ -1,4 +1,7 @@
 .exhibition-page-content {
+  &.invisible {
+    opacity: 0;
+  }
   .item {
     @include minWidth(tablet) {
       position: absolute;

@@ -1,9 +1,9 @@
 import CustomPortableText from "./CustomPortableText"
 import SanityImage from "./SanityImage"
 
-export function ExhibitionPageContent({exhibition, activeIndex}) {
+export function ExhibitionPageContent({exhibition, activeIndex, canShowContent}) {
   return (
-    <div className="exhibition-page-content">
+    <div className={`exhibition-page-content ${canShowContent ? 'visible' : 'invisible'}`}>
       {exhibition.images.map((image, index) => {
         return (
           <div 
