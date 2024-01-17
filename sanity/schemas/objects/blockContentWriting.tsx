@@ -27,8 +27,8 @@ export default defineType({
       styles: [
         {title: 'Body', value: 'normal'},
         {title: 'Pullquote', value: 'pullquote'},
-        // {title: 'Title', value: 'h4'},
-        // {title: 'Subtitle', value: 'h5'},
+        {title: 'Title', value: 'h4'},
+        {title: 'Subtitle', value: 'h5'},
         // {title: 'Quote', value: 'blockquote'},
       ],
       lists: [{title: 'Bullet', value: 'bullet'}],
@@ -84,17 +84,22 @@ export default defineType({
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
-    // {
-    //   type: 'image',
-    //   // options: {hotspot: true}
-    //   fields: [
-    //     {
-    //       name: 'alt',
-    //       type: 'string',
-    //       title: 'Alternative text',
-    //     }
-    //   ]
-    // }
+    {
+      type: 'image',
+      // options: {hotspot: true}
+      fields: [
+        {
+          name: 'caption',
+          title: 'Caption',
+          type: 'blockContentSimple',
+        },
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+        }
+      ]
+    }
   ]
 })
  

@@ -26,8 +26,8 @@ export default defineType({
       // use your content.
       styles: [
         {title: 'Body', value: 'normal'},
-        {title: 'Title', value: 'h5'},
-        // {title: 'Subtitle', value: 'h5'},
+        {title: 'Title', value: 'h4'},
+        {title: 'Subtitle', value: 'h5'},
         // {title: 'Quote', value: 'blockquote'},
       ],
       lists: [{title: 'Bullet', value: 'bullet'}],
