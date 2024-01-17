@@ -13,8 +13,6 @@ export function CustomPortableText({
   value: PortableTextBlock[]
 }) {
 
-  console.log(value)
-
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
@@ -44,12 +42,21 @@ export function CustomPortableText({
     },
     types: {
       image: ({value}) => {
+        console.log(value);
+        
         return (
           <div className="portable-text-image-wrapper">
-            <SanityImage
-              image={value}
-              alt={value.alt}
-            />
+            <div 
+              className="image-wrapper"
+              style={{
+                paddingTop: `${(value?.height / value?.width) * 100}%`
+              }}
+            >
+              <SanityImage
+                image={value}
+                alt={value.alt}
+              />
+            </div>
             {value?.caption && (
               <div className="caption">
                 <CustomPortableText

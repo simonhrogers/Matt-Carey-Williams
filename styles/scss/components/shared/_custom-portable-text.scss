@@ -55,6 +55,19 @@
     left: var(--lh);
     // height: 0;
     width: 25%;
+    .image-wrapper {
+      width: 100%;
+      height: 0;
+      transform: translateZ(0);
+      .image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
     .caption {
       .portable-text {
         margin-top: calc(0.25 * var(--lh));

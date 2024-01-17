@@ -44,6 +44,12 @@ export default defineType({
       type: 'date',
     }),
     defineField({
+      name: 'reference',
+      title: 'Reference to Episode or Scene',
+      type: 'reference',
+      to: [{ type: 'episode' }, { type: 'scene' }],
+    }),
+    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'blockContentSimple',

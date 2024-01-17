@@ -20,9 +20,37 @@ export function WritingsPage({ data, encodeDataAttribute }: WritingsPageProps) {
   const { writings = [], title = '' } = data ?? {}
 
   // console.log(writings)
+
+  const [filters, setFilters] = useState([
+    {
+      name: 'All Writings',
+      value: 'all',
+    },
+    {
+      name: 'Writings on Episodes',
+      value: 'episodes',
+    },
+    {
+      name: 'Writings on Scenes',
+      value: 'scenes',
+    },
+  ])
   
   return (
     <div className="writings-page">
+      <div className="filters">
+        {filters.map((filter, key) => (
+          <div key={key} className="filter">
+            <button
+              onClick={() => {
+                // console.log('clicked')
+              }}
+            >
+              {filter.name}
+            </button>
+          </div>
+        ))}
+      </div>
       {writings.map((writing, key) => (
         <IndexWriting
           key={key}

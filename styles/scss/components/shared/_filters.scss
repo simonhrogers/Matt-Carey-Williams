@@ -1,0 +1,6 @@
+.filters {
+  position: absolute;
+  // top: 0;
+  @include typography-small;
+  margin-left: var(--lh-rem);
+}

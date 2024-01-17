@@ -27,13 +27,15 @@ export function IndexWriting({ writing, encodeDataAttribute }: IndexWritingProps
       ])}
       className="index-writing"
     >
-      <div className="title">{writing.title} (<WritingMonthYear date={writing.date} />)</div>
-      <CustomPortableText 
-        value={writing.excerpt} 
-        paragraphClasses="excerpt"
-      />
-      <div className="continue-reading">
-        <LongArrow /> Continue reading
+      <div className="index-writing-inner">
+        <div className="title">{writing.title} (<WritingMonthYear date={writing.date} />)</div>
+        <CustomPortableText 
+          value={writing.excerpt} 
+          paragraphClasses="excerpt"
+        />
+        <div className="continue-reading">
+          <LongArrow /> Continue reading
+        </div>
       </div>
     </Link>
   )
