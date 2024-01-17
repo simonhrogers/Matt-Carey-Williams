@@ -11,6 +11,7 @@ import ExhibitionPageArrows from "./ExhibitionPageArrows"
 export function ExhibitionPage({exhibition, label}) {
 
   const [activeIndex, setActiveIndex] = useState(0)
+  const [canShowArrows, setCanShowArrows] = useState(false)
 
   // useEffect(() => {
   //   console.log('activeIndex', activeIndex)
@@ -37,6 +38,7 @@ export function ExhibitionPage({exhibition, label}) {
           exhibition={exhibition}
           label={label}
           activeIndex={activeIndex}
+          setCanShowArrows={setCanShowArrows}
         />
         <ExhibitionPageContent 
           exhibition={exhibition}
@@ -46,6 +48,7 @@ export function ExhibitionPage({exhibition, label}) {
           exhibition={exhibition}
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
+          canShowArrows={canShowArrows}
         />
       </div>
     </div>

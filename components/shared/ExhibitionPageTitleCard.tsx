@@ -1,12 +1,34 @@
+import { useEffect, useState } from "react"
 import Duration from "./Duration"
 import { LogoWrapper } from "./LogoWrapper"
 import RomanNumeral from "./RomanNumeral"
 
 
-export function ExhibitionPageTitleCard({exhibition, label, activeIndex}) {
+export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanShowArrows}) {
 
   const { names } = exhibition
   const name = names?.length === 1 ? names[0] : null
+
+  const numThingsToAnimateIn = 3 + (names.length ? names.length + 1 : 0)
+  
+  const [numThingsAnimatedIn, setNumThingsAnimatedIn] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNumThingsAnimatedIn((prevNum) => {
+        if (prevNum < numThingsToAnimateIn) {
+          return prevNum + 1
+        } else {
+          setCanShowArrows(true)
+          clearInterval(timer)
+          return prevNum
+        }
+      })
+    }, 250)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
 
   return (
     <div 
@@ -14,14 +36,18 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex}) {
     >
       <div className="exhibition-page-title-card">
         <div className="logo-location-wrapper">
-          <LogoWrapper
-            shouldAnimate={false}
-            formatAsLink={false}
-            showLocation={false}
-          />
-          <div className="location">at {exhibition.location}</div>
+          <div className={`logo-wrapper-wrapper ${numThingsAnimatedIn >= 1 ? 'visible' : 'invisible'}`}>
+            <LogoWrapper
+              shouldAnimate={false}
+              formatAsLink={false}
+              showLocation={false}
+            />
+          </div>
+          <div className={`location ${numThingsAnimatedIn >= 2 ? 'visible' : 'invisible'}`}>
+            at {exhibition.location}
+          </div>
         </div>
-        <div className="title-date-wrapper">
+        <div className={`title-date-wrapper ${numThingsAnimatedIn >= 3 ? 'visible' : 'invisible'}`}>
           <div className="title-wrapper">
             {label} <RomanNumeral number={exhibition.number} />: <span className="title">{exhibition.title}</span>
           </div>
@@ -35,13 +61,13 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex}) {
           )}
         </div>
         <div className="names-wrapper">
-          <div className="with">
+          <div className={`with ${numThingsAnimatedIn >= 4 ? 'visible' : 'invisible'}`}>
             with
           </div>
           <div className="names">
             {exhibition.names.map((name, key) => {
               return (
-                <div key={key} className="name">
+                <div key={key} className={`name ${numThingsAnimatedIn >= 4 + (key + 1) ? 'visible' : 'invisible'}`}>
                   {name}
                 </div>
               )
@@ -49,7 +75,7 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex}) {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   )
 }
 

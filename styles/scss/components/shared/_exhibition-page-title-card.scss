@@ -26,6 +26,9 @@
       @include minWidth(tablet) {
         display: flex;
       }
+      .logo-wrapper-wrapper {
+        flex: 1;
+      }
       .location {
         @include uppercase;
       }
@@ -41,6 +44,9 @@
       .with {
         @include uppercase;
       }
+    }
+    .invisible {
+      opacity: 0;
     }
   }
 }

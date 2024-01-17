@@ -1,7 +1,7 @@
 import LongArrow from "./LongArrow"
 
 
-export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex}) {
+export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, canShowArrows}) {
 
   const showLeftArrow = activeIndex > 0
   const showRightArrow = activeIndex < exhibition.images.length + 1
@@ -18,7 +18,7 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex}) 
     }
   }
 
-  return (
+  return canShowArrows ? (
     <div className="exhibition-page-arrows">
       <div 
         className={`left ${showLeftArrow ? 'show' : ''}`}
@@ -33,7 +33,7 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex}) 
         <LongArrow />
       </div>
     </div>
-  )
+  ) : null
 }
 
 export default ExhibitionPageArrows
