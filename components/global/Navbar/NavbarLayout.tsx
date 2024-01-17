@@ -49,6 +49,8 @@ export default function Navbar(props: NavbarProps) {
   ] as MenuItem[]
 
   const pathname = usePathname()
+  const activeParentPath = menuItems.find(item => item.slug === pathname.split('/')[1])?.slug
+
   const [isPhoneMenuActive, setIsPhoneMenuActive] = useState(false)
 
   const openPhoneMenu = () => {
@@ -110,7 +112,9 @@ export default function Navbar(props: NavbarProps) {
             <Link
               key={key}
               className={`
-                menu-item ${(`/${menuItem.slug}` === pathname || menuItem.children?.some(item => `/${item.slug}` === pathname)) ? 'active' : ''}
+                menu-item 
+                ${(`/${menuItem.slug}` === pathname || menuItem.children?.some(item => `/${item.slug}` === pathname) || menuItem.slug === activeParentPath) ? 'active' : ''}
+
               `}
               href={href}
             >
