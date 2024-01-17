@@ -1,0 +1,31 @@
+.writing-page-wrapper {
+  flex: 1;
+  .writing-page {
+    position: absolute;
+    top: 0;
+    z-index: 4;
+    background-color: white;
+    width: 100%;
+    padding: 1em var(--lh);
+    padding-bottom: calc(4 * var(--lh));
+    .title-wrapper {
+      @include typography-small;
+      margin-bottom: calc(4 * var(--lh-rem));
+    }
+    .body-wrapper {
+      @include typography-medium;
+      .portable-text {
+        margin-left: auto;
+        max-width: unset;
+        width: calc(66.666vw - var(--lh-rem));
+        @include typography-medium;
+        @include maxWidth(tablet) {
+          width: 100%;
+        }
+        .body {
+          @include text-width-writing;
+        }
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@ import Duration from "./Duration"
 import SanityImage from "./SanityImage"
 import { CustomPortableText } from "./CustomPortableText"
 import LongArrow from "./LongArrow"
+import WritingMonthYear from "./WritingMonthYear"
 
 
 export interface IndexWritingProps {
@@ -26,7 +27,7 @@ export function IndexWriting({ writing, encodeDataAttribute }: IndexWritingProps
       ])}
       className="index-writing"
     >
-      <div className="title">{writing.title}</div>
+      <div className="title">{writing.title} (<WritingMonthYear date={writing.date} />)</div>
       <CustomPortableText 
         value={writing.excerpt} 
         paragraphClasses="excerpt"

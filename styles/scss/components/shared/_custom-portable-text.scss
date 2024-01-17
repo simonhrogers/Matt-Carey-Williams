@@ -1,8 +1,19 @@
 .portable-text {
   @include text-width;
+  h4 {
+    @include typography-large;
+    margin-top: calc(3 * var(--lh-rem-m));
+    margin-bottom: var(--lh-rem-m);
+  }
   h5 {
-    @include typography-small;
-    // margin-bottom: calc(0.5 * var(--lh));
+    font-style: italic;
+    margin-top: calc(2 * var(--lh-rem-m));
+    margin-bottom: var(--lh-rem-m);
+  }
+  h4, h4+.portable-text-image-wrapper {
+    & + h5 {
+      margin-top: var(--lh-rem-m);
+    }
   }
   p, ul {
     &:not(:last-child) {
@@ -29,6 +40,25 @@
         // padding-right: calc(1 *  var(--lh));
         // margin-left: calc(-1 *  var(--lh));
         // margin-right: calc(1 *  var(--lh));
+      }
+    }
+  }
+  blockquote {
+    @include typography-large;
+    margin: calc(3 * var(--lh-rem-m)) 0;
+    margin-left: calc(-4 * var(--lh-rem-m));
+    margin-right: calc(4 * var(--lh-rem-m));
+    @include text-width-writing;
+  }
+  .portable-text-image-wrapper {
+    position: absolute;
+    left: var(--lh);
+    // height: 0;
+    width: 25%;
+    .caption {
+      .portable-text {
+        margin-top: calc(0.25 * var(--lh));
+        @include typography-small;
       }
     }
   }

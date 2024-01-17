@@ -75,12 +75,13 @@ export const homePageQuery = groq`
       duration,
       "coverImage": coverImage {${imageFields}},
     },
-    "writing": *[_type == "writing"][0] {
+    "writing": *[_type == "writing"]| order(date desc)[0] {
       _id,
       _type,
       "slug": slug.current,
       title,
       excerpt,
+      date,
     },
   }
 `
@@ -199,16 +200,17 @@ export const sceneBySlugQuery = groq`
 `
 
 export const writingsPageQuery = groq`
-  *[_type == "page" && slug.current == "writing"][0]{
+  *[_type == "page" && slug.current == "writing"][0] {
     _id,
     "slug": slug.current,
     title,
-    "writings": *[_type == "writing"] {
+    "writings": *[_type == "writing"] | order(date desc) {
       _id,
       _type,
       "slug": slug.current,
       title,
       excerpt,
+      date,
     }
   }
 `
@@ -218,6 +220,16 @@ export const writingBySlugQuery = groq`
     _id,
     "slug": slug.current,
     title,
+    author,
+    location,
+    date,
+    body[]{
+      ...,
+      _type == "image" => {
+        ${imageFields},
+        caption,
+      }
+    }
   }
 `
 

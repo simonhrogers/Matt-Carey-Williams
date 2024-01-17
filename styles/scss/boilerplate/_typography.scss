@@ -29,3 +29,10 @@
     max-width: 100%;
   }
 }
+
+@mixin text-width-writing {
+  max-width: 40em;
+  @include maxWidth(tablet) {
+    max-width: 100%;
+  }
+}
