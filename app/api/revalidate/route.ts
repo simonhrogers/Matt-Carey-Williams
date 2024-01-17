@@ -47,6 +47,18 @@ export async function POST(req: NextRequest) {
     if (body.slug) {
       revalidateTag(`${body._type}:${body.slug}`)
     }
+    if (['episode', 'scene', 'writing'].includes(body._type)) {
+      revalidateTag('home')
+    }
+    if (body._type === 'episode') {
+      revalidateTag('page:episodes')
+    }
+    if (body._type === 'scene') {
+      revalidateTag('page:scenes')
+    }
+    if (body._type === 'writing') {
+      revalidateTag('page:writings')
+    }
     return NextResponse.json({
       status: 200,
       revalidated: true,
