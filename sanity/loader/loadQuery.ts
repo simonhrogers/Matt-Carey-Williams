@@ -82,7 +82,7 @@ export function loadSettings() {
   return loadQuery<SettingsPayload>(
     settingsQuery,
     {},
-    { next: { tags: ['settings', 'home', 'page', 'project', 'episode', 'writing'] } },
+    { next: { tags: ['settings', 'home', 'page', 'episode', 'writing'] } },
   )
 }
 
@@ -90,7 +90,7 @@ export function loadHomePage() {
   return loadQuery<HomePagePayload | null>(
     homePageQuery,
     {},
-    { next: { tags: ['home', 'project', 'episode', 'writing'] } },
+    { next: { tags: ['home', 'episode', 'writing', 'scene'] } },
   )
 }
 
@@ -110,13 +110,13 @@ export function loadContactPage() {
   )
 }
 
-export function loadProject(slug: string) {
-  return loadQuery<ProjectPayload | null>(
-    projectBySlugQuery,
-    { slug },
-    { next: { tags: [`project:${slug}`] } },
-  )
-}
+// export function loadProject(slug: string) {
+//   return loadQuery<ProjectPayload | null>(
+//     projectBySlugQuery,
+//     { slug },
+//     { next: { tags: [`project:${slug}`] } },
+//   )
+// }
 
 export function loadEpisodesPage() {
   return loadQuery<EpisodePayload[]>(
