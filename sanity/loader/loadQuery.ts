@@ -98,7 +98,7 @@ export function loadAboutPage() {
   return loadQuery<AboutPagePayload | null>(
     aboutPageQuery,
     {},
-    { next: { tags: ['about'] } },
+    { next: { tags: ['page:about'] } },
   )
 }
 
@@ -106,7 +106,7 @@ export function loadContactPage() {
   return loadQuery<ContactPagePayload | null>(
     contactPageQuery,
     {},
-    { next: { tags: ['contact'] } },
+    { next: { tags: ['page:contact'] } },
   )
 }
 
