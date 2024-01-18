@@ -22,7 +22,7 @@
  * 16. Redeploy with `npx vercel --prod` to apply the new environment variable
  */
 
-import { revalidateTag } from 'next/cache'
+import { revalidateTag, revalidatePath } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
 import { parseBody } from 'next-sanity/webhook'
 
@@ -43,10 +43,15 @@ export async function POST(req: NextRequest) {
       return new Response('Bad Request', { status: 400 })
     }
 
-    revalidateTag(body._type)
-    if (body.slug) {
-      revalidateTag(`${body._type}:${body.slug}`)
-    }
+    // revalidateTag(body._type)
+    // if (body.slug) {
+    //   revalidateTag(`${body._type}:${body.slug}`)
+    // }
+
+    revalidatePath('/')
+    revalidatePath('/episodes')
+    revalidatePath('/writing')
+    revalidatePath('/scenes')
     
     return NextResponse.json({
       status: 200,
