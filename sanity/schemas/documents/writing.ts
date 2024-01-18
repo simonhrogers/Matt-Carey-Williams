@@ -1,11 +1,12 @@
 import { BillIcon, ImageIcon } from '@sanity/icons'
+import { WritingIcon } from '@/sanity/lib/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'writing',
   title: 'Writing',
   type: 'document',
-  icon: BillIcon,
+  icon: WritingIcon,
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [

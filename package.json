@@ -25,6 +25,7 @@
     "@sanity/vision": "3.25.0",
     "@tailwindcss/typography": "0.5.10",
     "@types/gtag.js": "^0.0.18",
+    "a11y-react-emoji": "^1.2.0",
     "axios": "^1.6.5",
     "classnames": "2.3.2",
     "cookies-next": "^4.1.0",

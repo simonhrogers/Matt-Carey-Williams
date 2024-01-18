@@ -1,11 +1,12 @@
 import { CogIcon } from '@sanity/icons'
+import { SettingsIcon } from '@/sanity/lib/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'settings',
   title: 'Settings',
   type: 'document',
-  icon: CogIcon,
+  icon: SettingsIcon,
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
@@ -33,34 +34,6 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'footer',
-      description:
-        'This is a block of text that will be displayed at the bottom of the page.',
-      title: 'Footer Info',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
-        }),
-      ],
-    }),
-    defineField({
       name: 'ogImage',
       title: 'Open Graph Image',
       type: 'image',
@@ -70,6 +43,7 @@ export default defineType({
       },
     }),
   ],
+  readOnly: true,
   preview: {
     prepare() {
       return {

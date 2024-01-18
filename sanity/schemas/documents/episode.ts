@@ -1,11 +1,12 @@
 import { ImagesIcon, ImageIcon } from '@sanity/icons'
+import { EpisodeIcon } from '@/sanity/lib/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'episode',
   title: 'Episode',
   type: 'document',
-  icon: ImagesIcon,
+  icon: EpisodeIcon,
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [

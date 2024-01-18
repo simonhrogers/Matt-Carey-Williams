@@ -1,4 +1,5 @@
-import { HomeIcon } from '@sanity/icons'
+// import { HomeIcon } from '@sanity/icons'
+import { HomeIcon } from '@/sanity/lib/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
