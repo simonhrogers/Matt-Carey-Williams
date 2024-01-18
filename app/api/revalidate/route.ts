@@ -28,6 +28,8 @@ import { parseBody } from 'next-sanity/webhook'
 
 import { revalidateSecret } from '@/sanity/lib/api'
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const { body, isValidSignature } = await parseBody<{
