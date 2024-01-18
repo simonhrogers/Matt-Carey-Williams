@@ -47,7 +47,8 @@ const serverClient = client.withConfig({
  */
 queryStore.setServerClient(serverClient)
 
-const usingCdn = serverClient.config().useCdn
+// const usingCdn = serverClient.config().useCdn
+const usingCdn = false
 // Automatically handle draft mode
 export const loadQuery = ((query, params = {}, options = {}) => {
   const {
