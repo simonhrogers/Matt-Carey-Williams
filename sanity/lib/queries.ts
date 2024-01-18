@@ -43,47 +43,32 @@ export const homePageQuery = groq`
     _id,
     overview,
     title,
-    "episode": *[_type == "episode"][0] {
-      _id,
-      _type,
-      "slug": slug.current,
-      title,
-      names,
-      pressRelease {
-        ...,
-        asset-> {
+    "featuredItems": featuredItems[]->{
+      _type in ["episode", "scene"] => {
+        _id,
+        _type,
+        "slug": slug.current,
+        title,
+        names,
+        pressRelease {
           ...,
-        }
+          asset-> {
+            ...,
+          }
+        },
+        "number": count(*[_type == "scene"]),
+        location,
+        duration,
+        "coverImage": coverImage {${imageFields}},
       },
-      "number": count(*[_type == "episode"]),
-      location,
-      duration,
-      "coverImage": coverImage {${imageFields}},
-    },
-    "scene": *[_type == "scene"][0] {
-      _id,
-      _type,
-      "slug": slug.current,
-      title,
-      names,
-      pressRelease {
-        ...,
-        asset-> {
-          ...,
-        }
+      _type == "writing" => {
+        _id,
+        _type,
+        "slug": slug.current,
+        title,
+        excerpt,
+        date,
       },
-      "number": count(*[_type == "scene"]),
-      location,
-      duration,
-      "coverImage": coverImage {${imageFields}},
-    },
-    "writing": *[_type == "writing"]| order(date desc)[0] {
-      _id,
-      _type,
-      "slug": slug.current,
-      title,
-      excerpt,
-      date,
     },
   }
 `

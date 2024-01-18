@@ -24,32 +24,42 @@ export interface HomePageProps {
 
 export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { title = '', episode = {}, scene = {}, writing = {} } = data ?? {}
+  const { title = '', featuredItems = [] } = data ?? {}
+
+  console.log('data', data);
+  
 
   return (
     <div className="home-page">
-      {/* scene */}
-      {scene ? (
-        <IndexExhibition 
-          exhibition={scene}
-          label="Scene"
-          encodeDataAttribute={encodeDataAttribute}
-        />
-      ) : null}
-      {/* episode */}
-      {episode ? (
-        <IndexExhibition 
-          exhibition={episode}
-          label="Episode"
-          encodeDataAttribute={encodeDataAttribute}
-        />
-      ) : null}
-      {writing ? (
-        <IndexWriting
-          writing={writing}
-          encodeDataAttribute={encodeDataAttribute}
-        />
-      ) : null}
+      {featuredItems.map((item, index) => {
+        if (item._type === 'episode') {
+          return (
+            <IndexExhibition
+              key={index}
+              exhibition={item}
+              label="Episode"
+              encodeDataAttribute={encodeDataAttribute}
+            />
+          )
+        } else if (item._type === 'scene') {
+          return (
+            <IndexExhibition 
+              key={index}
+              exhibition={item}
+              label="Scene"
+              encodeDataAttribute={encodeDataAttribute}
+            />
+          )
+        } else if (item._type === 'writing') {
+          return (
+            <IndexWriting
+              key={index}
+              writing={item}
+              encodeDataAttribute={encodeDataAttribute}
+            />
+          )
+        }
+      })}
     </div>
   )
 }
