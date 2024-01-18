@@ -1,13 +1,15 @@
-import dynamic from 'next/dynamic'
+import dynamicC from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import Link from 'next/link'
 
 import { AboutPage } from '@/components/pages/about/AboutPage'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadAboutPage } from '@/sanity/loader/loadQuery'
-const AboutPagePreview = dynamic(
+const AboutPagePreview = dynamicC(
   () => import('@/components/pages/about/AboutPagePreview'),
 )
+
+export const dynamic = 'force-dynamic'
 
 export default async function AboutRoute() {
   const initial = await loadAboutPage()

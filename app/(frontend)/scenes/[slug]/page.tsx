@@ -1,6 +1,6 @@
 import { toPlainText } from '@portabletext/react'
 import { Metadata, ResolvingMetadata } from 'next'
-import dynamic from 'next/dynamic'
+import dynamicC from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
@@ -8,13 +8,15 @@ import { ScenePage } from '@/components/pages/scenes/ScenePage'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
 import { loadScene } from '@/sanity/loader/loadQuery'
-const ScenePreview = dynamic(
+const ScenePreview = dynamicC(
   () => import('@/components/pages/scenes/ScenePreview'),
 )
 
 type Props = {
   params: { slug: string }
 }
+
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata(
   { params }: Props,

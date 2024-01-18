@@ -1,13 +1,15 @@
-import dynamic from 'next/dynamic'
+import dynamicC from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import Link from 'next/link'
 
 import { HomePage } from '@/components/pages/home/HomePage'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadHomePage } from '@/sanity/loader/loadQuery'
-const HomePagePreview = dynamic(
+const HomePagePreview = dynamicC(
   () => import('@/components/pages/home/HomePagePreview'),
 )
+
+export const dynamic = 'force-dynamic'
 
 export default async function IndexRoute() {
   const initial = await loadHomePage()

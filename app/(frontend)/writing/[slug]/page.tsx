@@ -1,6 +1,6 @@
 import { toPlainText } from '@portabletext/react'
 import { Metadata, ResolvingMetadata } from 'next'
-import dynamic from 'next/dynamic'
+import dynamicC from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
@@ -8,13 +8,15 @@ import { WritingPage } from '@/components/pages/writing/WritingPage'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
 import { loadWriting } from '@/sanity/loader/loadQuery'
-const WritingPreview = dynamic(
+const WritingPreview = dynamicC(
   () => import('@/components/pages/writing/WritingPreview'),
 )
 
 type Props = {
   params: { slug: string }
 }
+
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata(
   { params }: Props,

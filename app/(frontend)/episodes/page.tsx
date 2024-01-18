@@ -1,13 +1,15 @@
-import dynamic from 'next/dynamic'
+import dynamicC from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import Link from 'next/link'
 
 import { EpisodesPage } from '@/components/pages/episodes/EpisodesPage'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadEpisodesPage } from '@/sanity/loader/loadQuery'
-const EpisodesPagePreview = dynamic(
+const EpisodesPagePreview = dynamicC(
   () => import('@/components/pages/episodes/EpisodesPagePreview'),
 )
+
+export const dynamic = 'force-dynamic'
 
 export default async function IndexRoute() {
   const initial = await loadEpisodesPage()

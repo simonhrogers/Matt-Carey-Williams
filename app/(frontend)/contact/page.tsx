@@ -1,13 +1,15 @@
-import dynamic from 'next/dynamic'
+import dynamicC from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import Link from 'next/link'
 
 import { ContactPage } from '@/components/pages/contact/ContactPage'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadContactPage } from '@/sanity/loader/loadQuery'
-const ContactPagePreview = dynamic(
+const ContactPagePreview = dynamicC(
   () => import('@/components/pages/contact/ContactPagePreview'),
 )
+
+export const dynamic = 'force-dynamic'
 
 export default async function ContactRoute() {
   const initial = await loadContactPage()

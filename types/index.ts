@@ -64,3 +64,24 @@ export interface SettingsPayload {
   menuItems?: MenuItem[]
   ogImage?: Image
 }
+
+
+
+
+
+export interface EpisodePayload {
+  _id: string
+  _type: string
+  slug?: string
+  title?: string
+  client?: string
+  coverImage?: Image
+  description?: PortableTextBlock[]
+  duration?: {
+    start?: string
+    end?: string
+  }
+  overview?: PortableTextBlock[]
+  site?: string
+  tags?: string[]
+}
