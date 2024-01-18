@@ -30,7 +30,7 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanS
     return () => {
       clearInterval(timer)
     }
-  }, [])
+  }, [numThingsToAnimateIn, setCanShowArrows])
 
   return (
     <div 

@@ -5,6 +5,10 @@ import { groq } from 'next-sanity'
 import { client } from '@/sanity/lib/client'
 import { token } from '@/sanity/lib/token'
 
+type SlugObject = {
+  slug: string
+}
+
 // Used in `generateStaticParams`
 export function generateStaticSlugs(type: string) {
   // Not using loadQuery as it's optimized for fetching in the RSC lifecycle
@@ -15,7 +19,7 @@ export function generateStaticSlugs(type: string) {
       useCdn: false,
       stega: false,
     })
-    .fetch<string[]>(
+    .fetch<SlugObject[]>(
       groq`*[_type == $type && defined(slug.current)]{"slug": slug.current}`,
       { type },
     )

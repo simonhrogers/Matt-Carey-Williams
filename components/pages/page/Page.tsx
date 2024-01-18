@@ -21,6 +21,8 @@ export function Page({ data }: PageProps) {
     },
   ]
 
+  const pathname = usePathname()
+
   return (
     <div className="page-wrapper">
       {/* Header */}
@@ -29,7 +31,7 @@ export function Page({ data }: PageProps) {
         {menuItems.map((item, key) => (
           <div
             key={key}
-            className={`item ${usePathname() === item.slug ? 'active' : ''}`}
+            className={`item ${pathname === item.slug ? 'active' : ''}`}
           >
             {item.title}
           </div>

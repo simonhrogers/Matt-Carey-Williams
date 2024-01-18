@@ -32,7 +32,7 @@ export function NavbarLocation({canAnimate}: {canAnimate: boolean}) {
     return () => {
       clearInterval(timer)
     }
-  }, [canAnimate])
+  }, [canAnimate, items.length])
 
 
   return (

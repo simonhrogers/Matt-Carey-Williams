@@ -6,7 +6,7 @@ import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem, SettingsPayload } from '@/types'
 
 import Menu from "@/assets/svg/Menu.svg"
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { LogoWrapper } from '@/components/shared/LogoWrapper'
 
@@ -70,17 +70,17 @@ export default function Navbar(props: NavbarProps) {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(true)
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const currentScrollPos = window.scrollY
     const visible = (currentScrollPos <= 100 || prevScrollPos > currentScrollPos && currentScrollPos > 100)
     setPrevScrollPos(currentScrollPos)
     setVisible(visible)
-  }
-
+  }, [prevScrollPos])
+  
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [prevScrollPos, visible, handleScroll])
+  }, [handleScroll])
 
   return (
     <div className={`navbar ${(visible || isPhoneMenuActive) ? 'visible' : 'hidden'} ${isPhoneMenuActive ? 'active' : ''}`}>
