@@ -43,15 +43,20 @@ export async function POST(req: NextRequest) {
       return new Response('Bad Request', { status: 400 })
     }
 
-    // revalidateTag(body._type)
-    // if (body.slug) {
-    //   revalidateTag(`${body._type}:${body.slug}`)
-    // }
+    revalidateTag(body._type)
+    console.log(`Revalidated tag: ${body._type}`);
+    
+    if (body.slug) {
+      revalidateTag(`${body._type}:${body.slug}`)
+      console.log(`Revalidated tag: ${body._type}:${body.slug}`);
+    }
 
-    revalidatePath('/')
-    revalidatePath('/episodes')
-    revalidatePath('/writing')
-    revalidatePath('/scenes')
+    console.log(NextResponse.json({
+      status: 200,
+      revalidated: true,
+      now: Date.now(),
+      body,
+    }));
     
     return NextResponse.json({
       status: 200,
