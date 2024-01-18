@@ -24,7 +24,7 @@ export const homePageQuery = groq`
     _id,
     overview,
     title,
-    "episode": *[_type == "episode"][0] {
+    "episode": *[_type == "episode"] | order(duration.start desc)[0] {
       _id,
       _type,
       "slug": slug.current,
@@ -36,7 +36,7 @@ export const homePageQuery = groq`
           ...,
         }
       },
-      "number": count(*[_type == "episode"]),
+      "number": count(*[_type == "scene"]),
       location,
       duration,
       "coverImage": coverImage {${imageFields}},
