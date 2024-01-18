@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem, SettingsPayload } from '@/types'
 
-import Menu from "assets/svg/Menu.svg"
+import Menu from "@/assets/svg/Menu.svg"
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { LogoWrapper } from '@/components/shared/LogoWrapper'
@@ -59,12 +59,6 @@ export default function Navbar(props: NavbarProps) {
 
   const closePhoneMenu = () => {
     setIsPhoneMenuActive(false)
-  }
-
-  const handleClick = (page) => {
-    if (page.slug === pathname) {
-      setIsPhoneMenuActive(false)
-    }
   }
 
   useEffect(() => {

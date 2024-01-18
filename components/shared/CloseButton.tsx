@@ -1,4 +1,4 @@
-import Close from 'assets/svg/cross.svg'
+import Close from '@/assets/svg/cross.svg'
 
 export function CloseButton({handleClose}) {
   return (

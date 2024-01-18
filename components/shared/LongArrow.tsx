@@ -1,4 +1,4 @@
-import LongArrowSVG from 'assets/svg/LongArrowRight.svg'
+import LongArrowSVG from '@/assets/svg/LongArrowRight.svg'
 
 export default function LongArrow({direction = 'right'}) {
   return (

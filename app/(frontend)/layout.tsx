@@ -1,4 +1,4 @@
-import 'styles/index.css'
+import '@/styles/index.css'
 
 import { toPlainText } from '@portabletext/react'
 import { Metadata, Viewport } from 'next'
@@ -12,7 +12,7 @@ import { Navbar } from '@/components/global/Navbar'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
 
-import "styles/scss/main.scss"
+import "@/styles/scss/main.scss"
 import Script from 'next/script'
 import Consent from '@/components/global/Consent'
 import ModalHandler from '@/components/global/ModalHandler'
