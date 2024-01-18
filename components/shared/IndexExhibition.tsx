@@ -14,8 +14,19 @@ export interface IndexExhibitionProps {
 
 export function IndexExhibition({ exhibition, label, encodeDataAttribute }: IndexExhibitionProps) {
 
-  const { names } = exhibition
+  const { 
+    title = '',
+    names = [],
+    number = 1,
+    location = '',
+    duration = {
+      start: '',
+      end: '',
+    },
+    coverImage = null,
+  } = exhibition || {}
   const name = names?.length === 1 ? names[0] : null
+  const { start, end } = duration
 
   return (
     <Link
@@ -29,17 +40,17 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
       className="index-exhibition"
     >
       <div className="text">
-        {label} <RomanNumeral number={exhibition.number} />: {name ? <span>{name},</span> : null} <span className="title">{exhibition.title}</span><br />
-        at {exhibition.location}, {(
+        {label} <RomanNumeral number={number} />: {name ? <span>{name},</span> : null} <span className="title">{title}</span><br />
+        at {location}, {(
           <Duration
-            startDate={exhibition.duration.start} 
-            endDate={exhibition.duration.end} 
+            startDate={start} 
+            endDate={end}
           />
         )}
       </div>
       <div className="image-wrapper">
         <SanityImage
-          image={exhibition.coverImage}
+          image={coverImage}
           alt={exhibition.title}
           aspectRatio="0.75"
         />

@@ -27,11 +27,26 @@ export interface ShowcaseProject {
   title?: string
 }
 
+export interface FeaturedItem {
+  _type: string
+  slug?: string
+  title?: string
+  coverImage?: Image
+  location?: string
+  names?: string[]
+  duration?: {
+    start?: string
+    end?: string
+  }
+  author?: string
+}
+
 // Page payloads
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
+  featuredItems?: FeaturedItem[]
   showcaseProjects?: ShowcaseProject[]
   title?: string
 }
@@ -85,3 +100,32 @@ export interface EpisodePayload {
   site?: string
   tags?: string[]
 }
+
+export interface ScenePayload {
+  _id: string
+  _type: string
+  slug?: string
+  title?: string
+  client?: string
+  coverImage?: Image
+  description?: PortableTextBlock[]
+  duration?: {
+    start?: string
+    end?: string
+  }
+  overview?: PortableTextBlock[]
+  site?: string
+  tags?: string[]
+}
+
+export interface WritingPayload {
+  _id: string
+  _type: string
+  slug?: string
+  title?: string
+  client?: string
+  description?: PortableTextBlock[]
+  overview?: PortableTextBlock[]
+  body?: PortableTextBlock[]
+}
+

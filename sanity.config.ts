@@ -59,14 +59,14 @@ export default defineConfig({
     deskTool({
       structure: pageStructure([home, settings]),
     }),
-    presentationTool({
-      locate,
-      previewUrl: {
-        draftMode: {
-          enable: '/api/draft',
-        },
-      },
-    }),
+    // presentationTool({
+    //   locate,
+    //   previewUrl: {
+    //     draftMode: {
+    //       enable: '/api/draft',
+    //     },
+    //   },
+    // }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     singletonPlugin([home.name, settings.name]),
     // Add an image asset source for Unsplash

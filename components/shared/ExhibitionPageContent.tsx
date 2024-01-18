@@ -2,9 +2,15 @@ import CustomPortableText from "./CustomPortableText"
 import SanityImage from "./SanityImage"
 
 export function ExhibitionPageContent({exhibition, activeIndex, canShowContent}) {
+
+  const {
+    images = [],
+    body = [],
+  } = exhibition || {}
+
   return (
     <div className={`exhibition-page-content ${canShowContent ? 'visible' : 'invisible'}`}>
-      {exhibition.images.map((image, index) => {
+      {images.map((image, index) => {
         return (
           <div 
             className={`item ${index + 1 === activeIndex ? 'active' : ''} ${image.layout}`}
@@ -32,12 +38,12 @@ export function ExhibitionPageContent({exhibition, activeIndex, canShowContent})
           </div>
         )
       })}
-      <div className={`item ${exhibition.images.length + 1 === activeIndex ? 'active' : ''}`}>
+      <div className={`item ${images.length + 1 === activeIndex ? 'active' : ''}`}>
         <div className="text-scroll-wrapper">
           <div className="text-wrapper">
             <div className="text">
               <CustomPortableText 
-                value={exhibition.body} 
+                value={body} 
               />
             </div>
           </div>

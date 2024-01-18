@@ -4,6 +4,8 @@ import { form } from 'sanity/desk'
 export default function Duration({ startDate, endDate }) {
   // return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>
 
+  if (!startDate) return null
+  
   const start = parseISO(startDate)
   const end = parseISO(endDate)
 

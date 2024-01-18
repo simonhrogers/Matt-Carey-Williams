@@ -7,11 +7,17 @@ import RomanNumeral from "./RomanNumeral"
 export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanShowArrows}) {
 
   const { 
+    title = '',
     names = [],
-    location = '' 
+    number = 1,
+    location = '',
+    duration = {
+      start: null,
+      end: null,
+    },
   } = exhibition || {}
-
   const name = names?.length === 1 ? names[0] : null
+  const { start, end } = duration
   const numThingsToAnimateIn = 3 + (names.length ? names.length + 1 : 0)
   const [numThingsAnimatedIn, setNumThingsAnimatedIn] = useState(0)
 
@@ -51,22 +57,28 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanS
         </div>
         <div className={`title-date-wrapper ${numThingsAnimatedIn >= 3 ? 'visible' : 'invisible'}`}>
           <div className="title-wrapper">
-            {label} <RomanNumeral number={exhibition.number} />: <span className="title">{exhibition.title}</span>
+            {label} <RomanNumeral number={number} />: <span className="title">{title}</span>
           </div>
-          {exhibition.duration && exhibition.duration.start && exhibition.duration.end && (
+
             <div className="date">
               <Duration
-                startDate={exhibition.duration.start} 
-                endDate={exhibition.duration.end} 
+                startDate={start} 
+                endDate={end} 
               />
             </div>
-          )}
+
         </div>
         <div className="names-wrapper">
           <div className={`with ${numThingsAnimatedIn >= 4 ? 'visible' : 'invisible'}`}>
             with
           </div>
-          <div className="names">
+          <div className={`
+            names 
+            ${names.length === 1 ? 'single' : ''}
+            ${names.length <= 10 && names.length > 1 ? 'two-to-ten' : ''}
+            ${names.length > 10 && names.length <= 20 ? 'eleven-to-twenty' : ''}
+            ${names.length > 20 ? 'twenty-one-plus' : ''}
+          `}>
             {names.map((name, key) => {
               return (
                 <div key={key} className={`name ${numThingsAnimatedIn >= 4 + (key + 1) ? 'visible' : 'invisible'}`}>

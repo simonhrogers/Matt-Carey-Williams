@@ -3,8 +3,10 @@ import LongArrow from "./LongArrow"
 
 export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, canShowArrows}) {
 
+  const { images = [] } = exhibition || {}
+
   const showLeftArrow = activeIndex > 0
-  const showRightArrow = activeIndex < exhibition.images.length + 1
+  const showRightArrow = activeIndex < images.length + 1
 
   const handleLeftClick = () => {
     if (activeIndex > 0) {
@@ -13,7 +15,7 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, c
   }
 
   const handleRightClick = () => {
-    if (activeIndex < exhibition.images.length + 1) {
+    if (activeIndex < images.length + 1) {
       setActiveIndex(activeIndex + 1)
     }
   }
