@@ -6,11 +6,13 @@ import RomanNumeral from "./RomanNumeral"
 
 export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanShowArrows}) {
 
-  const { names } = exhibition
-  const name = names?.length === 1 ? names[0] : null
+  const { 
+    names = [],
+    location = '' 
+  } = exhibition || {}
 
+  const name = names?.length === 1 ? names[0] : null
   const numThingsToAnimateIn = 3 + (names.length ? names.length + 1 : 0)
-  
   const [numThingsAnimatedIn, setNumThingsAnimatedIn] = useState(0)
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanS
             />
           </div>
           <div className={`location ${numThingsAnimatedIn >= 2 ? 'visible' : 'invisible'}`}>
-            at {exhibition.location}
+            at {location}
           </div>
         </div>
         <div className={`title-date-wrapper ${numThingsAnimatedIn >= 3 ? 'visible' : 'invisible'}`}>
@@ -65,7 +67,7 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanS
             with
           </div>
           <div className="names">
-            {exhibition.names.map((name, key) => {
+            {names.map((name, key) => {
               return (
                 <div key={key} className={`name ${numThingsAnimatedIn >= 4 + (key + 1) ? 'visible' : 'invisible'}`}>
                   {name}
