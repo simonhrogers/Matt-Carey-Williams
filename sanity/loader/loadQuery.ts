@@ -64,6 +64,7 @@ export const loadQuery = ((query, params = {}, options = {}) => {
   }
   return queryStore.loadQuery(query, params, {
     ...options,
+    cache: 'no-store',
     next: {
       revalidate,
       ...(options.next || {}),
