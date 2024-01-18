@@ -13,11 +13,17 @@ export const client = createClient({
   dataset,
   apiVersion,
   // If webhook revalidation is setup we want the freshest content, if not then it's best to use the speedy CDN
-  // useCdn: revalidateSecret ? false : true,
-  useCdn: false,
+  useCdn: revalidateSecret ? false : true,
   perspective: 'published',
   stega: {
     studioUrl,
     // logger: console,
+    filter: (props) => {
+      if (props.sourcePath.at(-1) === 'title') {
+        return true
+      }
+
+      return props.filterDefault(props)
+    },
   },
 })

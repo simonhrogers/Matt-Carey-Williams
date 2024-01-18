@@ -1,5 +1,6 @@
 import 'server-only'
 
+import * as queryStore from '@sanity/react-loader'
 import { draftMode } from 'next/headers'
 
 import { client } from '@/sanity/lib/client'
@@ -29,8 +30,6 @@ import {
   WritingPayload,
   SettingsPayload,
 } from '@/types'
-
-import { queryStore } from './createQueryStore'
 
 const serverClient = client.withConfig({
   token,
