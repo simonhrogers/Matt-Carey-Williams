@@ -32,7 +32,7 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanS
           return prevNum
         }
       })
-    }, 250)
+    }, 333)
     return () => {
       clearInterval(timer)
     }
