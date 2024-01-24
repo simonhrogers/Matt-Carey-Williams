@@ -9,13 +9,15 @@
   line-height: 1.25;
   transition: transform 0.25s ease-in-out;
   background-color: white;
+  // opacity: 0.6;
   &.hidden {
-    @include minWidth(tablet) {
+    // @include minWidth(tablet) {
       transform: translateY(-100%);
-    }
+    // }
   }
   &.active {
     @include maxWidth(laptop) {
+      padding-bottom: 1.075em;
       border-bottom: 1px solid var(--color);
     }
   }
@@ -29,15 +31,18 @@
     .svg {
       stroke: var(--color);
       // transition: transform 0.25s ease-in-out;
-      &.active {
-        transform: rotate(45deg);
+      &.visible {
+        
+      }
+      &.invisible {
+        display: none;
       }
     }
   }
 
   .menu-items {
     @include maxWidth(laptop) {
-      margin-top: var(--lh);
+      margin-top: calc(1.725 * var(--lh));
       flex-basis: 100%;
     }
     @include maxWidth(tablet) {

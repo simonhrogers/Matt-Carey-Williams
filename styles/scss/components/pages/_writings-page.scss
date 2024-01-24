@@ -1,7 +1,7 @@
 .writings-page {
   flex: 1;
   @include minWidth(tablet) {
-    padding: calc(3 * var(--lh)) var(--lh);
+    padding: calc(2 * var(--lh)) var(--lh);
     padding-top: calc(4.5rem + 3 * var(--lh));
   }
   @include maxWidth(tablet) {

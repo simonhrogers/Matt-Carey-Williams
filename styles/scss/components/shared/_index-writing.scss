@@ -13,21 +13,34 @@
   &:last-child {
     margin-bottom: 0;
   }
-  @media (hover: hover) {
-    &:hover {
-      opacity: 1;
-    }
-  }
-  @include minWidth(tablet) {
-    &:nth-child(3n + 2) {
-      .index-writing-inner {
-        margin-left: calc(-4 * var(--lh));
-        margin-right: calc(4 * var(--lh));
+  &:nth-child(4n + 2) {
+    .index-writing-inner {
+      @include minWidth(tablet) {
+        margin-left: calc(-6 * var(--lh));
+        margin-right: calc(6 * var(--lh));
+      }
+      @include minWidth(laptop) {
+        margin-left: calc(-8 * var(--lh));
+        margin-right: calc(8 * var(--lh));
       }
     }
-    &:nth-child(3n + 3) {
-      .index-writing-inner {
+  }
+  &:nth-child(4n + 3) {
+    .index-writing-inner {
+      @include minWidth(tablet) {
         margin-left: auto;
+      }
+    }
+  }
+  &:nth-child(4n + 4) {
+    .index-writing-inner {
+      @include minWidth(tablet) {
+        margin-left: calc(-3 * var(--lh));
+        margin-right: calc(3 * var(--lh));
+      }
+      @include minWidth(laptop) {
+        margin-left: calc(-4 * var(--lh));
+        margin-right: calc(4 * var(--lh));
       }
     }
   }
@@ -35,6 +48,11 @@
     @include text-width;
     .title, .continue-reading {
       @include typography-small;
+    }
+    .title {
+      @include maxWidth(tablet) {
+        margin-bottom: calc(0.25 * var(--lh));
+      }
     }
     .continue-reading {
       line-height: var(--lh-rem);
@@ -50,6 +68,11 @@
 
 .home-page {
   .index-writing {
+    margin-right: auto;
+    padding: 0 var(--lh);
+    .index-writing-inner {
+      margin: auto;
+    }
     @include maxWidth(tablet) {
       width: 100%;
       margin: calc(2 * var(--lh)) 0;

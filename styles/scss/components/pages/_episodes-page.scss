@@ -1,7 +1,7 @@
 .episodes-page {
   flex: 1;
   @include minWidth(tablet) {
-    padding: calc(3 * var(--lh)) 0;
+    padding: calc(2 * var(--lh)) 0;
     padding-top: calc(4.5rem + 3 * var(--lh));
   }
   @include maxWidth(tablet) {

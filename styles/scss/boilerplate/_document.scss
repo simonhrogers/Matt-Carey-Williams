@@ -30,6 +30,7 @@ body {
 }
 
 button {
+  letter-spacing: var(--letter-spacing);
   cursor: pointer;
 
   &:disabled {

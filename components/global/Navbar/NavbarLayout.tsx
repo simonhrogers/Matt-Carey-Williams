@@ -6,6 +6,7 @@ import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem, SettingsPayload } from '@/types'
 
 import Menu from "@/assets/svg/Menu.svg"
+import Close from '@/assets/svg/Cross.svg'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { LogoWrapper } from '@/components/shared/LogoWrapper'
@@ -94,7 +95,8 @@ export default function Navbar(props: NavbarProps) {
         onClick={isPhoneMenuActive ? closePhoneMenu : openPhoneMenu}
         aria-label={isPhoneMenuActive ? 'Close Menu' : 'Open Menu'}
       >
-        <Menu className={`svg ${isPhoneMenuActive ? 'active' : ''}`} />
+        <Close className={`svg ${isPhoneMenuActive ? 'visible' : 'invisible'}`} />
+        <Menu className={`svg ${isPhoneMenuActive ? 'invisible' : 'visible'}`} />
       </button>
       <div className={`menu-items ${isPhoneMenuActive ? 'active' : ''}`}>
         {menuItems && menuItems.map((menuItem, key) => {

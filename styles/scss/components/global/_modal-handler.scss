@@ -75,8 +75,8 @@ input:-internal-autofill-selected {
     }
     .closeButtonWrapper {
       position: absolute;
-      top: calc(1.000 *  var(--lh));
-      right: calc(1.000 *  var(--lh));
+      top: 1em;
+      right: 1em;
       @include maxWidth(tablet) {
         top: calc(1 * var(--lh));
         right: calc(1 * var(--lh));
@@ -237,9 +237,9 @@ input:-internal-autofill-selected {
         padding-top: 0.1rem;
         @include typography-small;
         vertical-align: middle;
-        @include maxWidth(tablet) {
-          @include typography-medium;
-        }
+        // @include maxWidth(tablet) {
+        //   @include typography-medium;
+        // }
       }
     }
   }

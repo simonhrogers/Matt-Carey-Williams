@@ -1,8 +1,12 @@
 .exhibition-page-wrapper {
   flex: 1;
   .exhibition-page {
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: scroll;
     z-index: 4;
     background-color: white;
     width: 100%;

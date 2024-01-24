@@ -1,3 +1,21 @@
+.page {
+  .portable-text {
+    @include text-width-writing;
+  }
+}
+
+.page, .exhibition-page {
+  .portable-text {
+    @include text-width-exhibition;
+  }
+}
+
+// .writings-page {
+//   .portable-text {
+//     @include text-width-exhibition;
+//   }
+// }
+
 .portable-text {
   @include text-width;
   h4 {
@@ -46,15 +64,27 @@
   blockquote {
     @include typography-large;
     margin: calc(3 * var(--lh-rem-m)) 0;
-    margin-left: calc(-4 * var(--lh-rem-m));
-    margin-right: calc(4 * var(--lh-rem-m));
     @include text-width-writing;
+    @include maxWidth(tablet) {
+      max-width: unset;
+      margin-left: calc(-1 * var(--lh-rem));
+      margin-right: calc(-1 * var(--lh-rem));
+    }
+    @include minWidth(tablet) {
+      margin-left: calc(-4 * var(--lh-rem-m));
+      margin-right: calc(4 * var(--lh-rem-m));
+    }
   }
   .portable-text-image-wrapper {
-    position: absolute;
-    left: var(--lh);
-    // height: 0;
-    width: 25%;
+    @include maxWidth(tablet) {
+      width: 66.666%;
+      margin: calc(2 * var(--lh)) 0;
+    }
+    @include minWidth(tablet) {
+      position: absolute;
+      left: var(--lh-rem);
+      width: 25%;
+    }
     .image-wrapper {
       width: 100%;
       height: 0;
@@ -70,7 +100,7 @@
     }
     .caption {
       .portable-text {
-        margin-top: calc(0.25 * var(--lh));
+        margin-top: calc(0.5 * var(--lh));
         @include typography-small;
       }
     }

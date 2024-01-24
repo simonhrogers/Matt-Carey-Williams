@@ -1,5 +1,9 @@
 .index-exhibition {
   display: block;
+  @include maxWidth(tablet) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
   @media (hover: hover) {
     &:hover {
       opacity: 1;
@@ -12,7 +16,8 @@
     @include typography-small;
     margin-bottom: var(--lh);
     @include maxWidth(tablet) {
-      margin-bottom: calc(0.5 * var(--lh));
+      margin-top: calc(0.5 * var(--lh));
+      margin-bottom: 0;
       margin-left: var(--lh-rem);
       margin-right: var(--lh-rem);
     }

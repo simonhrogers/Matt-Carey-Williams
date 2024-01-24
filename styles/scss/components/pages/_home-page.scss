@@ -1,6 +1,6 @@
 .home-page {
   flex: 1;
-  padding: calc(3 * var(--lh)) 0;
+  padding: calc(2 * var(--lh)) 0;
   padding-top: calc(4.5rem + 3 * var(--lh));
   transform: translateZ(0);
   @include maxWidth(tablet) {

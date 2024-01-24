@@ -3,18 +3,12 @@
 }
 
 @mixin typography-medium {
-  @include maxWidth(laptop) {
-    font-size: 0.75rem;
-    line-height: 1.4;
-  }
-  @include minWidth(laptop) {
-    font-size: 0.8rem;
-    line-height: 1.4;
-  }
+  font-size: 0.71428rem;
+  line-height: 1.4;
 }
 
 @mixin typography-small {
-  font-size: 0.65rem;
+  font-size: 0.57142rem;
   line-height: 1.4;
 }
 
@@ -24,7 +18,7 @@
 }
 
 @mixin text-width {
-  max-width: 30em;
+  max-width: 28em;
   @include maxWidth(tablet) {
     max-width: 100%;
   }
@@ -32,6 +26,13 @@
 
 @mixin text-width-writing {
   max-width: 40em;
+  @include maxWidth(tablet) {
+    max-width: 100%;
+  }
+}
+
+@mixin text-width-exhibition {
+  max-width: 34em;
   @include maxWidth(tablet) {
     max-width: 100%;
   }

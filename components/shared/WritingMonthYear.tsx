@@ -1,10 +1,11 @@
-import { format, parseISO } from 'date-fns'
+import { isValid, parseISO, format } from 'date-fns'
 
 export function WritingMonthYear({date}) {
+  const parsedDate = parseISO(date)
 
   return (
     <span className="date">
-      {format(parseISO(date), 'LLLL yyyy')}
+      {isValid(parsedDate) ? format(parsedDate, 'LLLL yyyy') : 'Invalid date'}
     </span>
   )
 }
