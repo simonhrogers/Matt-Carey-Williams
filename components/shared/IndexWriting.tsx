@@ -17,27 +17,28 @@ export interface IndexWritingProps {
 export function IndexWriting({ writing, encodeDataAttribute }: IndexWritingProps) {
   
   return (
-    <Link
-      key={writing._id}
-      href={resolveHref(writing._type, writing.slug) ?? '/'}
-      data-sanity={encodeDataAttribute?.([
-        'writing',
-        writing._id,
-        'slug',
-      ])}
-      className="index-writing"
-    >
+    <div className="index-writing">
       <div className="index-writing-inner">
-        <div className="title">{writing.title} (<WritingMonthYear date={writing.date} />)</div>
-        <CustomPortableText 
-          value={writing.excerpt} 
-          paragraphClasses="excerpt"
-        />
-        <div className="continue-reading">
-          <LongArrow /> Continue reading
-        </div>
+        <Link
+          key={writing._id}
+          href={resolveHref(writing._type, writing.slug) ?? '/'}
+          data-sanity={encodeDataAttribute?.([
+            'writing',
+            writing._id,
+            'slug',
+          ])}
+        >
+          <div className="title">{writing.title} (<WritingMonthYear date={writing.date} />)</div>
+          <CustomPortableText 
+            value={writing.excerpt} 
+            paragraphClasses="excerpt"
+          />
+          <div className="continue-reading">
+            <LongArrow /> Continue reading
+          </div>
+        </Link>
       </div>
-    </Link>
+    </div>
   )
 }
 
