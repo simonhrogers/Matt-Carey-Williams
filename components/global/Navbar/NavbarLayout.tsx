@@ -51,6 +51,13 @@ export default function Navbar(props: NavbarProps) {
 
   const pathname = usePathname()
   const activeParentPath = menuItems.find(item => item.slug === pathname.split('/')[1])?.slug
+  // let hideNavbar = false
+  // if (pathname.includes('writing/') || pathname.includes('episodes/') || pathname.includes('scenes/')) hideNavbar = true
+  // const [hideNavbar, setHideNavbar] = useState(['writing/', 'episodes/', 'scenes/'].includes(pathname))
+
+  // console.log('hideNavbar', hideNavbar);
+  // console.log('pathname', pathname);
+  
 
   const [isPhoneMenuActive, setIsPhoneMenuActive] = useState(false)
 
@@ -64,6 +71,7 @@ export default function Navbar(props: NavbarProps) {
 
   useEffect(() => {
     closePhoneMenu()
+    // setHideNavbar(['writing/', 'episodes/', 'scenes/'].includes(pathname))
   }, [pathname])
 
   // make header disappear on scroll down
@@ -84,7 +92,11 @@ export default function Navbar(props: NavbarProps) {
   }, [handleScroll])
 
   return (
-    <div className={`navbar ${(visible || isPhoneMenuActive) ? 'visible' : 'hidden'} ${isPhoneMenuActive ? 'active' : ''}`}>
+    <div className={`
+      navbar 
+      ${(visible || isPhoneMenuActive) ? 'visible' : 'hidden'} 
+      ${isPhoneMenuActive ? 'active' : ''}
+    `}>
       <LogoWrapper
         shouldAnimate={true}
         formatAsLink={true}

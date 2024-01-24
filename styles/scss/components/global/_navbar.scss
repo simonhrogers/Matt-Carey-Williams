@@ -21,6 +21,11 @@
       border-bottom: 1px solid var(--color);
     }
   }
+  &.displaynone {
+    display: none;
+    transform: translateY(-100%);
+    transition: none !important;
+  }
   .phone-menu-button {
     @include minWidth(laptop) {
       display: none;
