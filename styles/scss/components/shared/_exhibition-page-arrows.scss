@@ -1,43 +1,41 @@
 .exhibition-page-arrows {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 7;
+  cursor: none;
   @include maxWidth(tablet) {
     display: none;
   }
   .left, .right {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 50%;
-    z-index: 7;
-    opacity: 0;
-    display: flex;
-    align-items: center;
-    padding: var(--lh);
-    &.show {
-      cursor: pointer;
-      @media (hover: hover) {
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
     .long-arrow-right {
       height: var(--lh);
     }
   }
-  .left {
-    left: 0;
-    justify-content: flex-start;
-  }
-  .right {
-    right: 0;
-    justify-content: flex-end;
-  }
 }
 
 .fullBleed {
-  .exhibition-page-arrows {
+  .exhibition-page-arrows, .arrows {
     svg {
       stroke: white;
     }
   }
+}
+
+.arrowButton {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+  // opacity: 0;
+  transition: opacity 0.125s ease-in-out;
+  display: flex;
+  align-items: center;
+  @include maxWidth(tablet) {
+    display: none;
+  }
+  // .svg {
+  //   width: calc(2 * var(--fm));
+  // }
 }

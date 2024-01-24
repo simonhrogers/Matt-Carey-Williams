@@ -75,11 +75,11 @@ input:-internal-autofill-selected {
     }
     .closeButtonWrapper {
       position: absolute;
-      top: 1em;
-      right: 1em;
+      top: 1rem;
+      right: var(--lh-rem);
       @include maxWidth(tablet) {
-        top: calc(1 * var(--lh));
-        right: calc(1 * var(--lh));
+        top: calc(1rem);
+        right: var(--lh-rem);
       }
       .closeButton {
         width: 1em;

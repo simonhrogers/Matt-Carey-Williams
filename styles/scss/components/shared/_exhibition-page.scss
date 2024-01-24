@@ -11,6 +11,7 @@
     background-color: white;
     width: 100%;
     padding: 1em var(--lh);
+    cursor: var(--cursor);
     @include minWidth(tablet) {
       overflow: hidden;
       left: 0;

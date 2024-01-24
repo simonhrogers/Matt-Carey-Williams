@@ -7,6 +7,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import delQuery from '@/utils/delQuery'
 import Close from '@/assets/svg/Cross.svg'
 import ModalHandlerNewsletter from './ModalHandlerNewsletter'
+import CloseButton from '../shared/CloseButton'
 
 export default function ModalHandler() {
 
@@ -35,15 +36,9 @@ export default function ModalHandler() {
         onClick={() => handleClose()}
       />
       <div className={`modal ${modal ? `isActive` : ''}`}>
-        <div className="closeButtonWrapper">
-          <button
-            onClick={() => handleClose()} 
-            aria-label='Close'
-            className="closeButton"
-          >
-            <Close />
-          </button>
-        </div>
+        <CloseButton
+          handleClose={handleClose}
+        />
         {newsletter && (
           <ModalHandlerNewsletter />
         )}
