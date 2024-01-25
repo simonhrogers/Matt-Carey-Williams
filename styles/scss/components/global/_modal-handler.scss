@@ -226,7 +226,7 @@ input:-internal-autofill-selected {
         vertical-align: middle;
         cursor: pointer;
         &:checked, &:focus {
-          // background-image: url('/images/cross.svg');
+          // background-image: url('/images/Close.svg');
           background-color: var(--color);
           border-radius: 0;
           

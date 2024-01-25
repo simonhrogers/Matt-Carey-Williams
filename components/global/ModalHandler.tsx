@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 // import styles from './ModalHandler.module.scss'
 import delQuery from '@/utils/delQuery'
-import Close from '@/assets/svg/Cross.svg'
+import Close from '@/assets/svg/Close.svg'
 import ModalHandlerNewsletter from './ModalHandlerNewsletter'
 import CloseButton from '../shared/CloseButton'
 

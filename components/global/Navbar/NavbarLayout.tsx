@@ -6,7 +6,7 @@ import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem, SettingsPayload } from '@/types'
 
 import Menu from "@/assets/svg/Menu.svg"
-import Close from '@/assets/svg/Cross.svg'
+import Close from '@/assets/svg/Close.svg'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { LogoWrapper } from '@/components/shared/LogoWrapper'
