@@ -62,6 +62,8 @@
     }
     .long-arrow-svg {
       margin-right: calc(0.5 * var(--lh));
+      width: 3.25em;
+      stroke-width: 3;
     }
   }
 }

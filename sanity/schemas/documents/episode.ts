@@ -45,6 +45,28 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'cv',
+      title: 'Artist’s CV',
+      type: 'file',
+      options: {
+        storeOriginalFilename: true,
+      },
+    }),
+    defineField({
+      name: 'portfolio',
+      title: 'Artist’s Portfolio',
+      type: 'file',
+      options: {
+        storeOriginalFilename: true,
+      },
+    }),
+    defineField({
+      name: 'readMore',
+      title: 'Read More',
+      type: 'reference',
+      to: [{ type: 'writing' }],
+    }),
+    defineField({
       name: 'duration',
       title: 'Duration',
       type: 'duration',

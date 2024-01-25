@@ -35,7 +35,29 @@ images[] {
   caption,
   credit
 },
-body
+body,
+pressRelease {
+  ...,
+  asset-> {
+    ...,
+  }
+},
+cv {
+  ...,
+  asset-> {
+    ...,
+  }
+},
+portfolio {
+  ...,
+  asset-> {
+    ...,
+  }
+},
+readMore-> {
+  _type,
+  "slug": slug.current,
+},
 `
 
 export const homePageQuery = groq`

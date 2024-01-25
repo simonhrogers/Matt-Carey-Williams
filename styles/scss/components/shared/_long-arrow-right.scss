@@ -2,6 +2,7 @@
   width: 3.75em;
   transform: translateY(0.125em);
   stroke: var(--color, black);
+  stroke-width: 2;
   @media (hover: hover) {
     &:hover {
       opacity: 0.333;

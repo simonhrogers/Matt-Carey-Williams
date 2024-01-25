@@ -21,10 +21,22 @@
       @include maxWidth(tablet) {
         margin-bottom: var(--lh);
       }
+      .banner-text-item {
+        display: inline-block;
+        &:not(:last-child) {
+          margin-right: calc(1 * var(--lh-rem));
+        }
+        @include maxWidth(tablet) {
+          display: block;
+          &:not(:last-child) {
+            margin-bottom: calc(0.25 * var(--lh));
+          }
+        }
+      }
       a {
-        text-decoration: underline;
-        text-underline-offset: 2px;
-        text-decoration-thickness: 1px;
+        // text-decoration: underline;
+        // text-underline-offset: 2px;
+        // text-decoration-thickness: 1px;
       }
     }
     .banner-options {

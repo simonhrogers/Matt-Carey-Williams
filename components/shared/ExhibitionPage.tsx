@@ -8,6 +8,7 @@ import ExhibitionPageTitleCard from "./ExhibitionPageTitleCard"
 import ExhibitionPageContent from "./ExhibitionPageContent"
 import ExhibitionPageArrows from "./ExhibitionPageArrows"
 import { set } from "date-fns";
+import ExhibitionPageAdditionalInformation from "./ExhibitionPageAdditionalInformation";
 
 export function ExhibitionPage({exhibition, label}) {
 
@@ -58,6 +59,11 @@ export function ExhibitionPage({exhibition, label}) {
           setCanShowArrows={setCanShowContent}
         />
         <ExhibitionPageContent 
+          exhibition={exhibition}
+          activeIndex={activeIndex}
+          canShowContent={canShowContent}
+        />
+        <ExhibitionPageAdditionalInformation
           exhibition={exhibition}
           activeIndex={activeIndex}
           canShowContent={canShowContent}

@@ -1,5 +1,7 @@
+import { useState } from "react"
 import CustomPortableText from "./CustomPortableText"
 import SanityImage from "./SanityImage"
+import Link from "next/link"
 
 export function ExhibitionPageContent({exhibition, activeIndex, canShowContent}) {
 

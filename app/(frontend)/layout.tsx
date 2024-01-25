@@ -19,6 +19,8 @@ import ModalHandler from '@/components/global/ModalHandler'
 import NewsletterBanner from '@/components/global/NewsletterBanner'
 import SharedMenu from '@/components/shared/SharedMenu'
 import OriginTracker from '@/components/global/OriginTracker'
+import PageAnimatePresence from '@/components/shared/PageAnimatePresence'
+import { Animate } from '@/components/shared/Animate'
 
 const VisualEditing = dynamic(() => import('@/sanity/loader/VisualEditing'))
 
@@ -109,10 +111,13 @@ export default async function IndexRoute({
             <Navbar />
           </Suspense>
           <Suspense>
-            <>
-              <SharedMenu />
-              {children}
-            </>
+            {/* <PageAnimatePresence> */}
+              <>
+                <SharedMenu />
+                {children}
+                {/* <Animate>{children}</Animate> */}
+              </>
+            {/* </PageAnimatePresence> */}
           </Suspense>
           <Suspense>
             <Footer />

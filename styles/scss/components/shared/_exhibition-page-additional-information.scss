@@ -1,0 +1,34 @@
+.additional-information-wrapper {
+  z-index: 99;
+  opacity: 0;
+  @include maxWidth(tablet) {
+    position: relative;
+    opacity: 1;
+  }
+  &.visible {
+    opacity: 1;
+  }
+  .additional-information-button,
+  .additional-information {
+    @include maxWidth(tablet) {
+      width: 100vw;
+      margin: 0 calc(-1 * var(--lh-rem));
+      margin-bottom: calc(-1.25rem);
+    }
+    &.banner {
+      padding: 1.25rem calc(1 * var(--lh-rem));
+    }
+  }
+  .additional-information {
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+  }
+  .additional-information-button {
+    position: absolute;
+    bottom: 0;
+    &.banner {
+      border-top: none;
+    }
+  }
+}

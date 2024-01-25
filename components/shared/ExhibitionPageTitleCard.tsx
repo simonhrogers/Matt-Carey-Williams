@@ -27,16 +27,18 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanS
         if (prevNum < numThingsToAnimateIn) {
           return prevNum + 1
         } else {
-          setCanShowArrows(true)
           clearInterval(timer)
           return prevNum
         }
       })
+      if (numThingsAnimatedIn >= numThingsToAnimateIn) {
+        setCanShowArrows(true)
+      }
     }, 333)
     return () => {
       clearInterval(timer)
     }
-  }, [numThingsToAnimateIn, setCanShowArrows])
+  }, [numThingsToAnimateIn, setCanShowArrows, numThingsAnimatedIn])
 
   return (
     <div 
