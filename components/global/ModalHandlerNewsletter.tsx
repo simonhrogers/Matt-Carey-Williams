@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 // import styles from './ModalHandler.module.scss'
 import LongArrow from '@/components/shared/LongArrow'
-// import Link from 'components/shared/Link'
+// import Link from '@/components/shared/Link'
 
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'

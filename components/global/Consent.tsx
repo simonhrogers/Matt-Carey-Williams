@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { hasCookie,setCookie } from 'cookies-next'
-// import { Settings } from 'sanity/lib/sanity.queries'
+// import { Settings } from '@/sanity/lib/queries'
 import Link from 'next/link'
 
 import styles from './Consent.module.scss'

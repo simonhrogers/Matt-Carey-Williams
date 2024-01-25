@@ -1,4 +1,59 @@
+
 import { groq } from 'next-sanity'
+
+const postFields = groq`
+  _id,
+  title,
+  date,
+  _updatedAt,
+  excerpt,
+  coverImage,
+  "slug": slug.current,
+  "author": author->{name, picture},
+`
+
+// export const settingsQuery = groq`*[_type == "settings"][0]`
+
+export const postsQuery = groq`
+*[_type == "post"] | order(date desc, _updatedAt desc) {
+  ${postFields}
+}`
+
+export const postSlugsQuery = groq`
+*[_type == "post" && defined(slug.current)][].slug.current
+`
+
+export const postBySlugQuery = groq`
+*[_type == "post" && slug.current == $slug][0] {
+  ${postFields}
+}
+`
+
+export const exhibitionFields = groq`
+  
+`
+
+export const sceneFields = groq`
+ ${exhibitionFields},
+`
+
+export const scenesQuery = groq`
+*[_type == "scene"] | order(date desc, _updatedAt desc) {
+  ${sceneFields}
+}`
+
+export const sceneSlugsQuery = groq`
+*[_type == "scene" && defined(slug.current)][].slug.current
+`
+
+export const sceneBySlugQuery = groq`
+*[_type == "scene" && slug.current == $slug][0] {
+  ${sceneFields}
+}
+`
+
+
+
 
 const imageFields = groq`
   _type,
