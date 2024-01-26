@@ -23,23 +23,29 @@ export function Animate({ children }: PropsWithChildren) {
   const isBack = useRef(false)
 
   const onRouteChangeComplete = (url: any) => {
-    if (isBack.current && scrollPositions.current[url]) {
-      setTimeout(() => {
+    const restoreScrollPosition = () => {
+      if (isBack.current && scrollPositions.current[url]) {
         console.log('scrolling to', scrollPositions.current[url]);
         window.scroll({
           top: scrollPositions.current[url].y,
           behavior: "auto",
         })
-      }, 1)
-    } else {
-      setTimeout(() => {
+      } else {
         window.scroll({
           top: 0,
           behavior: "auto",
         })
-      }, 1)
+      }
+      isBack.current = false
     }
-    isBack.current = false
+  
+    if (document.readyState === 'complete') {
+      // If the page has already loaded, restore the scroll position immediately
+      restoreScrollPosition();
+    } else {
+      // Otherwise, wait for the page to load before restoring the scroll position
+      window.addEventListener('load', restoreScrollPosition, { once: true });
+    }
   }
 
   useEffect(() => {
@@ -76,11 +82,11 @@ export function Animate({ children }: PropsWithChildren) {
           variants={{
             pageInitial: {
               opacity: 0,
-              transform: 'translateZ(0)',
-              zIndex: 999,
             },
             pageAnimate: {
               opacity: 1,
+              transform: 'translateZ(0)',
+              zIndex: 999,
               transitionEnd: {
                 transform: 'none',
                 zIndex: 'unset',

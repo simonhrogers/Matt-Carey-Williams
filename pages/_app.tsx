@@ -11,6 +11,7 @@ import NewsletterBanner from '@/components/global/NewsletterBanner'
 import SharedMenu from '@/components/shared/SharedMenu'
 import { Suspense } from 'react'
 import { Animate } from '@/components/shared/Animate'
+import OriginTracker from "@/components/global/OriginTracker"
 
 export interface SharedPageProps {
   token: string
@@ -59,32 +60,34 @@ export default function App({
           }}
         />
       )}
-      <div className="layout">
-        <Suspense>
-          <ModalHandler />
-        </Suspense>
-        <Suspense>
-          <div className="banners">
-            <NewsletterBanner />
-            <Consent />
-          </div>
-        </Suspense>
-        <Suspense>
-          <Navbar />
-        </Suspense>
-        <Suspense>
-          <>
-            <Animate>
-              <SharedMenu />
-              <Component {...pageProps} />
-            </Animate>
-          </>
-        </Suspense>
-        <Suspense>
-          <Footer />
-        </Suspense>
-        {/* <IntroTemplate /> */}
-      </div>
+      <OriginTracker>
+        <div className="layout">
+          <Suspense>
+            <ModalHandler />
+          </Suspense>
+          <Suspense>
+            <div className="banners">
+              <NewsletterBanner />
+              <Consent />
+            </div>
+          </Suspense>
+          <Suspense>
+            <Navbar />
+          </Suspense>
+          <Suspense>
+            <>
+              <Animate>
+                <SharedMenu />
+                <Component {...pageProps} />
+              </Animate>
+            </>
+          </Suspense>
+          <Suspense>
+            <Footer />
+          </Suspense>
+          {/* <IntroTemplate /> */}
+        </div>
+      </OriginTracker>
     </>
   )
 }
