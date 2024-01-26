@@ -81,6 +81,9 @@
         padding: 1rem var(--lh-rem);
         .caption {
           flex: 1;
+          .portable-text {
+            max-width: unset;
+          }
         }
       }
     }

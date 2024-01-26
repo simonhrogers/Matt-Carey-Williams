@@ -7,13 +7,13 @@ import {
 } from './api'
 import {
   homePageQuery,
-  scenesQuery,
+  scenesPageQuery,
   sceneBySlugQuery,
   sceneSlugsQuery,
-  episodesQuery,
+  episodesPageQuery,
   episodeBySlugQuery,
   episodeSlugsQuery,
-  writingsQuery,
+  writingsPageQuery,
   writingBySlugQuery,
   writingSlugsQuery,
   pageSlugsQuery,
@@ -68,7 +68,7 @@ export async function getSettings(client: SanityClient): Promise<SettingsPayload
 // episode
 
 export async function getAllEpisodes(client: SanityClient): Promise<EpisodesPayload> {
-  return (await client.fetch(episodesQuery)) || []
+  return (await client.fetch(episodesPageQuery)) || []
 }
 
 export async function getAllEpisodesSlugs(): Promise<Pick<EpisodePayload, 'slug'>[]> {
@@ -87,7 +87,7 @@ export async function getEpisodeBySlug(
 // scene
 
 export async function getAllScenes(client: SanityClient): Promise<ScenesPayload> {
-  return (await client.fetch(scenesQuery)) || []
+  return (await client.fetch(scenesPageQuery)) || []
 }
 
 export async function getAllScenesSlugs(): Promise<Pick<ScenePayload, 'slug'>[]> {
@@ -106,7 +106,7 @@ export async function getSceneBySlug(
 // writing
 
 export async function getAllWritings(client: SanityClient): Promise<WritingsPayload> {
-  return (await client.fetch(writingsQuery)) || []
+  return (await client.fetch(writingsPageQuery)) || []
 }
 
 export async function getAllWritingsSlugs(): Promise<Pick<WritingPayload, 'slug'>[]> {

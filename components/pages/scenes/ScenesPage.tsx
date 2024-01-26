@@ -12,6 +12,8 @@ export function ScenesPage({ data }: ScenesPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { scenes = [], title = '' } = data ?? {}
 
+  console.log('data', data);
+
   const currentDate = new Date()
 
   const filterScenes = (filter) => scenes.filter(scene => {
