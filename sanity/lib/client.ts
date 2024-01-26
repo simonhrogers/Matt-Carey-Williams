@@ -124,7 +124,7 @@ export async function getWritingBySlug(
 
 // page (about, contact + dynamic)
 
-export async function getAllPagesSlugs(): Promise<Pick<PagePayload, 'slug'>[]> {
+export async function getAllPageSlugs(): Promise<Pick<PagePayload, 'slug'>[]> {
   const client = getClient()
   const slugs = (await client.fetch<string[]>(pageSlugsQuery)) || []
   return slugs.map((slug) => ({ slug }))
