@@ -84,7 +84,7 @@ export default function Navbar(props: NavbarProps) {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
-  }, [pathname])
+  }, [pathname, router.events])
 
   // make header disappear on scroll down
 
