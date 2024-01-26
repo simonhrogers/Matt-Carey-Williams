@@ -7,6 +7,8 @@ import {
 } from './api'
 import {
   homePageQuery,
+  aboutPageQuery,
+  contactPageQuery,
   scenesPageQuery,
   sceneBySlugQuery,
   sceneSlugsQuery,
@@ -139,4 +141,12 @@ export async function getPageBySlug(
 
 export async function getHomePage(client: SanityClient): Promise<HomePagePayload> {
   return (await client.fetch(homePageQuery)) || ({} as any)
+}
+
+export async function getAboutPage(client: SanityClient): Promise<PagePayload> {
+  return (await client.fetch(aboutPageQuery)) || ({} as any)
+}
+
+export async function getContactPage(client: SanityClient): Promise<PagePayload> {
+  return (await client.fetch(contactPageQuery)) || ({} as any)
 }
