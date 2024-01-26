@@ -51,6 +51,9 @@ export const getStaticPaths = async () => {
   const staticPages = [
     'about',
     'contact',
+    'episodes',
+    'writing',
+    'scenes',
   ]
   const filteredSlugs = slugs?.filter(({ slug }) => !staticPages.includes(slug || ''))
   return {
