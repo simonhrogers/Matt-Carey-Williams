@@ -1,60 +1,6 @@
 
 import { groq } from 'next-sanity'
 
-const postFields = groq`
-  _id,
-  title,
-  date,
-  _updatedAt,
-  excerpt,
-  coverImage,
-  "slug": slug.current,
-  "author": author->{name, picture},
-`
-
-// export const settingsQuery = groq`*[_type == "settings"][0]`
-
-export const postsQuery = groq`
-*[_type == "post"] | order(date desc, _updatedAt desc) {
-  ${postFields}
-}`
-
-export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
-`
-
-export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug][0] {
-  ${postFields}
-}
-`
-
-export const exhibitionFields = groq`
-  
-`
-
-export const sceneFields = groq`
- ${exhibitionFields},
-`
-
-export const scenesQuery = groq`
-*[_type == "scene"] | order(date desc, _updatedAt desc) {
-  ${sceneFields}
-}`
-
-export const sceneSlugsQuery = groq`
-*[_type == "scene" && defined(slug.current)][].slug.current
-`
-
-export const sceneBySlugQuery = groq`
-*[_type == "scene" && slug.current == $slug][0] {
-  ${sceneFields}
-}
-`
-
-
-
-
 const imageFields = groq`
   _type,
   alt,
@@ -75,6 +21,18 @@ const imageFields = groq`
 `
 
 const image = groq`image {${imageFields}}`
+
+const exhibitions = groq`
+_id,
+_type,
+"slug": slug.current,
+title,
+names,
+"number": count(*[_type == "episode"]),
+location,
+duration,
+"coverImage": coverImage {${imageFields}},
+`
 
 const exhibitionBySlug = groq`
 _id,
@@ -114,6 +72,88 @@ readMore-> {
   "slug": slug.current,
 },
 `
+
+export const scenesQuery = groq`
+*[_type == "scene"] | order(date desc, _updatedAt desc) {
+  ${exhibitions}
+}`
+
+export const sceneSlugsQuery = groq`
+*[_type == "scene" && defined(slug.current)][].slug.current
+`
+
+export const sceneBySlugQuery = groq`
+*[_type == "scene" && slug.current == $slug][0] {
+  ${exhibitionBySlug}
+}
+`
+
+export const episodesQuery = groq`
+*[_type == "episode"] | order(date desc, _updatedAt desc) {
+  ${exhibitions}
+}`
+
+export const episodeSlugsQuery = groq`
+*[_type == "episode" && defined(slug.current)][].slug.current
+`
+
+export const episodeBySlugQuery = groq`
+*[_type == "episode" && slug.current == $slug][0] {
+  ${exhibitionBySlug}
+}
+`
+
+export const writingsQuery = groq`
+*[_type == "writing"] | order(date desc, _updatedAt desc) {
+  _id,
+  _type,
+  "slug": slug.current,
+  title,
+  excerpt,
+  date,
+  "referenceType": reference->_type
+}`
+
+export const writingSlugsQuery = groq`
+*[_type == "writing" && defined(slug.current)][].slug.current
+`
+
+export const writingBySlugQuery = groq`
+*[_type == "writing" && slug.current == $slug][0] {
+  _id,
+  _type,
+  "slug": slug.current,
+  title,
+  author,
+  location,
+  date,
+  body[]{
+    ...,
+    _type == "image" => {
+      ${imageFields},
+      caption,
+    }
+  }
+}
+`
+
+export const pageSlugsQuery = groq`
+  *[_type == "page" && defined(slug.current)][].slug.current
+`
+
+export const pageBySlugQuery = groq`
+  *[_type == "page" && slug.current == $slug][0] {
+    _id,
+    body,
+    overview,
+    title,
+    "slug": slug.current,
+  }
+`
+
+
+
+
 
 export const homePageQuery = groq`
   *[_type == "home"][0]{
@@ -175,15 +215,15 @@ export const contactPageQuery = groq`
   }
 `
 
-export const pagesBySlugQuery = groq`
-  *[_type == "page" && slug.current == $slug][0] {
-    _id,
-    body,
-    overview,
-    title,
-    "slug": slug.current,
-  }
-`
+// export const pagesBySlugQuery = groq`
+//   *[_type == "page" && slug.current == $slug][0] {
+//     _id,
+//     body,
+//     overview,
+//     title,
+//     "slug": slug.current,
+//   }
+// `
 
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
@@ -232,11 +272,11 @@ export const episodesPageQuery = groq`
   }
 `
 
-export const episodeBySlugQuery = groq`
-  *[_type == "episode" && slug.current == $slug][0] {
-    ${exhibitionBySlug}
-  }
-`
+// export const episodeBySlugQuery = groq`
+//   *[_type == "episode" && slug.current == $slug][0] {
+//     ${exhibitionBySlug}
+//   }
+// `
 
 export const scenesPageQuery = groq`
   *[_type == "page" && slug.current == "scenes"][0]{
@@ -257,11 +297,11 @@ export const scenesPageQuery = groq`
   }
 `
 
-export const sceneBySlugQuery = groq`
-  *[_type == "scene" && slug.current == $slug][0] {
-    ${exhibitionBySlug}
-  }
-`
+// export const sceneBySlugQuery = groq`
+//   *[_type == "scene" && slug.current == $slug][0] {
+//     ${exhibitionBySlug}
+//   }
+// `
 
 export const writingsPageQuery = groq`
   *[_type == "page" && slug.current == "writing"][0] {
@@ -280,23 +320,23 @@ export const writingsPageQuery = groq`
   }
 `
 
-export const writingBySlugQuery = groq`
-  *[_type == "writing" && slug.current == $slug][0] {
-    _id,
-    "slug": slug.current,
-    title,
-    author,
-    location,
-    date,
-    body[]{
-      ...,
-      _type == "image" => {
-        ${imageFields},
-        caption,
-      }
-    }
-  }
-`
+// export const writingBySlugQuery = groq`
+//   *[_type == "writing" && slug.current == $slug][0] {
+//     _id,
+//     "slug": slug.current,
+//     title,
+//     author,
+//     location,
+//     date,
+//     body[]{
+//       ...,
+//       _type == "image" => {
+//         ${imageFields},
+//         caption,
+//       }
+//     }
+//   }
+// `
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{

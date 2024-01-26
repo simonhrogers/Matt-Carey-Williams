@@ -68,6 +68,7 @@ export function ExhibitionPageAdditionalInformation({exhibition, activeIndex, ca
               <Link 
                 className="banner-text-item" 
                 href={resolveHref(exhibition.readMore._type, exhibition.readMore.slug) || '/'}
+                scroll={false}
               >
                 Read More
               </Link>

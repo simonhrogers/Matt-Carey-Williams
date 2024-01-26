@@ -1,31 +1,15 @@
-import type { EncodeDataAttributeCallback } from '@sanity/react-loader/rsc'
-import Link from 'next/link'
-
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
-import type { ScenePayload } from '@/types'
+import type { 
+  ScenePayload,
+  SettingsPayload,
+} from '@/types'
 import ExhibitionPage from '@/components/shared/ExhibitionPage'
 
 export interface ScenePageProps {
   data: ScenePayload | null
-  encodeDataAttribute?: EncodeDataAttributeCallback
+  settings: SettingsPayload | null
 }
 
-export function ScenePage({ data, encodeDataAttribute }: ScenePageProps) {
-  // Default to an empty object to allow previews on non-existent documents
-  const {
-    client,
-    coverImage,
-    description,
-    duration,
-    overview,
-    site,
-    tags,
-    title,
-  } = data ?? {}
-
-  const startYear = new Date(duration?.start!).getFullYear()
-  const endYear = duration?.end ? new Date(duration?.end).getFullYear() : 'Now'
-
+export function ScenePage({ data }: ScenePageProps) {
   return (
     <ExhibitionPage 
       exhibition={data}

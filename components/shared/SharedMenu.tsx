@@ -26,6 +26,7 @@ export function SharedMenu() {
           key={key}
           href={item.slug}
           className={`item ${pathname === item.slug ? 'active' : ''}`}
+          scroll={false}
         >
           {item.title}
         </Link>

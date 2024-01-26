@@ -38,6 +38,7 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
         'slug',
       ])}
       className="index-exhibition"
+      scroll={false}
     >
       <div className="text">
         {label} <RomanNumeral number={number} />: {name ? <span>{name},</span> : null} <span className="title">{title}</span><br />

@@ -4,16 +4,33 @@ import {
   projectId,
   studioUrl,
   useCdn,
-} from 'lib/sanity.api'
+} from './api'
 import {
-  indexQuery,
-  type Post,
-  postAndMoreStoriesQuery,
-  postBySlugQuery,
-  postSlugsQuery,
-  type Settings,
+  homePageQuery,
+  scenesQuery,
+  sceneBySlugQuery,
+  sceneSlugsQuery,
+  episodesQuery,
+  episodeBySlugQuery,
+  episodeSlugsQuery,
+  writingsQuery,
+  writingBySlugQuery,
+  writingSlugsQuery,
+  pageSlugsQuery,
+  pageBySlugQuery,
   settingsQuery,
-} from 'lib/sanity.queries'
+} from './queries'
+import type {
+  HomePagePayload,
+  ScenePayload,
+  ScenesPayload,
+  SettingsPayload,
+  EpisodePayload,
+  EpisodesPayload,
+  WritingPayload,
+  WritingsPayload,
+  PagePayload,
+} from '@/types'
 import { createClient, type SanityClient } from 'next-sanity'
 
 export function getClient(preview?: { token: string }): SanityClient {
@@ -40,32 +57,86 @@ export function getClient(preview?: { token: string }): SanityClient {
   return client
 }
 
+export const client = getClient()
+
 export const getSanityImageConfig = () => getClient()
 
-export async function getSettings(client: SanityClient): Promise<Settings> {
+export async function getSettings(client: SanityClient): Promise<SettingsPayload> {
   return (await client.fetch(settingsQuery)) || {}
 }
 
-export async function getAllPosts(client: SanityClient): Promise<Post[]> {
-  return (await client.fetch(indexQuery)) || []
+// episode
+
+export async function getAllEpisodes(client: SanityClient): Promise<EpisodesPayload> {
+  return (await client.fetch(episodesQuery)) || []
 }
 
-export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
+export async function getAllEpisodesSlugs(): Promise<Pick<EpisodePayload, 'slug'>[]> {
   const client = getClient()
-  const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
+  const slugs = (await client.fetch<string[]>(episodeSlugsQuery)) || []
   return slugs.map((slug) => ({ slug }))
 }
 
-export async function getPostBySlug(
+export async function getEpisodeBySlug(
   client: SanityClient,
   slug: string,
-): Promise<Post> {
-  return (await client.fetch(postBySlugQuery, { slug })) || ({} as any)
+): Promise<EpisodePayload> {
+  return (await client.fetch(episodeBySlugQuery, { slug })) || ({} as any)
 }
 
-export async function getPostAndMoreStories(
+// scene
+
+export async function getAllScenes(client: SanityClient): Promise<ScenesPayload> {
+  return (await client.fetch(scenesQuery)) || []
+}
+
+export async function getAllScenesSlugs(): Promise<Pick<ScenePayload, 'slug'>[]> {
+  const client = getClient()
+  const slugs = (await client.fetch<string[]>(sceneSlugsQuery)) || []
+  return slugs.map((slug) => ({ slug }))
+}
+
+export async function getSceneBySlug(
   client: SanityClient,
   slug: string,
-): Promise<{ post: Post; morePosts: Post[] }> {
-  return await client.fetch(postAndMoreStoriesQuery, { slug })
+): Promise<ScenePayload> {
+  return (await client.fetch(sceneBySlugQuery, { slug })) || ({} as any)
+}
+
+// writing
+
+export async function getAllWritings(client: SanityClient): Promise<WritingsPayload> {
+  return (await client.fetch(writingsQuery)) || []
+}
+
+export async function getAllWritingsSlugs(): Promise<Pick<WritingPayload, 'slug'>[]> {
+  const client = getClient()
+  const slugs = (await client.fetch<string[]>(writingSlugsQuery)) || []
+  return slugs.map((slug) => ({ slug }))
+}
+
+export async function getWritingBySlug(
+  client: SanityClient,
+  slug: string,
+): Promise<WritingPayload> {
+  return (await client.fetch(writingBySlugQuery, { slug })) || ({} as any)
+}
+
+// page (about, contact + dynamic)
+
+export async function getAllPagesSlugs(): Promise<Pick<PagePayload, 'slug'>[]> {
+  const client = getClient()
+  const slugs = (await client.fetch<string[]>(pageSlugsQuery)) || []
+  return slugs.map((slug) => ({ slug }))
+}
+
+export async function getPageBySlug(
+  client: SanityClient,
+  slug: string,
+): Promise<PagePayload> {
+  return (await client.fetch(pageBySlugQuery, { slug })) || ({} as any)
+}
+
+export async function getHomePage(client: SanityClient): Promise<HomePagePayload> {
+  return (await client.fetch(homePageQuery)) || ({} as any)
 }

@@ -101,6 +101,11 @@ export interface EpisodePayload {
   tags?: string[]
 }
 
+export interface EpisodesPayload {
+  title?: string
+  episodes?: EpisodePayload[]
+}
+
 export interface ScenePayload {
   _id: string
   _type: string
@@ -118,6 +123,11 @@ export interface ScenePayload {
   tags?: string[]
 }
 
+export interface ScenesPayload {
+  title?: string
+  scenes?: ScenePayload[]
+}
+
 export interface WritingPayload {
   _id: string
   _type: string
@@ -127,5 +137,10 @@ export interface WritingPayload {
   description?: PortableTextBlock[]
   overview?: PortableTextBlock[]
   body?: PortableTextBlock[]
+}
+
+export interface WritingsPayload {
+  title: string
+  writings: WritingPayload[]
 }
 

@@ -1,23 +1,14 @@
-'use client'
+import {  useState } from 'react'
 
-import type { EncodeDataAttributeCallback } from '@sanity/react-loader/rsc'
-import Link from 'next/link'
-import { useRef, useState } from 'react'
-
-import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
-import { Header } from '@/components/shared/Header'
-import { resolveHref } from '@/sanity/lib/utils'
 import type { ScenesPagePayload } from '@/types'
-import scene from '@/sanity/schemas/documents/scene'
 import IndexExhibition from '@/components/shared/IndexExhibition'
 import Filters from '@/components/shared/Filters'
 
 export interface ScenesPageProps {
   data: ScenesPagePayload | null
-  encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function ScenesPage({ data, encodeDataAttribute }: ScenesPageProps) {
+export function ScenesPage({ data }: ScenesPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { scenes = [], title = '' } = data ?? {}
 
@@ -69,7 +60,6 @@ export function ScenesPage({ data, encodeDataAttribute }: ScenesPageProps) {
             key={key}
             exhibition={scene}
             label='Scene'
-            encodeDataAttribute={encodeDataAttribute}
           />
         ))}
       </div>

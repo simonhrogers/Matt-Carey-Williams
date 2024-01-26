@@ -19,7 +19,7 @@ export function LogoWrapper({shouldAnimate, formatAsLink, showLocation}) {
 
   return (
     <div className="logo-wrapper">
-      <Link className='logo-link' href='/'>
+      <Link className='logo-link' href='/' scroll={false}>
         <div className="logo">Matt Carey-Williams</div>
         <Lottie 
           lottieRef={logoRef}

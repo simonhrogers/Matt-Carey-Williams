@@ -27,6 +27,7 @@ export function IndexWriting({ writing, encodeDataAttribute }: IndexWritingProps
             writing._id,
             'slug',
           ])}
+          scroll={false}
         >
           <div className="title">{writing.title} (<WritingMonthYear date={writing.date} />)</div>
           <CustomPortableText 

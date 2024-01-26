@@ -34,6 +34,7 @@ export function CustomPortableText({
         return (
           <Link
             href={resolveHref(value.type, value.slug) ?? '/'}
+            scroll={false}
           >
             {children}
           </Link>

@@ -1,20 +1,18 @@
-import ScenePage from '@/components/ScenePage'
-import PreviewScenePage from '@/components/PreviewScenePage'
+import ScenePage from '@/components/pages/scenes/ScenePage'
 import { readToken } from '@/sanity/lib/api'
 import {
   getAllScenesSlugs,
   getClient,
-  getScene,
+  getSceneBySlug,
   getSettings,
 } from '@/sanity/lib/client'
-import { Scene, Settings } from '@/sanity/lib/queries'
+import { ScenePayload, SettingsPayload } from '@/types'
 import { GetStaticProps } from 'next'
-import type { SharedPageProps } from 'pages/_app'
+import type { SharedPageProps } from '@/pages/_app'
 
 interface PageProps extends SharedPageProps {
-  scene: Scene
-  moreScenes: Scene[]
-  settings?: Settings
+  scene: ScenePayload
+  settings?: SettingsPayload
 }
 
 interface Query {
@@ -22,24 +20,17 @@ interface Query {
 }
 
 export default function SceneSlugRoute(props: PageProps) {
-  const { settings, scene, moreScenes, draftMode } = props
-
-  if (draftMode) {
-    return (
-      <PreviewScenePage scene={scene} moreScenes={moreScenes} settings={settings} />
-    )
-  }
-
-  return <ScenePage scene={scene} moreScenes={moreScenes} settings={settings} />
+  const { settings, scene } = props
+  return <ScenePage data={scene} settings={settings} />
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
-  const { draftMode = false, params = {} } = ctx
-  const client = getClient(draftMode ? { token: readToken } : undefined)
+  const { params = {} } = ctx
+  const client = getClient({ token: readToken })
 
-  const [settings, { scene, moreScenes }] = await Promise.all([
+  const [settings, scene] = await Promise.all([
     getSettings(client),
-    getScene(client, params.slug),
+    getSceneBySlug(client, params.slug),
   ])
 
   if (!scene) {
@@ -51,10 +42,8 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   return {
     props: {
       scene,
-      moreScenes,
       settings,
-      draftMode,
-      token: draftMode ? readToken : '',
+      token: readToken,
     },
   }
 }
