@@ -99,6 +99,47 @@ export default defineType({
           type: 'string',
         }
       ]
+    },
+    {
+      title: 'Images Group',
+      name: 'imagesGroup',
+      type: 'object',
+      fields: [
+        {
+          name: 'images',
+          title: 'Images',
+          type: 'array',
+          of: [
+            {
+              type: 'image',
+              fields: [
+                {
+                  name: 'caption',
+                  title: 'Caption',
+                  type: 'blockContentSimple',
+                },
+                {
+                  name: 'alt',
+                  title: 'Alternative text',
+                  type: 'string',
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      preview: {
+        select: {
+          images: 'images',
+        },
+        prepare(selection) {
+          const {images} = selection
+          return {
+            title: 'Images Group',
+            media: images[0]
+          }
+        }
+      }
     }
   ]
 })
