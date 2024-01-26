@@ -123,7 +123,14 @@ export default defineType({
                   title: 'Alternative text',
                   type: 'string',
                 }
-              ]
+              ],
+              preview: {
+                select: {
+                  title: 'caption',
+                  subitle: 'alt',
+                  media: 'asset'
+                }
+              }
             }
           ]
         }
@@ -136,6 +143,7 @@ export default defineType({
           const {images} = selection
           return {
             title: 'Images Group',
+            subtitle: `${images.length} image(s)`,
             media: images[0]
           }
         }

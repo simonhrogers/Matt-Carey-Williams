@@ -4,6 +4,7 @@ import type { PortableTextBlock } from '@portabletext/types'
 
 import Link from 'next/link'
 import SanityImage from './SanityImage'
+import { wrap } from 'framer-motion'
 
 export function CustomPortableText({
   paragraphClasses,
@@ -68,6 +69,51 @@ export function CustomPortableText({
           </div>
         )
       },
+      imagesGroup: ({value}) => {
+        return (
+          <div className="portable-text-images-group">
+            <div className="captions-desktop">
+              {value?.images?.map((image, index) => {
+                return (
+                  <div className="caption-desktop">
+                    {/* <span className="lr">{index % 2 === 0 ? 'Left: ' : 'Right: '}</span> */}
+                    <CustomPortableText
+                      value={image.caption}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+            <div className="images">
+              {value?.images?.map((image, index) => {
+                return (
+                  <div className="image-wrapper-wrapper">
+                    <div
+                      key={index}
+                      className="image-wrapper"
+                      style={{
+                        paddingTop: `${(image?.height / image?.width) * 100}%`
+                      }}
+                    >
+                      <SanityImage
+                        image={image}
+                        alt={image.alt}
+                      />
+                    </div>
+                    {image?.caption && (
+                      <div className="caption-phone">
+                        <CustomPortableText
+                          value={image.caption}
+                        />
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )
+      }
     },
   }
 

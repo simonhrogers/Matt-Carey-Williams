@@ -105,4 +105,67 @@
       }
     }
   }
+  .portable-text-images-group {
+    margin: calc(2 * var(--lh)) 0;
+    // transform: translateZ(0);
+    @include text-width-writing;
+    .images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: var(--lh-rem);
+      @include maxWidth(tablet) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: calc(2 * var(--lh-rem));
+      }
+      .image-wrapper-wrapper {
+        @include maxWidth(tablet) {
+          width: 66.666%;
+        }
+        .image-wrapper {
+          width: 100%;
+          height: 0;
+          transform: translateZ(0);
+          .image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .caption-phone {
+        @include minWidth(tablet) {
+          display: none;
+        }
+        .portable-text {
+          margin-top: calc(0.5 * var(--lh));
+          @include typography-small;
+        }
+      }
+    }
+    .captions-desktop {
+      position: absolute;
+      // top: 0;
+      left: var(--lh-rem);
+      width: calc((100vw - 5 * var(--lh-rem)) / 4);
+      @include maxWidth(tablet) {
+        display: none;
+      }
+      .caption-desktop {
+        & + .caption-desktop {
+          .portable-text {
+            margin-top: calc(0.5 * var(--lh));
+          }
+        }
+        .portable-text {
+          width: 100%;
+          display: inline-block;
+          @include typography-small;
+        }
+      }
+    }
+  }
 }

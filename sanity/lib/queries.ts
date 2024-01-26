@@ -132,6 +132,12 @@ export const writingBySlugQuery = groq`
     _type == "image" => {
       ${imageFields},
       caption,
+    },
+    _type == "imagesGroup" => {
+      images[] {
+        ${imageFields},
+        caption,
+      }
     }
   }
 }
