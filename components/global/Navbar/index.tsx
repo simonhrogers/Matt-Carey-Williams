@@ -12,12 +12,8 @@ import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { LogoWrapper } from '@/components/shared/LogoWrapper'
 
+export default function Navbar() {
 
-interface NavbarProps {
-  data: SettingsPayload
-}
-export default function Navbar(props: NavbarProps) {
-  const { data } = props
   // const menuItems = data?.menuItems || ([] as MenuItem[])
 
   const menuItems = [

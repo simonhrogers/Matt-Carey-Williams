@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import delQuery from '@/utils/delQuery'
 import ModalHandlerNewsletter from './ModalHandlerNewsletter'
 import CloseButton from '../shared/CloseButton'
+import { use, useEffect } from 'react'
 
 export default function ModalHandler() {
 
@@ -13,8 +14,6 @@ export default function ModalHandler() {
     router.push(asPathWithoutQuery, undefined, { shallow: true })
   }
 
-  const newsletter = true
-
   return (
     <div className="modalHandler">
       <div 
@@ -25,9 +24,7 @@ export default function ModalHandler() {
         <CloseButton
           handleClose={handleClose}
         />
-        {newsletter && (
-          <ModalHandlerNewsletter />
-        )}
+        <ModalHandlerNewsletter />
       </div>
     </div>
   )

@@ -6,12 +6,9 @@ import type { SettingsPayload } from '@/types'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
-interface FooterProps {
-  data: SettingsPayload
-}
-export default function Footer(props: FooterProps) {
-  const { data } = props
-  const footer = data?.footer || ([] as PortableTextBlock[])
+import { useRouter } from 'next/router'
+
+export default function Footer() {
 
   const items = [
     {
@@ -37,9 +34,10 @@ export default function Footer(props: FooterProps) {
   ]
 
   const pathname = usePathname()
+  const router = useRouter()
 
   const openModal = () => {
-    window.history.pushState({}, '', new URL(window.location.origin + `${pathname}?modal=newsletter`))
+    router.push(`${pathname}?modal=newsletter`, undefined, { shallow: true })
   }
 
   return (

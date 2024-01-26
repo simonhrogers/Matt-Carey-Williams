@@ -75,7 +75,7 @@ export function CustomPortableText({
             <div className="captions-desktop">
               {value?.images?.map((image, index) => {
                 return (
-                  <div className="caption-desktop">
+                  <div key={index} className="caption-desktop">
                     {/* <span className="lr">{index % 2 === 0 ? 'Left: ' : 'Right: '}</span> */}
                     <CustomPortableText
                       value={image.caption}
@@ -87,7 +87,7 @@ export function CustomPortableText({
             <div className="images">
               {value?.images?.map((image, index) => {
                 return (
-                  <div className="image-wrapper-wrapper">
+                  <div key={index} className="image-wrapper-wrapper">
                     <div
                       key={index}
                       className="image-wrapper"

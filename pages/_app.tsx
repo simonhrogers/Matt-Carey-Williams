@@ -63,27 +63,16 @@ export default function App({
       <OriginTracker>
         <div className="layout">
           <ModalHandler />
-          <Suspense>
-            <div className="banners">
-              <NewsletterBanner />
-              <Consent />
-            </div>
-          </Suspense>
-          <Suspense>
-            <Navbar />
-          </Suspense>
-          <Suspense>
-            <>
-              <Animate>
-                {/* <SharedMenu /> */}
-                <Component {...pageProps} />
-              </Animate>
-            </>
-          </Suspense>
-          <Suspense>
-            <Footer />
-          </Suspense>
-          {/* <IntroTemplate /> */}
+          <div className="banners">
+            <NewsletterBanner />
+            <Consent />
+          </div>
+          <Navbar />
+          <Animate>
+            {/* <SharedMenu /> */}
+            <Component {...pageProps} />
+          </Animate>
+          <Footer />
         </div>
       </OriginTracker>
     </>
