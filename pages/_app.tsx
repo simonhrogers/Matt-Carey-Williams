@@ -62,9 +62,7 @@ export default function App({
       )}
       <OriginTracker>
         <div className="layout">
-          <Suspense>
-            <ModalHandler />
-          </Suspense>
+          <ModalHandler />
           <Suspense>
             <div className="banners">
               <NewsletterBanner />
