@@ -23,6 +23,7 @@ export function ContactPage({ data, encodeDataAttribute }: ContactPageProps) {
 
   return (
     <div className="contact-page">
+      <SharedMenu />
       <div className="content">
         {address && (
           <div className="address">

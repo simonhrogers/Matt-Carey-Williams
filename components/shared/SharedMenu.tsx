@@ -17,7 +17,8 @@ export function SharedMenu() {
   ]
 
   const pathname = usePathname()
-  const show = pathname === '/about' || pathname === '/contact'
+  // const show = pathname === '/about' || pathname === '/contact'
+  const show = true
 
   return show ? (
     <div className="shared-menu">

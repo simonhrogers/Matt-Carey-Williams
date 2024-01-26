@@ -9,6 +9,7 @@ import Menu from "@/assets/svg/Menu.svg"
 import Close from '@/assets/svg/Close.svg'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { LogoWrapper } from '@/components/shared/LogoWrapper'
 
 
@@ -49,6 +50,7 @@ export default function Navbar(props: NavbarProps) {
     },
   ] as MenuItem[]
 
+  const router = useRouter()
   const pathname = usePathname()
   const activeParentPath = menuItems.find(item => item.slug === pathname.split('/')[1])?.slug
   // let hideNavbar = false
@@ -71,7 +73,17 @@ export default function Navbar(props: NavbarProps) {
 
   useEffect(() => {
     closePhoneMenu()
-    // setHideNavbar(['writing/', 'episodes/', 'scenes/'].includes(pathname))
+    const handleRouteChange = () => {
+      setTimeout(() => {
+        setVisible(true)
+      }, 500);
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
   }, [pathname])
 
   // make header disappear on scroll down
@@ -85,11 +97,24 @@ export default function Navbar(props: NavbarProps) {
     setPrevScrollPos(currentScrollPos)
     setVisible(visible)
   }, [prevScrollPos])
-  
+
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [handleScroll])
+    let scrollTimeoutId: NodeJS.Timeout;
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('scroll', handleScroll);
+      scrollTimeoutId = setTimeout(() => {
+        window.addEventListener('scroll', handleScroll);
+      }, 500);
+    }
+    return () => {
+      if (scrollTimeoutId) {
+        clearTimeout(scrollTimeoutId);
+      }
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [pathname, handleScroll]);
 
   return (
     <div className={`

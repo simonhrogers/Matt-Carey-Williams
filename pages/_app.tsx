@@ -75,7 +75,7 @@ export default function App({
           <Suspense>
             <>
               <Animate>
-                <SharedMenu />
+                {/* <SharedMenu /> */}
                 <Component {...pageProps} />
               </Animate>
             </>
