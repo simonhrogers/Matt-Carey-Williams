@@ -110,7 +110,7 @@ export default function Navbar() {
         window.removeEventListener('scroll', handleScroll);
       }
     };
-  }, [pathname, handleScroll]);
+  }, [pathname, visible, handleScroll]);
 
   return (
     <div className={`
