@@ -19,7 +19,7 @@ export function ExhibitionPage({exhibition, label}) {
   //   console.log('activeIndex', activeIndex)
   // }, [activeIndex])
 
-  const currentItem = activeIndex > 0 && activeIndex <= exhibition.images.length ? exhibition.images[activeIndex - 1] : null
+  const currentItem = activeIndex > 0 && activeIndex <= exhibition.images?.length ? exhibition.images[activeIndex - 1] : null
   const currentItemLayout = currentItem ? currentItem.layout : null
 
   const router = useRouter()

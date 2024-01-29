@@ -15,10 +15,19 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanS
       start: null,
       end: null,
     },
-  } = exhibition || {}
-  const name = names?.length === 1 ? names[0] : null
+  } = exhibition || {
+    title: '',
+    names: [],
+    number: 1,
+    location: '',
+    duration: {
+      start: null,
+      end: null,
+    },
+  }
+  const name = names?.length === 1 ? names[0] : 0
   const { start, end } = duration
-  const numThingsToAnimateIn = 3 + (names.length ? names.length + 1 : 0)
+  const numThingsToAnimateIn = 3 + (names?.length ? names.length + 1 : 0)
   const [numThingsAnimatedIn, setNumThingsAnimatedIn] = useState(0)
 
   useEffect(() => {
@@ -76,12 +85,12 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanS
           </div>
           <div className={`
             names 
-            ${names.length === 1 ? 'single' : ''}
-            ${names.length <= 10 && names.length > 1 ? 'two-to-ten' : ''}
-            ${names.length > 10 && names.length <= 20 ? 'eleven-to-twenty' : ''}
-            ${names.length > 20 ? 'twenty-one-plus' : ''}
+            ${names?.length === 1 ? 'single' : ''}
+            ${names?.length <= 10 && names?.length > 1 ? 'two-to-ten' : ''}
+            ${names?.length > 10 && names?.length <= 20 ? 'eleven-to-twenty' : ''}
+            ${names?.length > 20 ? 'twenty-one-plus' : ''}
           `}>
-            {names.map((name, key) => {
+            {names?.map((name, key) => {
               return (
                 <div key={key} className={`name ${numThingsAnimatedIn >= 4 + (key + 1) ? 'visible' : 'invisible'}`}>
                   {name}
