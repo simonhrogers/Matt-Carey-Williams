@@ -12,7 +12,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your episode.',
+      description: 'This field is the title of your scene.',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
@@ -29,10 +29,16 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'number',
+      description: 'This field is the number of your scene.',
+      title: 'Number',
+      type: 'number',
+    }),
+    defineField({
       name: 'coverImage',
       title: 'Cover Image',
       description:
-        'This image will be used as the cover image for the episode. If you choose to add it to the show case episodes, this is the image displayed in the list within the homepage.',
+        'This image will be used as the cover image for the scene. If you choose to add it to the show case scenes, this is the image displayed in the list within the homepage.',
       type: 'image',
       validation: (rule) => rule.required(),
     }),
