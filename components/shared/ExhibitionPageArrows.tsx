@@ -4,7 +4,9 @@ import { createPortal } from "react-dom"
 
 export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, canShowArrows}) {
 
-  const { images = [] } = exhibition || {}
+  const { images = [] } = exhibition || {
+    images: [],
+  }
 
   const showLeftArrow = activeIndex > 0
   const showRightArrow = activeIndex < images.length + 1
@@ -40,31 +42,12 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, c
   }
 
   const handleClick = (e) => {
-    console.log('click');
-    console.log(e);
-    console.log(activeIndex);
-    console.log(images.length);
-    
-    
     if (e.clientX > window.innerWidth / 2) {
-      console.log('right click');
       handleRightClick()
     } else {
-      console.log('left click');
       handleLeftClick()
     }
-  }
-
-  // useEffect(() => {
-  //   document.addEventListener('mousemove', updateMousePosition)
-  //   document.addEventListener('click', handleClick)
-  //   return () => {
-  //     document.removeEventListener('mousemove', updateMousePosition)
-  //     document.removeEventListener('click', handleClick)
-  //   }
-  // }, [])
-
-  
+  }  
 
   return (
     <div
