@@ -10,6 +10,9 @@
 @mixin typography-small {
   font-size: 0.57142rem;
   line-height: 1.4;
+  @include maxWidth(tablet) {
+    font-size: 0.63rem;
+  }
 }
 
 @mixin uppercase {
