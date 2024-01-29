@@ -58,7 +58,7 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, c
       className={`exhibition-page-arrows`}
       id="exhibition-page-arrows"
     >
-      {canShowArrows && document ? (createPortal(
+      {canShowArrows && typeof window !== "undefined" ? (createPortal(
         <div 
           className={`arrowButton ${mouseDirection === 'right' ? 'right' : 'left'}`}
           style={{
