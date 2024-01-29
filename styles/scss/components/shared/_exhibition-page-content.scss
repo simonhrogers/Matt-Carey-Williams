@@ -1,4 +1,7 @@
 .exhibition-page-content {
+  z-index: 8;
+  pointer-events: none;
+  cursor: none;
   &.invisible {
     opacity: 0;
   }
@@ -17,6 +20,16 @@
       &.active {
         z-index: 6;
         opacity: 1;
+        .text-scroll-wrapper {  
+          .text-wrapper {
+            @include minWidth(tablet) {
+              .text {
+                cursor: default;
+                pointer-events: all;
+              }   
+            }
+          }
+        }
       }
       &.fullBleed {
         .image-wrapper {
@@ -88,6 +101,8 @@
       }
     }
     .text-scroll-wrapper {  
+      cursor: none;
+      pointer-events: none;
       @include minWidth(tablet) {
         width: 100%;
         height: 100%;
@@ -99,8 +114,16 @@
           flex-direction: column;
           height: 100%;
           .text {
+            // cursor: default;
+            // pointer-events: all;
+            overflow: scroll;
             margin: auto;
-            padding: var(--lh);
+            padding: calc(3 * var(--lh)) var(--lh);
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            &::-webkit-scrollbar {
+              display: none;
+            }
             .portable-text {
               @include typography-medium;
             }

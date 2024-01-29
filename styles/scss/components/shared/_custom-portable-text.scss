@@ -102,6 +102,11 @@
       .portable-text {
         margin-top: calc(0.5 * var(--lh));
         @include typography-small;
+        @include minWidth(tablet) {
+          // width: calc((100vw - 5 * var(--lh)) / 4);
+          width: 100%;
+          margin-left: 0;
+        }
       }
     }
   }
@@ -115,7 +120,7 @@
       grid-gap: var(--lh-rem);
       @include maxWidth(tablet) {
         grid-template-columns: repeat(1, 1fr);
-        grid-gap: calc(2 * var(--lh-rem));
+        grid-gap: calc(2 * var(--lh));
       }
       .image-wrapper-wrapper {
         @include maxWidth(tablet) {

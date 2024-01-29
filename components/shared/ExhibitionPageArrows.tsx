@@ -1,7 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import LongArrow from "./LongArrow"
-import { set } from "date-fns"
-
+import { createPortal } from "react-dom"
 
 export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, canShowArrows}) {
 
@@ -32,10 +31,6 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, c
   const [trulyShowArrowButton, setTrulyShowArrowButton] = useState(true)
 
   const evaluateMouseDirection = (e) => {
-    // console.log(e);
-    // if (!showLeftArrow) setMouseDirection('right')
-    // else if (!showRightArrow) setMouseDirection('left')
-    // else setMouseDirection(e.clientX > window.innerWidth / 2 ? 'right' : 'left')
     setMouseDirection(e.clientX > window.innerWidth / 2 ? 'right' : 'left')
   }
 
@@ -45,63 +40,64 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, c
   }
 
   const handleClick = (e) => {
-    // if (!showLeftArrow) handleRightClick()
-    // else if (!showRightArrow) handleLeftClick()
-    // else if (e.clientX > window.innerWidth / 2) {
-    //   handleRightClick()
-    // } else {
-    //   handleLeftClick()
-    // }
+    console.log('click');
+    console.log(e);
+    console.log(activeIndex);
+    console.log(images.length);
+    
+    
     if (e.clientX > window.innerWidth / 2) {
+      console.log('right click');
       handleRightClick()
     } else {
+      console.log('left click');
       handleLeftClick()
     }
   }
 
-  return canShowArrows ? (
-    // <div className="exhibition-page-arrows">
-    //   <div 
-    //     className={`left ${showLeftArrow ? 'show' : ''}`}
-    //     onClick={handleLeftClick}
-    //   >
-    //     <LongArrow direction={'left'} />
-    //   </div>
-    //   <div 
-    //     className={`right ${showRightArrow ? 'show' : ''}`}
-    //     onClick={handleRightClick}
-    //   >
-    //     <LongArrow />
-    //   </div>
-    // </div>
+  // useEffect(() => {
+  //   document.addEventListener('mousemove', updateMousePosition)
+  //   document.addEventListener('click', handleClick)
+  //   return () => {
+  //     document.removeEventListener('mousemove', updateMousePosition)
+  //     document.removeEventListener('click', handleClick)
+  //   }
+  // }, [])
+
+  
+
+  return (
     <div
       onMouseMove={(e) => updateMousePosition(e)}
       onMouseEnter={() => setShowArrowButton(true)}
       onMouseLeave={() => setShowArrowButton(false)}
       onClick={(e)=>handleClick(e)} 
       className={`exhibition-page-arrows`}
+      id="exhibition-page-arrows"
     >
-      <div 
-        className={`arrowButton ${mouseDirection === 'right' ? 'right' : 'left'}`}
-        style={{
-          top: mousePosition.y,
-          left: mousePosition.x,
-          opacity: showArrowButton && trulyShowArrowButton ? 1 : 0
-        }}
-      >
-        {mouseDirection === 'right' ? ( 
-          <div className={`right ${showRightArrow ? 'show' : ''}`}>
-            <LongArrow />
-          </div>
-        ) : (
-          <div className={`left ${showLeftArrow ? 'show' : ''}`}>
-            <LongArrow direction={'left'} />
-          </div>
-        )}
-      </div>
+      {canShowArrows && document ? (createPortal(
+        <div 
+          className={`arrowButton ${mouseDirection === 'right' ? 'right' : 'left'}`}
+          style={{
+            top: mousePosition.y,
+            left: mousePosition.x,
+            opacity: showArrowButton && trulyShowArrowButton ? 1 : 0
+          }}
+        >
+          {mouseDirection === 'right' ? ( 
+            <div className={`right ${showRightArrow ? 'show' : ''}`}>
+              <LongArrow />
+            </div>
+          ) : (
+            <div className={`left ${showLeftArrow ? 'show' : ''}`}>
+              <LongArrow direction={'left'} />
+            </div>
+          )}
+        </div>,
+        document.body
+      )) : null}
     </div>
-
-  ) : null
+  )
 }
 
 export default ExhibitionPageArrows

@@ -1,7 +1,10 @@
-import { useState } from "react"
+'use client'
+
+import { use, useEffect, useState } from "react"
 import CustomPortableText from "./CustomPortableText"
 import SanityImage from "./SanityImage"
 import Link from "next/link"
+import { createPortal } from 'react-dom';
 
 export function ExhibitionPageContent({exhibition, activeIndex, canShowContent}) {
 
@@ -9,6 +12,17 @@ export function ExhibitionPageContent({exhibition, activeIndex, canShowContent})
     images = [],
     body = [],
   } = exhibition || {}
+
+  const [portal, setPortal] = useState(null)
+
+  const handlePortal = () => {
+    const portal = document.getElementById('exhibition-page-arrows') || null
+    setPortal(portal)
+  }
+
+  useEffect(() => {
+    handlePortal()
+  }, [])
 
   return (
     <div className={`exhibition-page-content ${canShowContent ? 'visible' : 'invisible'}`}>
@@ -50,6 +64,18 @@ export function ExhibitionPageContent({exhibition, activeIndex, canShowContent})
             </div>
           </div>
         </div>
+      {/* {portal && createPortal(
+        <div className="text-scroll-wrapper">
+          <div className="text-wrapper">
+            <div className="text">
+              <CustomPortableText 
+                value={body} 
+              />
+            </div>
+          </div>
+        </div>,
+        portal
+      )} */}
       </div>
     </div>
   )
