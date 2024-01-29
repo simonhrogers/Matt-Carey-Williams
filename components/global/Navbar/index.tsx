@@ -69,18 +69,19 @@ export default function Navbar() {
 
   useEffect(() => {
     closePhoneMenu()
-    const handleRouteChange = () => {
-      setTimeout(() => {
-        setVisible(true)
-      }, 500);
-    }
-
-    router.events.on('routeChangeComplete', handleRouteChange)
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [pathname, router.events])
+    // const handleRouteChange = () => {
+    //   setTimeout(() => {
+    //     setVisible(true)
+    //   }, 500);
+    // }
+    // router.events.on('routeChangeComplete', handleRouteChange)
+    // return () => {
+    //   router.events.off('routeChangeComplete', handleRouteChange)
+    // }
+  }, [
+    pathname, 
+    // router.events
+  ])
 
   // make header disappear on scroll down
 
@@ -95,21 +96,29 @@ export default function Navbar() {
   }, [prevScrollPos])
 
   useEffect(() => {
-    let scrollTimeoutId: NodeJS.Timeout;
     if (typeof window !== 'undefined') {
-      window.removeEventListener('scroll', handleScroll);
-      scrollTimeoutId = setTimeout(() => {
-        window.addEventListener('scroll', handleScroll);
-      }, 500);
+      window.addEventListener('scroll', handleScroll);
     }
     return () => {
-      if (scrollTimeoutId) {
-        clearTimeout(scrollTimeoutId);
-      }
       if (typeof window !== 'undefined') {
         window.removeEventListener('scroll', handleScroll);
       }
-    };
+    }
+    // let scrollTimeoutId: NodeJS.Timeout;
+    // if (typeof window !== 'undefined') {
+    //   window.removeEventListener('scroll', handleScroll);
+    //   scrollTimeoutId = setTimeout(() => {
+    //     window.addEventListener('scroll', handleScroll);
+    //   }, 500);
+    // }
+    // return () => {
+    //   if (scrollTimeoutId) {
+    //     clearTimeout(scrollTimeoutId);
+    //   }
+    //   if (typeof window !== 'undefined') {
+    //     window.removeEventListener('scroll', handleScroll);
+    //   }
+    // };
   }, [pathname, visible, handleScroll]);
 
   return (
