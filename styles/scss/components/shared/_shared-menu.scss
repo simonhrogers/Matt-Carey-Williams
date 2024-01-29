@@ -31,3 +31,14 @@
     }
   }
 }
+
+.about-page,
+.contact-page {
+  .shared-menu {
+    @include maxWidth(tablet) {
+      position: relative;
+      margin: var(--lh) calc(-1 * var(--lh));
+      margin-top: calc(4.5rem + 1 * var(--lh));
+    }
+  }
+}
