@@ -4,9 +4,15 @@
   }
 }
 
-.page, .exhibition-page {
+.exhibition-page {
   .portable-text {
     @include text-width-exhibition;
+    h5 {
+      font-style: normal;
+      margin-top: calc(2 * var(--lh-rem-m));
+      margin-bottom: var(--lh-rem-m);
+      @include typography-small;
+    }
   }
 }
 
