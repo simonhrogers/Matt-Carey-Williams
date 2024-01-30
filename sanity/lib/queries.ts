@@ -11,13 +11,7 @@ const imageFields = groq`
   "aspectRatio": asset->metadata.dimensions.aspectRatio,
   "width": asset->metadata.dimensions.width,
   "height": asset->metadata.dimensions.height,
-  hotspot { x, y },
-  crop {
-    bottom,
-    left,
-    right,
-    top,
-  }
+  hotspot { x, y }
 `
 
 const image = groq`image {${imageFields}}`

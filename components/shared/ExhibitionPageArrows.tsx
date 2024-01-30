@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import LongArrow from "./LongArrow"
 import { createPortal } from "react-dom"
 
@@ -49,7 +49,7 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, c
     }
   }  
 
-  return (
+  return typeof window !== "undefined" ? (
     <div
       onMouseMove={(e) => updateMousePosition(e)}
       onMouseEnter={() => setShowArrowButton(true)}
@@ -58,29 +58,31 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, c
       className={`exhibition-page-arrows`}
       id="exhibition-page-arrows"
     >
-      {canShowArrows && typeof window !== "undefined" ? (createPortal(
-        <div 
-          className={`arrowButton ${mouseDirection === 'right' ? 'right' : 'left'}`}
-          style={{
-            top: mousePosition.y,
-            left: mousePosition.x,
-            opacity: showArrowButton && trulyShowArrowButton ? 1 : 0
-          }}
-        >
-          {mouseDirection === 'right' ? ( 
-            <div className={`right ${showRightArrow ? 'show' : ''}`}>
-              <LongArrow />
-            </div>
-          ) : (
-            <div className={`left ${showLeftArrow ? 'show' : ''}`}>
-              <LongArrow direction={'left'} />
-            </div>
-          )}
-        </div>,
-        document.body
-      )) : null}
+      <Suspense fallback={<div></div>}>
+        {canShowArrows ? (createPortal(
+          <div 
+            className={`arrowButton ${mouseDirection === 'right' ? 'right' : 'left'}`}
+            style={{
+              top: mousePosition.y,
+              left: mousePosition.x,
+              opacity: showArrowButton && trulyShowArrowButton ? 1 : 0
+            }}
+          >
+            {mouseDirection === 'right' ? ( 
+              <div className={`right ${showRightArrow ? 'show' : ''}`}>
+                <LongArrow />
+              </div>
+            ) : (
+              <div className={`left ${showLeftArrow ? 'show' : ''}`}>
+                <LongArrow direction={'left'} />
+              </div>
+            )}
+          </div>,
+          document.body
+        )) : null}
+      </Suspense>
     </div>
-  )
+  ) : null
 }
 
 export default ExhibitionPageArrows

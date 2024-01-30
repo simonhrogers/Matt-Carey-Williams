@@ -6,9 +6,13 @@ import { OriginContext } from "@/components/global/OriginTracker";
 import CloseButton from "./CloseButton"
 import ExhibitionPageTitleCard from "./ExhibitionPageTitleCard"
 import ExhibitionPageContent from "./ExhibitionPageContent"
-import ExhibitionPageArrows from "./ExhibitionPageArrows"
+// import ExhibitionPageArrows from "./ExhibitionPageArrows"
 import { set } from "date-fns";
 import ExhibitionPageAdditionalInformation from "./ExhibitionPageAdditionalInformation";
+
+import dynamic from 'next/dynamic'
+ 
+const ExhibitionPageArrows = dynamic(() => import('./ExhibitionPageArrows'), { ssr: false })
 
 export function ExhibitionPage({exhibition, label}) {
 

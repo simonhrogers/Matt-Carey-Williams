@@ -11,6 +11,8 @@ export function ExhibitionPageContent({exhibition, activeIndex, canShowContent})
     body = [],
   } = exhibition || {}
 
+  // console.log('images', images);
+  
   return (
     <div className={`exhibition-page-content ${canShowContent ? 'visible' : 'invisible'}`}>
       {images.map((image, index) => {
@@ -23,7 +25,9 @@ export function ExhibitionPageContent({exhibition, activeIndex, canShowContent})
               <SanityImage
                 image={image}
                 alt={image.alt}
-                aspectRatio={image.layout === 'fullBleed' ? 0.75 : null}
+                styleObject={image.layout === 'fullBleed' ? {
+                  objectPosition: image.hotspot ? `${image.hotspot.x * 100}% ${image.hotspot.y * 100}%` : '50% 50%',
+                } : null}
               />
             </div>
             <div className="image-text">

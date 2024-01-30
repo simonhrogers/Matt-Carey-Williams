@@ -13,6 +13,24 @@ import { Suspense } from 'react'
 import { Animate } from '@/components/shared/Animate'
 import OriginTracker from "@/components/global/OriginTracker"
 
+import smartquotes from 'smartquotes'
+smartquotes.replacements.push([/([0-9])-([0-9])/g, '$1–––––$2']) // hyphen to en-dash between numbers
+smartquotes.replacements.push([/(\s)-(\s)/g, '$1–$2']) // hyphen to en-dash between spaces
+smartquotes.replacements.push([/(.)-(\d)/g, '$1–$2']) // hyphen to en-dash between character and digit
+smartquotes.replacements.push([/(\d)-(.)/g, '$1–$2']) // hyphen to en-dash between digit and character
+smartquotes.replacements.push([/\s–\s/g, '–']) // space removed around en-dash
+smartquotes.replacements.push([/([0-9])x(\s)/g, '$1×$2']) // x to × after digit with following space
+smartquotes.replacements.push([/(\s)x([0-9])/g, '$1×$2']) // x to × before digit with preceeding space
+smartquotes.replacements.push([/([0-9])X(\s)/g, '$1×$2']) // X to × after digit with following space
+smartquotes.replacements.push([/(\s)X([0-9])/g, '$1×$2']) // X to × before digit with preceeding space
+smartquotes.replacements.push([/(\s)x(\s)/g, '$1×$2']) // x to × between spaces
+smartquotes.replacements.push([/(\s)X(\s)/g, '$1×$2']) // X to × between spaces
+smartquotes.replacements.push([/(\d)cm/g, '$1 cm']) // space after digit and cm
+smartquotes.replacements.push([/(\d)CM/g, '$1 cm']) // space after digit and cm
+smartquotes.replacements.push([/(\d)mm/g, '$1 mm']) // space after digit and mm
+smartquotes.replacements.push([/(\d)MM/g, '$1 mm']) // space after digit and mm
+smartquotes.replacements.push([/(CO2)/g, 'CO₂'])
+
 export interface SharedPageProps {
   token: string
 }
