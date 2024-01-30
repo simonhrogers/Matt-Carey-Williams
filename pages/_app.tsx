@@ -9,7 +9,7 @@ import Consent from '@/components/global/Consent'
 import ModalHandler from '@/components/global/ModalHandler'
 import NewsletterBanner from '@/components/global/NewsletterBanner'
 import SharedMenu from '@/components/shared/SharedMenu'
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Animate } from '@/components/shared/Animate'
 import OriginTracker from "@/components/global/OriginTracker"
 
@@ -30,6 +30,21 @@ smartquotes.replacements.push([/(\d)CM/g, '$1 cm']) // space after digit and cm
 smartquotes.replacements.push([/(\d)mm/g, '$1 mm']) // space after digit and mm
 smartquotes.replacements.push([/(\d)MM/g, '$1 mm']) // space after digit and mm
 smartquotes.replacements.push([/(CO2)/g, 'CO₂'])
+smartquotes.replacements.push([/1\/2/g, '½']) // 1/2 to ½
+smartquotes.replacements.push([/1\/3/g, '⅓']) // 1/3 to ⅓
+smartquotes.replacements.push([/2\/3/g, '⅔']) // 2/3 to ⅔
+smartquotes.replacements.push([/1\/4/g, '¼']) // 1/4 to ¼
+smartquotes.replacements.push([/3\/4/g, '¾']) // 3/4 to ¾
+smartquotes.replacements.push([/1\/5/g, '⅕']) // 1/5 to ⅕
+smartquotes.replacements.push([/2\/5/g, '⅖']) // 2/5 to ⅖
+smartquotes.replacements.push([/3\/5/g, '⅗']) // 3/5 to ⅗
+smartquotes.replacements.push([/4\/5/g, '⅘']) // 4/5 to ⅘
+smartquotes.replacements.push([/1\/6/g, '⅙']) // 1/6 to ⅙
+smartquotes.replacements.push([/5\/6/g, '⅚']) // 5/6 to ⅚
+smartquotes.replacements.push([/1\/8/g, '⅛']) // 1/8 to ⅛
+smartquotes.replacements.push([/3\/8/g, '⅜']) // 3/8 to ⅜
+smartquotes.replacements.push([/5\/8/g, '⅝']) // 5/8 to ⅝
+smartquotes.replacements.push([/7\/8/g, '⅞']) // 7/8 to ⅞
 
 export interface SharedPageProps {
   token: string
@@ -41,6 +56,11 @@ export default function App({
 }: AppProps<SharedPageProps>) {
   const { token } = pageProps
   const consent = getCookie('localConsent')
+
+  useEffect(() => {
+    smartquotes().listen()
+  }, [])
+  
   return (
     <>
       {/* init gtag analytics */}
