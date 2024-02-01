@@ -19,25 +19,43 @@ export function IndexWriting({ writing, encodeDataAttribute }: IndexWritingProps
   return (
     <div className="index-writing">
       <div className="index-writing-inner">
-        <Link
-          key={writing._id}
-          href={resolveHref(writing._type, writing.slug) ?? '/'}
-          data-sanity={encodeDataAttribute?.([
-            'writing',
-            writing._id,
-            'slug',
-          ])}
-          scroll={false}
-        >
-          <div className="title">{writing.title} (<WritingMonthYear date={writing.date} />)</div>
-          <CustomPortableText 
-            value={writing.excerpt} 
-            paragraphClasses="excerpt"
-          />
-          <div className="continue-reading">
-            <LongArrow /> Continue reading
-          </div>
-        </Link>
+        {!writing.download ? (
+          <Link
+            key={writing._id}
+            href={resolveHref(writing._type, writing.slug) ?? '/'}
+            data-sanity={encodeDataAttribute?.([
+              'writing',
+              writing._id,
+              'slug',
+            ])}
+            scroll={false}
+          >
+            <div className="title">{writing.title} (<WritingMonthYear date={writing.date} />)</div>
+            <CustomPortableText 
+              value={writing.excerpt} 
+              paragraphClasses="excerpt"
+            />
+            <div className="continue-reading">
+              <LongArrow /> Continue reading
+            </div>
+          </Link>
+        ) : (
+          <a 
+            href={writing.download.asset.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          < div className="title">{writing.title} (<WritingMonthYear date={writing.date} />)</div>
+            <CustomPortableText 
+              value={writing.excerpt} 
+              paragraphClasses="excerpt"
+            />
+            <div className="continue-reading">
+              <LongArrow /> Download PDF
+            </div>
+          </a>
+        )}
+
       </div>
     </div>
   )

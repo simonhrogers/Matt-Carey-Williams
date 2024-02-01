@@ -45,6 +45,15 @@ export default defineType({
       type: 'date',
     }),
     defineField({
+      name: 'download',
+      title: 'Download',
+      type: 'file',
+      options: {
+        storeOriginalFilename: true,
+      },
+      description: 'If there is a download, the writing will be displayed as a download button not a page. A page with a download button MUST NOT BE referenced in the writing field of an episode or scene.',
+    }),
+    defineField({
       name: 'reference',
       title: 'Reference to Episode or Scene',
       type: 'reference',

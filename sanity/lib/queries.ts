@@ -105,7 +105,13 @@ export const writingsQuery = groq`
   title,
   excerpt,
   date,
-  "referenceType": reference->_type
+  "referenceType": reference->_type,
+  download {
+    ...,
+    asset-> {
+      ...,
+    }
+  }
 }`
 
 export const writingSlugsQuery = groq`
@@ -185,6 +191,12 @@ export const homePageQuery = groq`
         title,
         excerpt,
         date,
+        download {
+          ...,
+          asset-> {
+            ...,
+          }
+        }
       },
     },
   }
@@ -315,7 +327,13 @@ export const writingsPageQuery = groq`
       title,
       excerpt,
       date,
-      "referenceType": reference->_type
+      "referenceType": reference->_type,
+      download {
+        ...,
+        asset-> {
+          ...,
+        }
+      }
     }
   }
 `
