@@ -32,9 +32,10 @@
     margin-bottom: var(--lh-rem-m);
   }
   h5 {
-    font-style: italic;
+    // font-style: italic;
     margin-top: calc(2 * var(--lh-rem-m));
     margin-bottom: var(--lh-rem-m);
+    @include typography-small;
   }
   h4, h4+.portable-text-image-wrapper {
     & + h5 {
