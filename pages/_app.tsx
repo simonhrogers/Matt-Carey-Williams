@@ -18,8 +18,6 @@ smartquotes.replacements.push([/([0-9])-([0-9])/g, '$1–$2']) // hyphen to en-d
 smartquotes.replacements.push([/(\s)-(\s)/g, '$1–$2']) // hyphen to en-dash between spaces
 smartquotes.replacements.push([/(.)-(\d)/g, '$1–$2']) // hyphen to en-dash between character and digit
 smartquotes.replacements.push([/(\d)-(.)/g, '$1–$2']) // hyphen to en-dash between digit and character
-
-// smartquotes.replacements.push([/\s–\s/g, '–']) // space removed around en-dash
 smartquotes.replacements.push([/([0-9])x(\s)/g, '$1×$2']) // x to × after digit with following space
 smartquotes.replacements.push([/(\s)x([0-9])/g, '$1×$2']) // x to × before digit with preceeding space
 smartquotes.replacements.push([/([0-9])X(\s)/g, '$1×$2']) // X to × after digit with following space
