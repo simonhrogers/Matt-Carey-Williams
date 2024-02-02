@@ -3,6 +3,7 @@ import type {
   SettingsPayload,
 } from '@/types'
 import ExhibitionPage from '@/components/shared/ExhibitionPage'
+import PageHead from '@/components/shared/PageHead'
 
 export interface ScenePageProps {
   data: ScenePayload | null
