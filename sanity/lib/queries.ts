@@ -19,6 +19,7 @@ const image = groq`image {${imageFields}}`
 const exhibitions = groq`
 _id,
 _type,
+_updatedAt,
 "slug": slug.current,
 title,
 names,
@@ -101,6 +102,7 @@ export const writingsQuery = groq`
 *[_type == "writing"] | order(date desc, _updatedAt desc) {
   _id,
   _type,
+  _updatedAt,
   "slug": slug.current,
   title,
   excerpt,

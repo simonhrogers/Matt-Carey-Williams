@@ -21,6 +21,9 @@ import {
   pageSlugsQuery,
   pageBySlugQuery,
   settingsQuery,
+  episodesQuery,
+  scenesQuery,
+  writingsQuery,
 } from './queries'
 import type {
   HomePagePayload,
@@ -73,6 +76,10 @@ export async function getAllEpisodes(client: SanityClient): Promise<EpisodesPayl
   return (await client.fetch(episodesPageQuery)) || []
 }
 
+export async function getAllEpisodesSitemap(client: SanityClient): Promise<EpisodesPayload> {
+  return (await client.fetch(episodesQuery)) || []
+}
+
 export async function getAllEpisodesSlugs(): Promise<Pick<EpisodePayload, 'slug'>[]> {
   const client = getClient()
   const slugs = (await client.fetch<string[]>(episodeSlugsQuery)) || []
@@ -92,6 +99,10 @@ export async function getAllScenes(client: SanityClient): Promise<ScenesPayload>
   return (await client.fetch(scenesPageQuery)) || []
 }
 
+export async function getAllScenesSitemap(client: SanityClient): Promise<ScenesPayload> {
+  return (await client.fetch(scenesQuery)) || []
+}
+
 export async function getAllScenesSlugs(): Promise<Pick<ScenePayload, 'slug'>[]> {
   const client = getClient()
   const slugs = (await client.fetch<string[]>(sceneSlugsQuery)) || []
@@ -109,6 +120,10 @@ export async function getSceneBySlug(
 
 export async function getAllWritings(client: SanityClient): Promise<WritingsPayload> {
   return (await client.fetch(writingsPageQuery)) || []
+}
+
+export async function getAllWritingsSitemap(client: SanityClient): Promise<WritingsPayload> {
+  return (await client.fetch(writingsQuery)) || []
 }
 
 export async function getAllWritingsSlugs(): Promise<Pick<WritingPayload, 'slug'>[]> {

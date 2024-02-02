@@ -1,5 +1,8 @@
 import { 
-  // getAllPosts, 
+  // getAllPosts,
+  getAllEpisodesSitemap,
+  getAllScenesSitemap,
+  getAllWritingsSitemap, 
   getClient 
 } from '@/sanity/lib/client'
 
@@ -25,8 +28,36 @@ const defaultUrls: SitemapLocation[] = [
     priority: 1,
     lastmod: new Date(), // or custom date: '2023-06-12T00:00:00.000Z',
   },
-  //   { url: '/about', priority: 0.5 },
-  //   { url: '/blog', changefreq: 'weekly', priority: 0.7 },
+  { 
+    url: '/episodes', 
+    priority: 0.9,
+    changefreq: 'monthly' 
+  },
+  { 
+    url: '/scenes', 
+    priority: 0.8,
+    changefreq: 'monthly' 
+  },
+  { 
+    url: '/writing', 
+    priority: 0.7,
+    changefreq: 'monthly' 
+  },
+  { 
+    url: '/about', 
+    priority: 0.6,
+    changefreq: 'monthly' 
+  },
+  { 
+    url: '/contact', 
+    priority: 0.6,
+    changefreq: 'monthly' 
+  },
+  { 
+    url: '/privacy-policy', 
+    changefreq: 'monthly', 
+    priority: 0.4,
+  },
 ]
 
 const createSitemap = (locations: SitemapLocation[]) => {
@@ -71,9 +102,49 @@ export async function getServerSideProps({ res }) {
 
   // ... get more routes here
 
+  // Get list of Writing urls
+  const [writings = []] = await Promise.all([getAllWritingsSitemap(client)])
+  const writingUrls: SitemapLocation[] = writings
+    .filter(({ slug = '' }) => slug)
+    .map((writing) => {
+      return {
+        url: `/writings/${writing.slug}`,
+        priority: 0.5,
+        lastmod: new Date(writing._updatedAt),
+      }
+    })
+    
+
+  // Get list of Episode urls
+  const [episodes = []] = await Promise.all([getAllEpisodesSitemap(client)])
+  const episodeUrls: SitemapLocation[] = episodes
+    .filter(({ slug = '' }) => slug)
+    .map((episode) => {
+      return {
+        url: `/episodes/${episode.slug}`,
+        priority: 0.5,
+        lastmod: new Date(episode._updatedAt),
+      }
+    })
+
+  // Get list of Scene urls
+  const [scenes = []] = await Promise.all([getAllScenesSitemap(client)])
+  const sceneUrls: SitemapLocation[] = scenes
+    .filter(({ slug = '' }) => slug)
+    .map((scene) => {
+      return {
+        url: `/scenes/${scene.slug}`,
+        priority: 0.5,
+        lastmod: new Date(scene._updatedAt),
+      }
+    })
+
   // Return the default urls, combined with dynamic urls above
   const locations = [
     ...defaultUrls, 
+    ...writingUrls,
+    ...episodeUrls,
+    ...sceneUrls,
     // ...postUrls
   ]
 
