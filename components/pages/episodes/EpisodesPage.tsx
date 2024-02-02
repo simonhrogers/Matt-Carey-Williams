@@ -10,13 +10,16 @@ import { resolveHref } from '@/sanity/lib/utils'
 import type { EpisodesPagePayload } from '@/types'
 import IndexExhibition from '@/components/shared/IndexExhibition'
 import Filters from '@/components/shared/Filters'
+import PageHead from '@/components/shared/PageHead'
+
 
 export interface EpisodesPageProps {
   data: EpisodesPagePayload | null
+  settings: any
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function EpisodesPage({ data, encodeDataAttribute }: EpisodesPageProps) {
+export function EpisodesPage({ data, settings, encodeDataAttribute }: EpisodesPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { episodes = [], title = '' } = data ?? {}
 
@@ -57,6 +60,7 @@ export function EpisodesPage({ data, encodeDataAttribute }: EpisodesPageProps) {
 
   return (
     <div className="episodes-page">
+      <PageHead data={data} settings={settings} />
       <Filters 
         filters={filters}
         activeFilter={activeFilter}

@@ -68,7 +68,7 @@ export function ExhibitionPageTitleCard({exhibition, label, activeIndex, setCanS
         </div>
         <div className={`title-date-wrapper ${numThingsAnimatedIn >= 3 ? 'visible' : 'invisible'}`}>
           <div className="title-wrapper">
-            {label} <RomanNumeral number={number} />: <span className="title">{title}</span>
+          {number ? (<>{label} <RomanNumeral number={number} />: </>) : null}<span className="title">{title}</span>
           </div>
 
             <div className="date">

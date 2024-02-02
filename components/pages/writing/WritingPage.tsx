@@ -11,13 +11,15 @@ import { Header } from '@/components/shared/Header'
 import ImageBox from '@/components/shared/ImageBox'
 import type { WritingPayload } from '@/types'
 import WritingMonthYear from "@/components/shared/WritingMonthYear";
+import PageHead from "@/components/shared/PageHead";
 
 export interface WritingPageProps {
   data: WritingPayload | null
+  settings: any
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function WritingPage({ data, encodeDataAttribute }: WritingPageProps) {
+export function WritingPage({ data, settings, encodeDataAttribute }: WritingPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const {
     title,
@@ -38,6 +40,7 @@ export function WritingPage({ data, encodeDataAttribute }: WritingPageProps) {
 
   return (
     <div className="writing-page-wrapper">
+      <PageHead data={data} settings={settings} />
       <div className="writing-page">
         <CloseButton 
           handleClose={handleClose}

@@ -3,12 +3,14 @@ import {  useState } from 'react'
 import type { ScenesPagePayload } from '@/types'
 import IndexExhibition from '@/components/shared/IndexExhibition'
 import Filters from '@/components/shared/Filters'
+import PageHead from '@/components/shared/PageHead'
 
 export interface ScenesPageProps {
   data: ScenesPagePayload | null
+  settings: any
 }
 
-export function ScenesPage({ data }: ScenesPageProps) {
+export function ScenesPage({ data, settings }: ScenesPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { scenes = [], title = '' } = data ?? {}
 
@@ -51,6 +53,7 @@ export function ScenesPage({ data }: ScenesPageProps) {
 
   return (
     <div className="scenes-page">
+      <PageHead data={data} settings={settings} />
       <Filters
         filters={filters}
         activeFilter={activeFilter}

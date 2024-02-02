@@ -16,13 +16,15 @@ import SanityImage from '@/components/shared/SanityImage'
 import LongArrow from '@/components/shared/LongArrow'
 import { IndexExhibition } from '@/components/shared/IndexExhibition'
 import IndexWriting from '@/components/shared/IndexWriting'
+import PageHead from '@/components/shared/PageHead'
 
 export interface HomePageProps {
   data: HomePagePayload | null
+  settings: any
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
+export function HomePage({ data, settings, encodeDataAttribute }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { title = '', featuredItems = [] } = data ?? {}
 
@@ -31,6 +33,7 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
 
   return (
     <div className="home-page">
+      <PageHead data={data} settings={settings} />
       {featuredItems.map((item, index) => {
         if (item._type === 'episode') {
           return (

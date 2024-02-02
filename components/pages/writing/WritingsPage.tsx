@@ -6,13 +6,15 @@ import { useState } from 'react'
 import type { WritingsPagePayload } from '@/types'
 import IndexWriting from '@/components/shared/IndexWriting'
 import Filters from '@/components/shared/Filters'
+import PageHead from '@/components/shared/PageHead'
 
 export interface WritingsPageProps {
   data: WritingsPagePayload | null
+  settings: any
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function WritingsPage({ data, encodeDataAttribute }: WritingsPageProps) {
+export function WritingsPage({ data, settings, encodeDataAttribute }: WritingsPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { writings = [], title = '' } = data ?? {}
 
@@ -38,6 +40,7 @@ export function WritingsPage({ data, encodeDataAttribute }: WritingsPageProps) {
   
   return (
     <div className="writings-page">
+      <PageHead data={data} settings={settings} />
       <Filters
         filters={filters}
         activeFilter={activeFilter}

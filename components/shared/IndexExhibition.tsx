@@ -41,7 +41,7 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
       scroll={false}
     >
       <div className="text">
-        {label} <RomanNumeral number={number} />: {name ? <span>{name},</span> : null} <span className="title">{title}</span><br />
+        {number ? (<>{label} <RomanNumeral number={number} />: </>) : null}{name ? <span>{name},</span> : null} <span className="title">{title}</span><br />
         at {location}, {(
           <Duration
             startDate={start} 

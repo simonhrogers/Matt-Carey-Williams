@@ -9,12 +9,15 @@ export interface ScenePageProps {
   settings: SettingsPayload | null
 }
 
-export function ScenePage({ data }: ScenePageProps) {
+export function ScenePage({ data, settings }: ScenePageProps) {
   return (
-    <ExhibitionPage 
-      exhibition={data}
-      label="Scene"
-    />
+    <>
+      <PageHead data={data} settings={settings} />
+      <ExhibitionPage 
+        exhibition={data}
+        label="Scene"
+      />
+    </>
   )
 }
 

@@ -66,6 +66,9 @@ readMore-> {
   _type,
   "slug": slug.current,
 },
+"seoTitle": title,
+"seoDescription": pt::text(body),
+"seoImage": coverImage,
 `
 
 export const scenesQuery = groq`
@@ -141,7 +144,10 @@ export const writingBySlugQuery = groq`
         caption,
       }
     }
-  }
+  },
+  "seoTitle": title,
+  "seoDescription": pt::text(excerpt),
+  "seoImage": coverImage,
 }
 `
 
@@ -156,6 +162,9 @@ export const pageBySlugQuery = groq`
     overview,
     title,
     "slug": slug.current,
+    "seoTitle": title,
+    "seoDescription": pt::text(body),
+    "seoImage": coverImage,
   }
 `
 
@@ -210,6 +219,8 @@ export const aboutPageQuery = groq`
     body,
     overview,
     title,
+    "seoTitle": title,
+    "seoDescription": pt::text(body),
   }
 `
 
@@ -226,6 +237,8 @@ export const contactPageQuery = groq`
     },
     overview,
     title,
+    "seoTitle": title,
+    "seoDescription": pt::text(body),
   }
 `
 
@@ -282,6 +295,7 @@ export const episodesPageQuery = groq`
       location,
       duration,
       "coverImage": coverImage {${imageFields}},
+      "seoTitle": title,
     }
   }
 `
@@ -307,6 +321,7 @@ export const scenesPageQuery = groq`
       location,
       duration,
       "coverImage": coverImage {${imageFields}},
+      "seoTitle": title,
     }
   }
 `
@@ -335,7 +350,8 @@ export const writingsPageQuery = groq`
         asset-> {
           ...,
         }
-      }
+      },
+      "seoTitle": title,
     }
   }
 `
@@ -360,6 +376,9 @@ export const writingsPageQuery = groq`
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
+    "title": seo.title,
+    "description": seo.description,
+    "image": seo.image,
     footer,
     menuItems[]->{
       _type,

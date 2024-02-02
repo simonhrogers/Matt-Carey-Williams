@@ -10,20 +10,21 @@ import { resolveHref } from '@/sanity/lib/utils'
 import type { AboutPagePayload } from '@/types'
 import CustomPortableText from '@/components/shared/CustomPortableText'
 import SharedMenu from '@/components/shared/SharedMenu'
+import PageHead from '@/components/shared/PageHead'
 
 export interface AboutPageProps {
   data: AboutPagePayload | null
+  settings: any
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function AboutPage({ data, encodeDataAttribute }: AboutPageProps) {
+export function AboutPage({ data, settings, encodeDataAttribute }: AboutPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { overview = [], showcaseProjects = [], title = '', body = [] } = data ?? {}
 
-  // console.log('data', data);
-
   return (
     <div className="about-page">
+      <PageHead data={data} settings={settings} />
       <SharedMenu />
       {body && (
         <CustomPortableText 
@@ -31,32 +32,6 @@ export function AboutPage({ data, encodeDataAttribute }: AboutPageProps) {
           paragraphClasses="about"
         />
       )}
-      {/* Header */}
-      {/* {title && <Header centered title={title} description={overview} />} */}
-      {/* Showcase projects */}
-      {/* {showcaseProjects && showcaseProjects.length > 0 && (
-        <div className="mx-auto max-w-[100rem] rounded-md border">
-          {showcaseProjects.map((project, key) => {
-            const href = resolveHref(project._type, project.slug)
-            if (!href) {
-              return null
-            }
-            return (
-              <Link
-                key={key}
-                href={href}
-                data-sanity={encodeDataAttribute?.([
-                  'showcaseProjects',
-                  key,
-                  'slug',
-                ])}
-              >
-                <ProjectListItem project={project} odd={key % 2} />
-              </Link>
-            )
-          })}
-        </div>
-      )} */}
     </div>
   )
 }

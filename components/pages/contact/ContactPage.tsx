@@ -11,18 +11,21 @@ import type { ContactPagePayload } from '@/types'
 import SharedMenu from '@/components/shared/SharedMenu'
 import CustomPortableText from '@/components/shared/CustomPortableText'
 import SanityImage from '@/components/shared/SanityImage'
+import PageHead from '@/components/shared/PageHead'
 
 export interface ContactPageProps {
   data: ContactPagePayload | null
+  settings: any
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function ContactPage({ data, encodeDataAttribute }: ContactPageProps) {
+export function ContactPage({ data, settings, encodeDataAttribute }: ContactPageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { overview = [], showcaseProjects = [], title = '', address = [], staffMembers = [] } = data ?? {}
 
   return (
     <div className="contact-page">
+      <PageHead data={data} settings={settings} />
       <SharedMenu />
       <div className="content">
         {address && (
