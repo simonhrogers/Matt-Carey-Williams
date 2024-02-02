@@ -66,6 +66,7 @@
         margin-left: calc(1.5 * var(--lh));
         display: inline-block;
         transition: transform 0.25s ease-in-out;
+        transform: translateY(-0.275rem);
         &.active {
           transform: translateY(1.25 * 1rem);
         }
