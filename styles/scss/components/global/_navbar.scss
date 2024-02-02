@@ -62,7 +62,7 @@
     .menu-item {
       @include typography-medium;
       @include minWidth(laptop) {
-        // @include typography-small;
+        @include typography-small;
         margin-left: calc(1.5 * var(--lh));
         display: inline-block;
         transition: transform 0.25s ease-in-out;
