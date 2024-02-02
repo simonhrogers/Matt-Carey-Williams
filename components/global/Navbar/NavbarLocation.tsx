@@ -1,14 +1,18 @@
 'use client'
 
-import { use, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useLocationsContext } from "../LocationsContext";
 
 export function NavbarLocation({canAnimate}: {canAnimate: boolean}) {
 
-  const [items] = useState([
-    'at Cork Street',
-    'at Porchester Place',
-    // 'at your mum\'s house',
-  ])
+  // const [items] = useState([
+  //   'at Cork Street',
+  //   'at Porchester Place',
+  //   // 'at your mum\'s house',
+  // ])
+
+  const { locations: items } = useLocationsContext();
+
   const [index, setIndex] = useState(0)
   const nodeRef = useRef(null)
 

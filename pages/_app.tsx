@@ -12,6 +12,7 @@ import SharedMenu from '@/components/shared/SharedMenu'
 import { Suspense, useEffect } from 'react'
 import { Animate } from '@/components/shared/Animate'
 import OriginTracker from "@/components/global/OriginTracker"
+import { LocationsProvider } from '@/components/global/LocationsContext'
 
 import smartquotes from 'smartquotes'
 smartquotes.replacements.push([/([0-9])-([0-9])/g, '$1–$2']) // hyphen to en-dash between numbers
@@ -98,19 +99,21 @@ export default function App({
         />
       )}
       <OriginTracker>
-        <div className="layout">
-          <ModalHandler />
-          <div className="banners">
-            <NewsletterBanner />
-            <Consent />
+        <LocationsProvider>
+          <div className="layout">
+            <ModalHandler />
+            <div className="banners">
+              <NewsletterBanner />
+              <Consent />
+            </div>
+            <Navbar />
+            <Animate>
+              {/* <SharedMenu /> */}
+              <Component {...pageProps} />
+            </Animate>
+            <Footer />
           </div>
-          <Navbar />
-          <Animate>
-            {/* <SharedMenu /> */}
-            <Component {...pageProps} />
-          </Animate>
-          <Footer />
-        </div>
+        </LocationsProvider>
       </OriginTracker>
     </>
   )

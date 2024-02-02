@@ -2,6 +2,8 @@ import { urlForImage } from '@/sanity/lib/image'
 import Head from 'next/head'
 import { createGlobalStyle } from "styled-components";
 import SiteMeta from '@/components/shared/SiteMeta'
+import { useLocationsContext } from "@/components/global/LocationsContext"
+import { useEffect } from 'react';
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -36,7 +38,11 @@ export default function PageHead({ settings, data, noIndex = false }) {
     titleWithSiteName = settings.title
   }
 
-  console.log(GlobalStyle);
+  const { setLocations } = useLocationsContext();
+
+  useEffect(() => {
+    setLocations(settings.locations);
+  }, [settings.locations]);
 
   return (
     <>
