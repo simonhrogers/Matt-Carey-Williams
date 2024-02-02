@@ -380,6 +380,8 @@ export const settingsQuery = groq`
     "description": seo.description,
     "image": seo.image,
     footer,
+    color,
+    locations,
     menuItems[]->{
       _type,
       "slug": slug.current,

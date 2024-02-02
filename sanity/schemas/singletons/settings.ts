@@ -35,12 +35,25 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'ogImage',
-      title: 'Open Graph Image',
-      type: 'image',
-      description: 'Displayed on social cards and search engine results.',
+      name: 'locations',
+      title: 'Locations',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'List of locations MCW is currently exhibiting at.',
+    }),
+    defineField({
+      name: 'color',
+      title: 'Color',
+      type: 'string',
       options: {
-        hotspot: true,
+        list: [
+          { title: 'Elm', value: '#1C7464' },
+          { title: 'Orange', value: '#B4522E' },
+          { title: 'Blue', value: '#114593' },
+          { title: 'Wasabi', value: '#73711C' },
+          { title: 'Purple', value: '#5E5590' },
+          { title: 'Tawny Port', value: '#73272B' },
+        ],
       },
     }),
     defineField({

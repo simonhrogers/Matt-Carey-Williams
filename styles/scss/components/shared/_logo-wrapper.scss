@@ -21,7 +21,10 @@
       height: 1em !important;
       // width: fit-content !important;
       width: 13.366383em !important;
-      fill: #1C7464;
+      fill: var(--color) !important;
+      path {
+        fill: var(--color) !important;
+      }
       // margin-right: auto;
     }
   }

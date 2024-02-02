@@ -1,7 +1,13 @@
 import { urlForImage } from '@/sanity/lib/image'
 import Head from 'next/head'
-
+import { createGlobalStyle } from "styled-components";
 import SiteMeta from '@/components/shared/SiteMeta'
+
+const GlobalStyle = createGlobalStyle`
+html {
+  --color: ${props => (props.color ? props.color : "#1C7464")};
+}
+`;
 
 export default function PageHead({ settings, data, noIndex = false }) {
   console.log(settings)
@@ -30,18 +36,23 @@ export default function PageHead({ settings, data, noIndex = false }) {
     titleWithSiteName = settings.title
   }
 
+  console.log(GlobalStyle);
+
   return (
-    <Head>
-      <title>{titleWithSiteName}</title>
-      <SiteMeta />
-      <meta key="description" name="description" content={description} />
-      {image?.asset && (
-        <meta
-          property="og:image"
-          content={urlForImage(image).width(1200).height(627).fit('crop').url()}
-        />
-      )}
-      {noIndex && <meta name="robots" content="noindex" />}
-    </Head>
+    <>
+      <Head>
+        <title>{titleWithSiteName}</title>
+        <SiteMeta />
+        <meta key="description" name="description" content={description} />
+        {image?.asset && (
+          <meta
+            property="og:image"
+            content={urlForImage(image).width(1200).height(627).fit('crop').url()}
+          />
+        )}
+        {noIndex && <meta name="robots" content="noindex" />}
+      </Head>
+      <GlobalStyle color={settings.color} />
+    </>
   )
 }
