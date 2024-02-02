@@ -9,7 +9,6 @@
   line-height: 1.25;
   transition: transform 0.25s ease-in-out;
   background-color: white;
-  // opacity: 0.6;
   &.hidden {
     // @include minWidth(tablet) {
       transform: translateY(-100%);
@@ -63,6 +62,7 @@
     .menu-item {
       @include typography-medium;
       @include minWidth(laptop) {
+        // @include typography-small;
         margin-left: calc(1.5 * var(--lh));
         display: inline-block;
         transition: transform 0.25s ease-in-out;

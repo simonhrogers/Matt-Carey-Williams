@@ -77,6 +77,7 @@ export function ExhibitionPage({exhibition, label}) {
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
           canShowArrows={true}
+          currentItemLayout={currentItemLayout}
         />
       </div>
     </div>

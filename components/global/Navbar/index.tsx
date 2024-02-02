@@ -88,38 +88,23 @@ export default function Navbar() {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(true)
 
-  const handleScroll = useCallback(() => {
-    const currentScrollPos = window.scrollY
-    const visible = (currentScrollPos <= 50 || prevScrollPos > currentScrollPos && currentScrollPos > 50)
-    setPrevScrollPos(currentScrollPos)
-    setVisible(visible)
-  }, [prevScrollPos])
+  // const handleScroll = useCallback(() => {
+  //   const currentScrollPos = window.scrollY
+  //   const visible = (currentScrollPos <= 50 || prevScrollPos > currentScrollPos && currentScrollPos > 50)
+  //   setPrevScrollPos(currentScrollPos)
+  //   setVisible(visible)
+  // }, [prevScrollPos])
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
-    }
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('scroll', handleScroll);
-      }
-    }
-    // let scrollTimeoutId: NodeJS.Timeout;
-    // if (typeof window !== 'undefined') {
-    //   window.removeEventListener('scroll', handleScroll);
-    //   scrollTimeoutId = setTimeout(() => {
-    //     window.addEventListener('scroll', handleScroll);
-    //   }, 500);
-    // }
-    // return () => {
-    //   if (scrollTimeoutId) {
-    //     clearTimeout(scrollTimeoutId);
-    //   }
-    //   if (typeof window !== 'undefined') {
-    //     window.removeEventListener('scroll', handleScroll);
-    //   }
-    // };
-  }, [pathname, visible, handleScroll]);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('scroll', handleScroll);
+  //   }
+  //   return () => {
+  //     if (typeof window !== 'undefined') {
+  //       window.removeEventListener('scroll', handleScroll);
+  //     }
+  //   }
+  // }, [pathname, visible, handleScroll]);
 
   return (
     <div className={`

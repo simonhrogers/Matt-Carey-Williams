@@ -2,7 +2,7 @@ import { Suspense, useEffect, useState } from "react"
 import LongArrow from "./LongArrow"
 import { createPortal } from "react-dom"
 
-export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, canShowArrows}) {
+export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, canShowArrows, currentItemLayout}) {
 
   const { images = [] } = exhibition || {
     images: [],
@@ -61,7 +61,7 @@ export function ExhibitionPageArrows({exhibition, activeIndex, setActiveIndex, c
       <Suspense fallback={<div></div>}>
         {canShowArrows ? (createPortal(
           <div 
-            className={`arrowButton ${mouseDirection === 'right' ? 'right' : 'left'}`}
+            className={`arrowButton ${mouseDirection === 'right' ? 'right' : 'left'} ${currentItemLayout}`}
             style={{
               top: mousePosition.y,
               left: mousePosition.x,

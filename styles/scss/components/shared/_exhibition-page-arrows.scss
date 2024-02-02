@@ -35,6 +35,11 @@
   @include maxWidth(tablet) {
     display: none;
   }
+  &.fullBleed {
+    svg {
+      stroke: white;
+    }
+  }
   // .svg {
   //   width: calc(2 * var(--fm));
   // }
