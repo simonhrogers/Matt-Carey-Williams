@@ -60,7 +60,7 @@ export function ScenesPage({ data, settings }: ScenesPageProps) {
         setActiveFilter={setActiveFilter}
       />
       <div className="scenes">
-        {scenes.map((scene, key) => (
+        {activeFilter.items.map((scene, key) => (
           <IndexExhibition
             key={key}
             exhibition={scene}
