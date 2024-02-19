@@ -14,6 +14,7 @@ import { Animate } from '@/components/shared/Animate'
 import OriginTracker from "@/components/global/OriginTracker"
 import { LocationsProvider } from '@/components/global/LocationsContext'
 
+// careful before using on other projects – check replacements:
 import smartquotes from 'smartquotes'
 smartquotes.replacements.push([/([0-9])-([0-9])/g, '$1–$2']) // hyphen to en-dash between numbers
 smartquotes.replacements.push([/(\s)-(\s)/g, '$1–$2']) // hyphen to en-dash between spaces
