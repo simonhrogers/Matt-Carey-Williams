@@ -62,7 +62,7 @@ portfolio {
     ...,
   }
 },
-readMore-> {
+"readMore": *[_type == "writing" && references(^._id)][0] {
   _type,
   "slug": slug.current,
 },
