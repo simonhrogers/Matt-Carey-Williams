@@ -45,9 +45,6 @@
         @include uppercase;
       }
       .names {
-        &.single {
-
-        }
         &.two-to-ten {
           @include minWidth(tablet) {
             .name {
