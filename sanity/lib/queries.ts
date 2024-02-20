@@ -7,7 +7,6 @@ const imageFields = groq`
   body,
   asset,
   "id": asset._ref,
-  "preview": asset->metadata.lqip,
   "aspectRatio": asset->metadata.dimensions.aspectRatio,
   "width": asset->metadata.dimensions.width,
   "height": asset->metadata.dimensions.height,
