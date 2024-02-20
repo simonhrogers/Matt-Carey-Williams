@@ -66,12 +66,12 @@ export default defineType({
         storeOriginalFilename: true,
       },
     }),
-    defineField({
-      name: 'readMore',
-      title: 'Read More',
-      type: 'reference',
-      to: [{ type: 'writing' }],
-    }),
+    // defineField({
+    //   name: 'readMore',
+    //   title: 'Read More',
+    //   type: 'reference',
+    //   to: [{ type: 'writing' }],
+    // }),
     defineField({
       name: 'duration',
       title: 'Duration',
