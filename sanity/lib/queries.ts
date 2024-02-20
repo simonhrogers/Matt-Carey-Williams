@@ -133,13 +133,13 @@ export const writingBySlugQuery = groq`
   date,
   body[]{
     ...,
-    _type == "image" => {
-      ${imageFields},
-      caption,
-    },
     _type == "imagesGroup" => {
       images[] {
-        ${imageFields},
+        _type,
+        alt,
+        asset,
+        "width": asset->metadata.dimensions.width,
+        "height": asset->metadata.dimensions.height,
         caption,
       }
     }
