@@ -1,3 +1,10 @@
+// Import the bundle analyzer with ESM syntax
+import createBundleAnalyzer from '@next/bundle-analyzer';
+
+const withBundleAnalyzer = createBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 /** @type {import('next').NextConfig} */
 const config = {
   images: {
@@ -6,14 +13,10 @@ const config = {
     ],
   },
   typescript: {
-    // Set this to false if you want production builds to abort if there's type errors
-    // ignoreBuildErrors: process.env.VERCEL_ENV === 'production',
     ignoreBuildErrors: true,
   },
   eslint: {
-    /// Set this to false if you want production builds to abort if there's lint errors
     ignoreDuringBuilds: process.env.VERCEL_ENV === 'production',
-    // ignoreDuringBuilds: true,
   },
   logging: {
     fetches: {
@@ -22,15 +25,15 @@ const config = {
   },
   experimental: {
     taint: true,
-    // windowHistorySupport: true,
   },
   webpack: (webpackConfig) => {
     webpackConfig.module.rules.push({
       test: /\.svg$/i,
       use: ['@svgr/webpack'],
-    })
-    return webpackConfig
+    });
+    return webpackConfig;
   },
-}
+};
 
-export default config
+// Apply the bundle analyzer conditionally
+export default withBundleAnalyzer(config);

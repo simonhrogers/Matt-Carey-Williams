@@ -29,6 +29,9 @@ export function WritingPage({ data, settings, encodeDataAttribute }: WritingPage
     body
   } = data ?? {}
 
+  console.log(body);
+  
+
 
   const router = useRouter()
   const isWithinPage = useContext(OriginContext)
