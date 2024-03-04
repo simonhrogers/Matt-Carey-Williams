@@ -109,7 +109,6 @@ export default function App({
             </div>
             <Navbar />
             <Animate>
-              {/* <SharedMenu /> */}
               <Component {...pageProps} />
             </Animate>
             <Footer />

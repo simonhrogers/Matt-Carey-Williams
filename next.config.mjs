@@ -23,9 +23,6 @@ const config = {
       fullUrl: true,
     },
   },
-  experimental: {
-    taint: true,
-  },
   webpack: (webpackConfig) => {
     webpackConfig.module.rules.push({
       test: /\.svg$/i,
