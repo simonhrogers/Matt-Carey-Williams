@@ -82,7 +82,7 @@ async function queryStaleRoutes(
 
   switch (body._type) {
     case 'home':
-      return await queryAllRoutes(client)
+      return ['/']
     case 'page':
       return await queryStalePageRoutes(client, body._id)
     case 'episode':
