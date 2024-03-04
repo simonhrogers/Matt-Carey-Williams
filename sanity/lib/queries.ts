@@ -71,7 +71,7 @@ portfolio {
 `
 
 export const scenesQuery = groq`
-*[_type == "scene"] | order(date desc, _updatedAt desc) {
+*[_type == "scene" && defined(coverImage.asset)] | order(date desc, _updatedAt desc) {
   ${exhibitions}
 }`
 

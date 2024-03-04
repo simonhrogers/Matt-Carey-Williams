@@ -28,7 +28,7 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
   const name = names?.length === 1 ? names[0] : null
   const { start, end } = duration
 
-  return (
+  return coverImage && (
     <Link
       key={exhibition._id}
       href={resolveHref(exhibition._type, exhibition.slug) ?? '/'}
@@ -50,11 +50,14 @@ export function IndexExhibition({ exhibition, label, encodeDataAttribute }: Inde
         )}
       </div>
       <div className="image-wrapper">
-        <SanityImage
-          image={coverImage}
-          alt={exhibition.title}
-          aspectRatio="0.75"
-        />
+        {coverImage && (
+          <SanityImage
+            image={coverImage}
+            alt={exhibition.title}
+            aspectRatio="0.75"
+          />
+        
+        )}
       </div>
     </Link>
   )
